@@ -19,7 +19,13 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@landing/*": ["src/app/modules/landing/*"],
+      "@auth/*": ["src/app/modules/auth/*"],
+      "@admin/*": ["src/app/modules/admin/*"],
+      "@client/*": ["src/app/modules/client/*"],
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

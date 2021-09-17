@@ -1,0 +1,26 @@
+<div class="login row">
+  <div class="m-auto col-lg-4 col-md-12">
+    <mat-card class="bg-light mb-3 d-flex flex-column">
+      <h2 class="display-4 text-center mb-3">Inicio de sesión en cuenta de Turismo Real</h2>
+      <div class="row px-5">
+        <mat-form-field class="col-12 mb-3" appearance="fill">
+          <mat-label>Ingresar E-mail</mat-label>
+          <input matInput placeholder="turismo@real.com" [formControl]="email" required>
+          <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field class="col-12 mb-3" appearance="fill">
+          <mat-label>Ingresar contraseña</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Esconder Contraseña'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field >
+      </div>
+      <button mat-raised-button color="primary">Iniciar Sesión</button>
+    </mat-card>
+    <mat-card class="bg-light d-flex flex-column">
+      <h2 class="display-4 text-center mb-3">¿No tienes una cuenta en Turismo Real?</h2>
+      <button mat-stroked-button color="primary">Crear una cuenta</button>
+    </mat-card>
+  </div>
+</div>
