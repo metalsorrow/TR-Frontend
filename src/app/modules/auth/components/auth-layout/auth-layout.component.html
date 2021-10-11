@@ -1,8 +1,32 @@
-<app-navbar></app-navbar>
+<div class="offcanvas offcanvas-start w-25" tabindex="-1" id="offcanvas" data-bs-keyboard="false" data-bs-backdrop="false">
+    <div class="offcanvas-header">
+        <h3 class="offcanvas-title d-none d-sm-block" id="offcanvas">navegacion</h3>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body px-0">
+        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-start">
+            <li class="nav-item">
+                <a [routerLink]="['/auth']" class="nav-link text-truncate">
+                    <i class="fs-5 bi-house"></i><span class="ms-1 d-none d-sm-inline">Iniciar Sesion</span>
+                </a>
+            </li>
+            <li>
+                <a [routerLink]="['/auth','register']" data-bs-toggle="collapse" class="nav-link text-truncate">
+                    <i class="fs-5 bi-speedometer2"></i><span class="ms-1 d-none d-sm-inline">Registrarse</span> </a>
+            </li>
+            <li>
+                <a [routerLink]="['/']" data-bs-toggle="collapse" class="nav-link text-truncate">
+                    <i class="fs-5 bi-speedometer2"></i><span class="ms-1 d-none d-sm-inline">Volver a Menu Principal</span> </a>
+            </li>
+        </ul>
+    </div>
+</div>
     <!-- toggler -->
-    <button class="btn float-end" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button">
-        <i class="bi bi-arrow-right-square-fill fs-3" data-bs-toggle="offcanvas" data-bs-target="#offcanvas">X</i>
+    <button class="btn float-start" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button">
+        <button class="btn float-end" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button">
+            <mat-icon>menu</mat-icon>
+        </button>
     </button>
-<main class="container mh-100 mw-100">
+<main class="container mw-100">
     <router-outlet></router-outlet>
 </main>

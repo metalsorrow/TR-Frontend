@@ -16,11 +16,11 @@
           </button>
         </mat-form-field >
       </div>
-      <button mat-raised-button color="primary">Iniciar Sesión</button>
+      <button (click)="$event.preventDefault()" [routerLink]="['/client']" mat-raised-button color="primary">Iniciar Sesión</button>
     </mat-card>
     <mat-card class="bg-light d-flex flex-column">
       <h2 class="display-4 text-center mb-3">¿No tienes una cuenta en Turismo Real?</h2>
-      <button mat-stroked-button color="primary">Crear una cuenta</button>
+      <button (click)="$event.preventDefault()" [routerLink]="['/auth','register']" mat-stroked-button color="primary">Crear una cuenta</button>
     </mat-card>
   </div>
 </div>

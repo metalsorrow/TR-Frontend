@@ -1,0 +1,98 @@
+<div class="container">
+    <div class="row">
+        <h1>Nombre de Departamento</h1>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <img src="https://ladefinicion.com/wp-content/uploads/2019/08/paisaje-natural-992x661.jpg" class="img-fluid p-2 m-0" alt="Responsive image">
+        </div>
+        <div class="col-12 col-md-6 ">
+            <div class="container p-0 m-0">
+                <div class="row p-0 m-0">
+                    <div class="col-md-6 col-12 p-2 m-0">
+                        <img src="https://ladefinicion.com/wp-content/uploads/2019/08/paisaje-natural-992x661.jpg" class="img-fluid" alt="Responsive image">
+                    </div>
+                    <div class="col-md-6 col-12 p-2 m-0">
+                        <img src="https://ladefinicion.com/wp-content/uploads/2019/08/paisaje-natural-992x661.jpg" class="img-fluid" alt="Responsive image">
+                    </div>
+                    <div class="col-md-6 col-12 p-2 m-0">
+                        <img src="https://ladefinicion.com/wp-content/uploads/2019/08/paisaje-natural-992x661.jpg" class="img-fluid" alt="Responsive image">
+                    </div>
+                    <div class="col-md-6 col-12 p-2 m-0">
+                        <img src="https://ladefinicion.com/wp-content/uploads/2019/08/paisaje-natural-992x661.jpg" class="img-fluid" alt="Responsive image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-md-6 col-12">
+            <h2>Descripción</h2>
+            <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut quam accusamus, eaque velit, recusandae dignissimos reprehenderit obcaecati voluptas quia, et soluta! Unde cupiditate eum ratione quo repellat saepe numquam. Veniam beatae earum unde nemo neque quae, eum perferendis autem quod. Nostrum, voluptates accusantium. Consectetur ratione atque nam eum repellat ipsa quis saepe dignissimos excepturi, dolorum illo, culpa cumque nemo. Possimus, vero neque dolorum error libero impedit ut minus dolor maxime magnam fugiat nihil sint ullam. Vel velit autem dolores, aspernatur quod dolorem earum. Rerum inventore expedita asperiores praesentium neque repellendus sunt consectetur impedit, fuga incidunt nulla ea illo, odio cupiditate.
+            </p>
+            <h2>Servicios</h2>
+            <div>
+                    <span class="material-icons px-2">bed</span>
+                    <span class="material-icons px-2">drive_eta</span>
+                    <span class="material-icons px-2">shower</span>
+            </div>
+            <h2>Servicios Extra</h2>
+            <div>
+                    <span class="material-icons px-2">bed</span>
+                    <span class="material-icons px-2">drive_eta</span>
+                    <span class="material-icons px-2">shower</span>
+            </div>
+
+        </div>
+        <mat-card class="col-md-6 col-12">
+            <h2> $00.000 / NOCHE </h2>
+            <mat-card class="m-3">
+                <h3>CHECK IN</h3>
+                <mat-form-field class="col-sm-12 col-md-4" appearance="fill">
+                    <mat-label>Fecha de Ingreso</mat-label>
+                    <input matInput [matDatepicker]="picker">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+            </mat-card>
+
+            <mat-card class="m-3">
+                <h3>Huespedes</h3>
+                <div class="row">
+                    <div class="col-4">
+                        <mat-form-field class="w-100" appearance="fill">
+                            <mat-label>Adultos</mat-label>
+                            <mat-select>
+                              <mat-option *ngFor="let index of [1,2,3,4,5,6,7]" [value]="index">{{index}}</mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                    </div>
+                    <div class="col-4">
+                        <mat-form-field class="w-100" appearance="fill">
+                            <mat-label>Niños</mat-label>
+                            <mat-select>
+                              <mat-option *ngFor="let index of [1,2,3,4,5,6,7]" [value]="index">{{index}}</mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                          <p>(De 2 a 12 años)</p>
+                        </div>
+                    <div class="col-4">
+                        <mat-form-field class="w-100" appearance="fill">
+                            <mat-label>Bebes</mat-label>
+                            <mat-select>
+                              <mat-option *ngFor="let index of [1,2,3,4,5,6,7]" [value]="index">{{index}}</mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                          <p>(Menos de 2 años)</p>
+                    </div>
+                    
+                    <h3>Total: $00.000</h3>
+
+                    <button mat-stroked-button color="primary">Reserva</button>
+                </div>
+            </mat-card>
+        </mat-card>
+    </div>
+</div>

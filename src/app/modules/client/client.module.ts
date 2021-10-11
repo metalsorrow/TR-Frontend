@@ -1,20 +1,12 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { ClientRoutingModule } from './client-routing.module';
-import { ClientLayoutComponent } from './components/client-layout/client-layout.component';
 import { BookingComponent } from './pages/booking/booking.component';
-
-
+import { HomeComponent } from './pages/home/home.component';
+import { DepartmentDetailComponent } from './pages/department-detail/department-detail.component';
 
 @NgModule({
-  declarations: [
-    ClientLayoutComponent,
-    BookingComponent
-  ],
-  imports: [
-    SharedModule,
-    ClientRoutingModule
-  ]
+  declarations: [BookingComponent, HomeComponent, DepartmentDetailComponent],
+  imports: [SharedModule, ClientRoutingModule],
 })
-export class ClientModule { }
+export class ClientModule {}

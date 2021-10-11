@@ -1,8 +1,44 @@
 <!-- Content here -->
-<app-navbar></app-navbar>
+<div class="offcanvas offcanvas-start w-25" tabindex="-1" id="offcanvas" data-bs-keyboard="false" data-bs-backdrop="false">
+    <div class="offcanvas-header">
+        <h6 class="offcanvas-title d-none d-sm-block" id="offcanvas">Menu</h6>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body px-0">
+        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-start" id="menu">
+            <li class="nav-item">
+                <a [routerLink]="['/']" class="nav-link text-truncate">
+                    <i class="fs-5 bi-house"></i><span class="ms-1 d-none d-sm-inline">Inicio</span>
+                </a>
+            </li>
+            <li>
+                <a [routerLink]="['/']" class="nav-link text-truncate">
+                    <i class="fs-5 bi-table"></i><span class="ms-1 d-none d-sm-inline">Crear Reserva</span></a>
+            </li>
+            <li>
+                <a [routerLink]="['/']" class="nav-link text-truncate">
+                    <span class="ms-1 d-none d-sm-inline">Quienes Somos</span></a>
+            </li>
+            <li>
+                <a [routerLink]="['/']" class="nav-link text-truncate">
+                    <span class="ms-1 d-none d-sm-inline">Contactanos</span> </a>
+            </li>
+            <li>
+                <a [routerLink]="['auth']" data-bs-toggle="collapse" class="nav-link text-truncate">
+                    <span class="ms-1 d-none d-sm-inline">Iniciar Sesion</span> </a>
+            </li>
+            <li>
+                <a [routerLink]="['auth','register']" class="nav-link text-truncate">
+                    <span class="ms-1 d-none d-sm-inline">Registrate</span> </a>
+            </li>
+        </ul>
+    </div>
+</div>
     <!-- toggler -->
-    <button class="btn float-end" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button">
-        <i class="bi bi-arrow-right-square-fill fs-3" data-bs-toggle="offcanvas" data-bs-target="#offcanvas">X</i>
+    <button class="btn float-start" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button">
+        <button class="btn float-end" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button">
+            <mat-icon>menu</mat-icon>
+        </button>
     </button>
 <div id="content" class="container-fluid mx-auto">
     <router-outlet></router-outlet>

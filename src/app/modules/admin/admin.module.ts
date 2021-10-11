@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { AdminRoutingModule } from './admin-routing.module';
-import { DepartmentsComponent } from './components/departments/departments.component';
-import { UsersComponent } from './components/users/users.component';
+import { DepartmentsComponent } from './pages/departments/departments.component';
+import { UsersComponent } from './pages/users/users.component';
+import { CheckControllerComponent } from './pages/check-controller/check-controller.component';
+import { AdminLayoutComponent } from './components/admin-layout/admin-layout.component';
 
 @NgModule({
-  declarations: [DepartmentsComponent, UsersComponent],
+  declarations: [DepartmentsComponent, UsersComponent, CheckControllerComponent, AdminLayoutComponent],
   imports: [SharedModule, AdminRoutingModule],
 })
 export class AdminModule {}

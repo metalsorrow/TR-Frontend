@@ -1,0 +1,69 @@
+<div class="container-fluid">
+    <header class="row">
+        <h1>Turismo Real</h1>
+        <section>
+            <div class="container mb-5">
+                <div class="row p-3">
+                    <h2 class="col-12 text-center">Selecciona tu destino:</h2>
+                </div>
+                <div class="row">
+                    <app-card-region class="col" title="Viña del Mar"
+                        imagePath="../../../../../assets/images/landing/viñaDelMar.jpg"></app-card-region>
+                    <app-card-region class="col" title="La Serena"
+                        imagePath="../../../../../assets/images/landing/laSerena.jpg"></app-card-region>
+                    <app-card-region class="col" title="Pucon"
+                        imagePath="../../../../../assets/images/landing/pucon.jpg"></app-card-region>
+                    <app-card-region class="col" title="Puerto Varas"
+                        imagePath="../../../../../assets/images/landing/puertoVaras.jpg"></app-card-region>
+                    <app-card-region class="col" title="Más Destinos..."
+                        imagePath="../../../../../assets/images/landing/destinos.jpeg"></app-card-region>
+                </div>
+            </div>
+        </section>
+    </header>
+    <main>
+        <hr>
+        <div class="container">
+            <div class="row p-3">
+                <h2 class="col-12 text-center">Departamentos Disponibles</h2>
+            </div>
+            <div class="row">
+                <div *ngFor="let card of [1,2,3,4,5,6,7,8]" class="col-12 col-md-3">
+                    <h3>Nombre de Departmaneto</h3>
+                    <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef"
+                            dy=".3em">Thumbnail</text>
+                    </svg>
+
+                    <div class="card-body">
+                        <div class="card-icons d-flex justify-content-between">
+                            <div class="d-flex">
+                                <span class="material-icons px-2">bed</span>
+                                <p>0</p>
+                            </div>
+                            <div class="d-flex">
+                                <span class="material-icons px-2">drive_eta</span>
+                                <p>0</p>
+                            </div>
+                            <div class="d-flex">
+                                <span class="material-icons px-2">shower</span>
+                                <p>0</p>
+                            </div>
+                        </div>
+                        <h3>Descripcion</h3>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
+                        <div class="d-flex justify-content-center align-items-center">
+                            <div class="btn-group">
+                                <button (click)="$event.preventDefault()" [routerLink]="['/client','department',card]" mat-raised-button>Mas Informacion</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>

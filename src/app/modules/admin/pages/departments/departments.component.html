@@ -1,0 +1,193 @@
+<div class="container">
+    <div class="row">
+
+    </div>
+    <div class="row">
+        <div class="col d-flex" 
+            data-bs-toggle="modal"
+            data-bs-target="#formDepartment" >
+            <span class="material-icons">
+                add_circle_outline
+            </span>
+            <p>Agregar</p>
+        </div>
+        <div class="col">
+            <h2>Listado de Departamentos</h2>
+        </div>
+        <div class="col"></div>
+    </div>
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nonbre Departamento</th>
+                    <th scope="col">comuna</th>
+                    <th scope="col">Direccion</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Modificar</th>
+                    <th scope="col">Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Mark</td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>Otto</td>
+                    <td>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#formDepartment">
+                            Modificar
+                        </button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#deleteModal">
+                            Eliminar
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="formDepartment" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <h3 class="text-center">
+                        Formulario de Registro de Departamentos
+                    </h3>
+                </div>
+                <form action="">
+                    <div class="row">
+                        <div class="col-6">
+                            <mat-form-field class="w-100" appearance="fill">
+                                <mat-label>Nombre Departamento</mat-label>
+                                <input matInput>
+                            </mat-form-field>
+                            <mat-form-field class="w-100" appearance="fill">
+                                <mat-label>Direccion</mat-label>
+                                <input matInput>
+                            </mat-form-field>
+                            <mat-form-field class="w-100" appearance="fill">
+                                <mat-label>Region</mat-label>
+                                <mat-select>
+                                    <mat-option value="one">First option</mat-option>
+                                    <mat-option value="two">Second option</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <mat-form-field class="w-100" appearance="fill">
+                                <mat-label>Ciudad</mat-label>
+                                <mat-select>
+                                    <mat-option value="one">First option</mat-option>
+                                    <mat-option value="two">Second option</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <mat-form-field class="w-100" appearance="fill">
+                                <mat-label>Comuna</mat-label>
+                                <mat-select>
+                                    <mat-option value="one">First option</mat-option>
+                                    <mat-option value="two">Second option</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <mat-form-field class="w-100" appearance="fill">
+                                <mat-label>Descripcion</mat-label>
+                                <textarea matInput></textarea>
+                            </mat-form-field>
+                            <div>
+                                <p>Agregar Fotos:</p>
+                                <span class="material-icons">
+                                    file_upload
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <mat-form-field class="w-100" appearance="fill">
+                                <mat-label>Cantidad de Habitaciones</mat-label>
+                                <mat-select>
+                                    <mat-option value="one">First option</mat-option>
+                                    <mat-option value="two">Second option</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <mat-form-field class="w-100" appearance="fill">
+                                <mat-label>Cantidad de Estacionamientos</mat-label>
+                                <mat-select>
+                                    <mat-option value="one">First option</mat-option>
+                                    <mat-option value="two">Second option</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <mat-form-field class="w-100" appearance="fill">
+                                <mat-label>Cantidad de Baños</mat-label>
+                                <mat-select>
+                                    <mat-option value="one">First option</mat-option>
+                                    <mat-option value="two">Second option</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <mat-form-field class="w-100" appearance="fill">
+                                <mat-label>Disponibilidad</mat-label>
+                                <mat-select>
+                                    <mat-option value="one">First option</mat-option>
+                                    <mat-option value="two">Second option</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <mat-form-field class="w-100" appearance="fill">
+                                <mat-label>Precio</mat-label>
+                                <textarea matInput></textarea>
+                            </mat-form-field>
+                            <div>
+                                <h4>Servicios Extra</h4>
+                                <div>
+                                    <ul>
+                                        <li>
+                                            lorem
+                                        </li>
+                                        <li>
+                                            lorem
+                                        </li>
+                                        <li>
+                                            lorem
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <button mat-raised-button class="w-100">Guardar</button>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirmacion</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ¿Estas Seguro de eliminar este registro?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Si</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+            </div>
+        </div>
+    </div>
+</div>
