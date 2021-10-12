@@ -6,12 +6,15 @@
     <div class="offcanvas-body px-0">
         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-start" id="menu">
             <li class="nav-item w-100">
-                <a [routerLink]="[]" data-bs-toggle="collapse" class="nav-link text-truncate w-100">
-                    <span class="ms-1 d-none d-sm-inline">Contactenos</span>
+                <a [routerLink]="['/','admin','departments']" data-bs-toggle="collapse" class="nav-link text-truncate w-100">
+                    <span class="ms-1 d-none d-sm-inline">Administrador de Departamentos</span>
+                </a>
+                <a [routerLink]="['/','admin','users']" data-bs-toggle="collapse" class="nav-link text-truncate w-100">
+                    <span class="ms-1 d-none d-sm-inline">Administrador de Usuarios</span>
                 </a>
             </li>
             <li class="nav-item w-100">
-                <a  (click)="$event.preventDefault()" data-bs-toggle="collapse" class="nav-link text-truncate w-100">
+                <a [routerLink]="['/']" data-bs-toggle="collapse" class="nav-link text-truncate w-100">
                     <span class="ms-1 d-none d-sm-inline">Cerrar Sesion</span>
                 </a>
             </li>

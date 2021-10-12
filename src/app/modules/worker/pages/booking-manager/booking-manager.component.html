@@ -3,49 +3,55 @@
 
     </div>
     <div class="row">
-        <div class="col d-flex" 
-            data-bs-toggle="modal"
-            data-bs-target="#formDepartment" >
-            <span class="material-icons">
-                add_circle_outline
-            </span>
-            <p>Agregar</p>
-        </div>
         <div class="col">
-            <h2>Listado de Departamentos</h2>
+            <h2 class="text-center">Listado de Departamentos</h2>
         </div>
-        <div class="col"></div>
     </div>
     <div class="row">
         <table class="table">
             <thead>
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Nombre Departamento</th>
-                    <th scope="col">comuna</th>
+                    <th scope="col">Nonbre Departamento</th>
+                    <th scope="col">Comuna</th>
                     <th scope="col">Direccion</th>
-                    <th scope="col">Precio</th>
-                    <th scope="col">Modificar</th>
-                    <th scope="col">Eliminar</th>
+                    <th scope="col">Rut Cliente</th>
+                    <th scope="col">Nombre Cliente</th>
+                    <th scope="col">Multas</th>
+                    <th scope="col">Servicios Extras</th>
+                    <th scope="col">Check-IN</th>
+                    <th scope="col">Check-OUT</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>Mark</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Otto</td>
+                    <td>1</td>
+                    <td>Nombre depto</td>
+                    <td>Datos Comuna</td>
+                    <td>Direccion</td>
+                    <td>Rut</td>
+                    <td>Nombre</td>
                     <td>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        <button type="button" mat-stroked-button data-bs-toggle="modal"
                             data-bs-target="#formDepartment">
-                            Modificar
+                            Gestionar
                         </button>
                     </td>
                     <td>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        <button type="button" mat-stroked-button data-bs-toggle="modal"
                             data-bs-target="#deleteModal">
-                            Eliminar
+                            Gestionar
+                        </button>
+                    </td>
+                    <!-- CheckIn nuevo campo a ser asignado en la bd, debe referenciar el caso de que sea un true cuando es efectiva la llegada del cliente -->
+                    <td>
+                        <button type="button" mat-stroked-button >
+                            Ingresar
+                        </button>
+                    </td>
+                    <td>
+                        <button type="button" mat-stroked-button data-bs-toggle="modal" data-bs-target="#checkout">
+                            Generar
                         </button>
                     </td>
                 </tr>
@@ -174,20 +180,104 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+<div class="modal fade" id="checkout" tabindex="-4" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Confirmacion</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                ¿Estas Seguro de eliminar este registro?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Si</button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                <div class="container">
+                    <div class="row">
+                        <h2 class="text-center">Generar CHECK OUT</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <h3>Detalle de Multas</h3>
+                            <table class="table">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Detalle</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <td>Detalle</td>
+                                    <td>1</td>
+                                </tbody>
+                            </table>
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Total Multas: $0</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <h3>Detalle de Servicios Extra</h3>
+                            <table class="table">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Detalle</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <td>Detalle</td>
+                                    <td>1</td>
+                                </tbody>
+                            </table>
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Total Multas: $0</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div>
+                                <h3>Detalle de Reserva</h3>
+                                <table class="table">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th>Detalle</th>
+                                            <th>Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <td>Detalle</td>
+                                        <td>1</td>
+                                    </tbody>
+                                </table>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Total Multas: $0</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row py-4 ">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Subtotal: $0</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col d-flex justify-content-center align-items-center">
+                            <!-- <p class="mx-2">Fecha CHECK OUT:</p> -->
+                            <mat-form-field appearance="fill">
+                                <mat-label>Fecha CHECK OUT</mat-label>
+                                <input matInput [matDatepicker]="picker">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                        <button mat-flat-button class="w-50"  color="primary">Generar</button>
+                </div>
             </div>
         </div>
     </div>
-</div>

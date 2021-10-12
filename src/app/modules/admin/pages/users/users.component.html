@@ -1,1 +1,174 @@
-<p>users works!</p>
+<div class="container">
+    <div class="row">
+
+    </div>
+    <div class="row">
+        <div class="col d-flex" 
+            data-bs-toggle="modal"
+            data-bs-target="#formDepartment" >
+            <span class="material-icons">
+                add_circle_outline
+            </span>
+            <p>Agregar</p>
+        </div>
+        <div class="col">
+            <h2>Listado de Clientes</h2>
+        </div>
+        <div class="col"></div>
+    </div>
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">RUT</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido Paterno</th>
+                    <th scope="col">Modificar</th>
+                    <th scope="col">Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Cliente</td>
+                    <td>99.999.999-9</td>
+                    <td>Nombre</td>
+                    <td>Apellido</td>
+                    <td>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#formDepartment">
+                            Modificar
+                        </button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#deleteModal">
+                            Eliminar
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="formDepartment" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="container">
+                    <div class="row text-center">
+                      <h2>Formulario de Registro</h2>
+                    </div>
+                    <h3> Informacion Personal: </h3>
+                    <div class="row">
+                      <mat-form-field class="col-sm-12 col-md-4" appearance="fill">
+                        <mat-label>Nombre:</mat-label>
+                        <input matInput>
+                      </mat-form-field>
+                      <mat-form-field class="col-sm-12 col-md-4" appearance="fill">
+                        <mat-label>Apellido Paterno:</mat-label>
+                        <input matInput>
+                      </mat-form-field>
+                      <mat-form-field class="col-sm-12 col-md-4" appearance="fill">
+                        <mat-label>Apellido Materno:</mat-label>
+                        <input matInput>
+                      </mat-form-field>
+                    </div>
+                    <div class="row mb-3">
+                      <mat-form-field class="col-sm-12 col-md-4" appearance="fill">
+                        <mat-label>Correo Electronico:</mat-label>
+                        <input matInput placeholder="turismo@real.com" [formControl]="email" required>
+                        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                      </mat-form-field>
+                      <mat-form-field class="col-sm-12 col-md-4" appearance="fill">
+                        <mat-label>Telefono o Celular:</mat-label>
+                        <input matInput>
+                      </mat-form-field>
+                      <mat-form-field class="col-sm-12 col-md-4" appearance="fill">
+                        <mat-label>Fecha de Nacimiento</mat-label>
+                        <input matInput [matDatepicker]="picker">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                      </mat-form-field>
+                    </div>
+                    <div class="row">
+                      <h3> Datos de Ubicacion </h3>
+                      <div class="col-12 col-md-4">
+                        <mat-form-field class="w-100" appearance="fill">
+                          <mat-label>Region</mat-label>
+                          <mat-select>
+                            <mat-option *ngFor="let region of regionList" [value]="region">{{region}}</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                      <div class="col-12 col-md-4">
+                        <mat-form-field class="w-100" appearance="fill">
+                          <mat-label>Ciudad</mat-label>
+                          <mat-select>
+                            <mat-option *ngFor="let ciudad of cityList" [value]="ciudad">{{ciudad}}</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                      <div class="col-12 col-md-4">
+                        <mat-form-field class="w-100" appearance="fill">
+                          <mat-label>Comuna</mat-label>
+                          <mat-select>
+                            <mat-option *ngFor="let comuna of communeList" [value]="comuna">{{comuna}}</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="row mb-5">
+                      <h3> Seguridad: </h3>
+                      <div class="col-sm-12 col-md-6">
+                        <mat-form-field class="w-100" appearance="fill">
+                          <mat-label>Contraseña</mat-label>
+                          <input matInput>
+                        </mat-form-field>
+                      </div>
+                      <div class="col-sm-12 col-md-6">
+                        <mat-form-field class="w-100" appearance="fill">
+                          <mat-label>Confirmar Contraseña</mat-label>
+                          <input matInput>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="row justify-content-center">
+                      <div class="col-12 col-md-6">
+                        <button (click)="$event.preventDefault()" [routerLink]="['/client']" class="w-100" mat-raised-button color="primary">Registrarse Ahora!</button>
+                      </div>
+                    </div>
+                  
+                  </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirmacion</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ¿Estas Seguro de eliminar este registro?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Si</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+            </div>
+        </div>
+    </div>
+</div>

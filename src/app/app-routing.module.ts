@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthLayoutComponent } from '@auth/components/auth-layout/auth-layout.component';
 import { ClientLayoutComponent } from '@client/components/client-layout/client-layout.component';
 import { LandingLayoutComponent } from '@landing/components/landing-layout/landing-layout.component';
+import { WorkerLayoutComponent } from '@worker/components/worker-layout/worker-layout.component';
 import { AdminLayoutComponent } from './modules/admin/components/admin-layout/admin-layout.component';
 
 const routes: Routes = [
@@ -47,6 +48,17 @@ const routes: Routes = [
         path: '',
         loadChildren: () =>
           import('@admin/admin.module').then((m) => m.AdminModule),
+      },
+    ],
+  },
+  {
+    path: 'worker',
+    component: WorkerLayoutComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('@worker/worker.module').then((m) => m.WorkerModule),
       },
     ],
   },

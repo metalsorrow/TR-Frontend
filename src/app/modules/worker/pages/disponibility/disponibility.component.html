@@ -1,37 +1,43 @@
 <div class="container">
     <div class="row">
+
+    </div>
+    <div class="row">
         <div class="col">
-            <h2 class="text-center">Listado de Departamentos</h2>
+            <h2 class="text-center">Disponibilidad de Departamentos</h2>
         </div>
     </div>
     <div class="row">
         <table class="table">
             <thead>
                 <tr>
+                    <th scope="col">Disponibilidad</th>
                     <th scope="col">ID</th>
                     <th scope="col">Nombre Departamento</th>
                     <th scope="col">Comuna</th>
                     <th scope="col">Direccion</th>
-                    <th scope="col">Ver Detalles</th>
-                    <th scope="col">Cancelar</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Detalle</th>
+                    <th scope="col">Activar</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
+
+                    <td>Si</td>
                     <td>1</td>
-                    <td>Mark</td>
-                    <td>Dato Comuna</td>
-                    <td>Dato Direccion</td>
+                    <td>Nombre depto</td>
+                    <td>Datos Comuna</td>
+                    <td>Direccion</td>
+                    <td>123</td>
                     <td>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#detailModal">
-                            Ver detalles
+                        <button type="button" mat-stroked-button mat-stroked-button data-bs-toggle="modal" data-bs-target="#checkout" data-bs-target="#formDepartment">
+                            Detalle
                         </button>
                     </td>
                     <td>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#deleteModal">
-                            Cancelar Reserva
+                        <button type="button" >
+                            Cambiar Estado
                         </button>
                     </td>
                 </tr>
@@ -41,7 +47,7 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="formDepartment" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -53,13 +59,13 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col">
-                        <p class="fs-6 text">Nombre Departamento:
+                        <p class="fs-6 text">Nombre Departamento: 
                             <span>**Nombre**</span>
                         </p>
-                        <p class="fs-6 text">Rut:
+                        <p class="fs-6 text">Rut: 
                             <span>**99.999.999-9**</span>
                         </p>
-                        <p class="fs-6 text">Nombre Cliente:
+                        <p class="fs-6 text">Nombre Cliente: 
                             <span>**Mark**</span>
                         </p>
                     </div>
@@ -95,22 +101,3 @@
     </div>
 </div>
 
-
-<!-- Modal -->
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Confirmacion</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                ¿Estas seguro de cancelar la reserva?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Si</button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-            </div>
-        </div>
-    </div>
-</div>

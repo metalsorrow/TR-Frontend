@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CheckControllerComponent } from './check-controller.component';
+import { DisponibilityComponent } from './disponibility.component';
 
-describe('CheckControllerComponent', () => {
-  let component: CheckControllerComponent;
-  let fixture: ComponentFixture<CheckControllerComponent>;
+describe('DisponibilityComponent', () => {
+  let component: DisponibilityComponent;
+  let fixture: ComponentFixture<DisponibilityComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CheckControllerComponent ]
+      declarations: [ DisponibilityComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CheckControllerComponent);
+    fixture = TestBed.createComponent(DisponibilityComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
