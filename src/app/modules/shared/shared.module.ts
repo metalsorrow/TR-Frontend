@@ -13,9 +13,11 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { AvatarComponent } from './components/avatar/avatar.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
-  declarations: [CardRegionComponent, NavbarComponent, AvatarComponent],
+  declarations: [CardRegionComponent, NavbarComponent, AvatarComponent, ConfirmDialogComponent],
   imports: [
     CommonModule,
     MatCardModule,
@@ -28,6 +30,7 @@ import { AvatarComponent } from './components/avatar/avatar.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
+    MatDialogModule
   ],
   exports: [
     CommonModule,
@@ -43,6 +46,7 @@ import { AvatarComponent } from './components/avatar/avatar.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
+    MatDialogModule,
     AvatarComponent
   ],
 })

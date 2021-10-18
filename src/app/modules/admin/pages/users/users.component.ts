@@ -1,29 +1,52 @@
+import { UserFormComponent } from '@admin/components/user-form/user-form.component';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from 'src/app/modules/shared/components/confirm-dialog/confirm-dialog.component';
+import { User } from 'src/app/modules/shared/interface/user';
 
 @Component({
-  selector: 'app-users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss']
+    selector: 'app-users',
+    templateUrl: './users.component.html',
+    styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
 
-  constructor() { }
+    deleteText: string;
+    userList : User[];
 
-  ngOnInit(): void {
-  }
-
-  regionList = ['Region 1', 'Region 2', 'Region 3'];
-  cityList = ['Ciudad 1', 'Ciudad 2', 'Ciudad 3'];
-  communeList = ['Comuna 1', 'Comuna 2', 'Comuna 3'];
-
-  email = new FormControl('', [Validators.required, Validators.email]);
-
-  getErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'You must enter a value';
+    constructor(private dialog: MatDialog) {
+        this.deleteText = "¿Estas Seguro de eliminar este registro?";
+        this.userList = [{type: "Usuario", firstName: "jose", lastName:"perez", rut: "99.999.999"}];
     }
 
-    return this.email.hasError('email') ? 'Not a valid email' : '';
-  }
+    ngOnInit(): void {
+    }
+
+    formUserDialog(user?: User) {
+        const dialogConfig = new MatDialogConfig();
+
+        dialogConfig.disableClose = false;
+        user ? dialogConfig.data = user : null;
+
+        let resultDialog = this.dialog.open(UserFormComponent, dialogConfig);
+
+        // console.log(resultDialog);
+    }
+
+    deleteDialog(user: User) {
+        const dialogConfig = new MatDialogConfig();
+
+        dialogConfig.disableClose = true;
+        dialogConfig.data = {message: this.deleteText}
+
+        let resultDialog = this.dialog.open(ConfirmDialogComponent, dialogConfig);
+
+        resultDialog.afterClosed().subscribe(data =>{
+            console.log("Dialog output:", data)
+            if(data){
+                //delete user
+            }
+        }); 
+    }
 }
+
