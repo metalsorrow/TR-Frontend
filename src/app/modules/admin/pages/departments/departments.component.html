@@ -24,8 +24,8 @@
                     <th scope="col">comuna</th>
                     <th scope="col">Direccion</th>
                     <th scope="col">Precio</th>
-                    <!-- <th scope="col">Disponibilidad</th> -->
                     <th scope="col">Mantenimiento</th>
+                    <th scope="col">Inventario</th>
                     <th scope="col">Modificar</th>
                     <th scope="col">Eliminar</th>
                 </tr>
@@ -44,17 +44,30 @@
                     </td> -->
                     <td>
                         <button mat-flat-button color="primary" (click)="maintenceDialog(department)">
-                            Ingresar Mantenimiento 
+                            <span class="material-icons">
+                                engineering
+                            </span>
+                        </button>
+                    </td>
+                    <td>
+                        <button mat-flat-button color="primary" (click)="inventoryDialog(department)">
+                            <span class="material-icons">
+                                layers
+                            </span>
                         </button>
                     </td>
                     <td>
                         <button mat-flat-button color="primary" (click)="formDepartmentDialog(department)">
-                            Modificar
+                            <span class="material-icons">
+                                edit
+                            </span>
                         </button>
                     </td>
                     <td>
                         <button mat-flat-button color="primary" (click)="deleteDialog(department)">
-                            Eliminar
+                            <span class="material-icons">
+                                delete
+                            </span>
                         </button>
                     </td>
                 </tr>

@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="row">
+        <h3 class="text-center">
+            Administrador de Inventario
+        </h3>
+    </div>
+    <form action="">
+        <div class="row">
+            <mat-form-field class="col-sm-12 col-md-6" appearance="fill">
+                <mat-label>Cantidad del Elemento</mat-label>
+                <input matInput>
+            </mat-form-field>
+            <mat-form-field class="col-sm-12 col-md-6" appearance="fill">
+                <mat-label>Seleccional Elemento</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let inventoryObj of inventoryObjList" [value]="inventoryObj.id">{{inventoryObj.description}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Elemento</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Retirar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let inventory of inventoryList">
+                        <td>{{inventory.id}}</td>
+                        <td>{{inventory.description}}</td>
+                        <td>{{inventory.quantity}}</td>
+                        <td (click)="deleteElement(inventory)">
+                            <button  mat-fab color="warn" >
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <button mat-raised-button class="w-100" (click)="addInventoryElement()">Agregar Al Inventario</button>
+        </div>
+    </form>
+</div>

@@ -1,4 +1,5 @@
 import { DepartmentFormComponent } from '@admin/components/department-form/department-form.component';
+import { InventoryDisplayComponent } from '@admin/components/inventory-display/inventory-display.component';
 import { MaintenanceFormComponent } from '@admin/components/maintenance-form/maintenance-form.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
@@ -16,7 +17,10 @@ export class DepartmentsComponent implements OnInit {
   departmentList: Department[];
   constructor(private dialog: MatDialog) {
     this.deleteText = "¿Estas Seguro de eliminar este registro?";
-    this.departmentList = [{id: 1, name: "Las palmas 2323", address: "calle 123", price: 12000, state: "Puente Altoooo" }];
+    this.departmentList = [
+      {id: 1, name: "Las palmas 2323", address: "calle 123", price: 12000, state: "Puente Altoooo" },
+      {id: 2, name: "Las palmas 2323", address: "calle 123", price: 12000, state: "Puente Altoooo" }
+    ];
   }
 
   ngOnInit(): void {
@@ -38,6 +42,14 @@ export class DepartmentsComponent implements OnInit {
     let resultDialog = this.dialog.open(MaintenanceFormComponent, dialogConfig);
   }
 
+  inventoryDialog(deparment: Department){
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = false;
+
+    let resultDialog = this.dialog.open(InventoryDisplayComponent, dialogConfig);
+  }
+
   deleteDialog(department: Department) {
     const dialogConfig = new MatDialogConfig();
 
@@ -52,5 +64,5 @@ export class DepartmentsComponent implements OnInit {
             //delete user
         }
     }); 
-}
+  }
 }
