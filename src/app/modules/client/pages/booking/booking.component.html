@@ -1,5 +1,11 @@
 <div class="container">
     <div class="row">
+        <div class="col d-flex btn-pointer" 
+         (click)="extraServiceDialog()">
+        <span class="material-icons">
+            add_circle_outline
+        </span>
+        <p>Solicitar Servicio Extra</p>
         <div class="col">
             <h2 class="text-center">Listado de Departamentos</h2>
         </div>
@@ -17,20 +23,18 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Mark</td>
-                    <td>Dato Comuna</td>
-                    <td>Dato Direccion</td>
+                <tr *ngFor="let booking of bookingList">
+                    <td>{{booking.id}}</td>
+                    <td>{{booking.departmentName}}</td>
+                    <td>{{booking.communne}}</td>
+                    <td>{{booking.address}}</td>
                     <td>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#detailModal">
+                        <button mat-flat-button color="primary" (click)="detailDialog(booking)">
                             Ver detalles
                         </button>
                     </td>
                     <td>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#deleteModal">
+                        <button mat-flat-button color="primary" (click)="cancelDialog(booking)">
                             Cancelar Reserva
                         </button>
                     </td>
@@ -40,77 +44,3 @@
     </div>
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="text-center">
-                    Detalle
-                </h3>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col">
-                        <p class="fs-6 text">Nombre Departamento:
-                            <span>**Nombre**</span>
-                        </p>
-                        <p class="fs-6 text">Rut:
-                            <span>**99.999.999-9**</span>
-                        </p>
-                        <p class="fs-6 text">Nombre Cliente:
-                            <span>**Mark**</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <h2 class="text-center">Lista de Invitados</h2>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Rut</th>
-                                    <th scope="col">Nombre Invitado</th>
-                                    <th scope="col">Edad</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>99.999.999</td>
-                                    <td>Mark</td>
-                                    <td>20</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="d-flex justify-content-between">
-                            <p>Cantidad Adultos: <span> 00 </span></p>
-                            <p>Cantidad Niños: <span> 00 </span></p>
-                            <p>Cantidad Bebes: <span> 00 </span></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<!-- Modal -->
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Confirmacion</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                ¿Estas seguro de cancelar la reserva?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Si</button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-            </div>
-        </div>
-    </div>
-</div>

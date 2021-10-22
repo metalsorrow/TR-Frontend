@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="row">
+
+    </div>
+    <div class="row">
+        <div class="col">
+            <h2 class="text-center">Disponibilidad de Departamentos</h2>
+        </div>
+    </div>
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Disponibilidad</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre Departamento</th>
+                    <th scope="col">Comuna</th>
+                    <th scope="col">Direccion</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Detalle</th>
+                    <th scope="col">Activar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let disponibility of disponibilityList">
+                    <td>{{disponibility.status ? 'Si' : 'No'}}</td>
+                    <td>{{disponibility.id}}</td>
+                    <td>{{disponibility.name}}</td>
+                    <td>{{disponibility.commune}}</td>
+                    <td>{{disponibility.address}}</td>
+                    <td>{{disponibility.price}}</td>
+                    <td>
+                        <button type="button" mat-flat-button color="primary" (click)="detailDialog(disponibility)" >
+                            Detalle
+                        </button>
+                    </td>
+                    <td>
+                        <button type="button" mat-flat-button color="primary" >
+                            Cambiar Estado
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

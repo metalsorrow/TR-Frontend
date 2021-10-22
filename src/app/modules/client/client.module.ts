@@ -4,9 +4,11 @@ import { ClientRoutingModule } from './client-routing.module';
 import { BookingComponent } from './pages/booking/booking.component';
 import { HomeComponent } from './pages/home/home.component';
 import { DepartmentDetailComponent } from './pages/department-detail/department-detail.component';
+import { ExtraServicesComponent } from './components/extra-services/extra-services.component';
+import { DetailsDialogComponent } from './components/details-dialog/details-dialog.component';
 
 @NgModule({
-  declarations: [BookingComponent, HomeComponent, DepartmentDetailComponent],
+  declarations: [BookingComponent, HomeComponent, DepartmentDetailComponent, ExtraServicesComponent, DetailsDialogComponent],
   imports: [SharedModule, ClientRoutingModule],
 })
 export class ClientModule {}

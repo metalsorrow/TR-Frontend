@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from '@admin/pages/home/home.component';
-import { DepartmentsComponent } from './pages/departments/departments.component';
-import { UsersComponent } from './pages/users/users.component';
+import { DepartmentsComponent } from '@admin/pages/departments/departments.component';
+import { UsersComponent } from '@admin/pages/users/users.component';
+import { DisponibilityComponent } from '@admin/pages/disponibility/disponibility.component';
 
 const routes: Routes = [
   {
@@ -17,10 +18,10 @@ const routes: Routes = [
     path: 'users',
     component: UsersComponent,
   },
-  // {
-  //   path: 'booking',
-  //   component: BookingsComponent
-  // }
+  {
+    path: 'disponibility',
+    component: DisponibilityComponent,
+  }
 ];
 
 @NgModule({

@@ -1,0 +1,46 @@
+<div class="container">
+    <div>
+        <h3 class="text-center">
+            Administrador de Servicios
+        </h3>
+    </div>
+    <form action="">
+        <div class="row">
+            <mat-form-field class="col-12 " appearance="fill">
+                <mat-label>Servicio para Agregar</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let service of serviceList" [value]="service.id">{{service.description}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="col-12" appearance="fill">
+                <mat-label>Reserva para vincular</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let booking of userBookingList" [value]="booking.id">{{booking.id + " - " + booking.departmentName}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Servicio</th>
+                        <th scope="col">Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let currentService of currentServiceList">
+                        <td>{{currentService.id}}</td>
+                        <td>{{currentService.description}}</td>
+                        <td>{{currentService.price}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <h6>Total de Servicios</h6>
+            <div><p><span>$</span>{{total}}</p></div>
+            <button mat-raised-button class="w-100" (click)="addService()">Registrar Servicio</button>
+        </div>
+    </form>
+</div>

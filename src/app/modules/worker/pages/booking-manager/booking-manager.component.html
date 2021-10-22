@@ -4,7 +4,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <h2 class="text-center">Listado de Departamentos</h2>
+            <h2 class="text-center">Administrador de Reservas</h2>
         </div>
     </div>
     <div class="row">
@@ -24,33 +24,31 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Nombre depto</td>
-                    <td>Datos Comuna</td>
-                    <td>Direccion</td>
-                    <td>Rut</td>
-                    <td>Nombre</td>
+                <tr *ngFor="let booking of bookingList">
+                    <td>{{booking.id}}</td>
+                    <td>{{booking.departmentName}}</td>
+                    <td>{{booking.communne}}</td>
+                    <td>{{booking.address}}</td>
+                    <td>{{booking.userRut}}</td>
+                    <td>{{booking.userName}}</td>
                     <td>
-                        <button type="button" mat-stroked-button data-bs-toggle="modal"
-                            data-bs-target="#formDepartment">
+                        <button type="button" mat-stroked-button (click)="finesDialog(booking)">
                             Gestionar
                         </button>
                     </td>
                     <td>
-                        <button type="button" mat-stroked-button data-bs-toggle="modal"
-                            data-bs-target="#deleteModal">
+                        <button type="button" mat-stroked-button (click)="extraServicesDialog(booking)">
                             Gestionar
                         </button>
                     </td>
                     <!-- CheckIn nuevo campo a ser asignado en la bd, debe referenciar el caso de que sea un true cuando es efectiva la llegada del cliente -->
                     <td>
-                        <button type="button" mat-stroked-button >
+                        <button type="button" mat-stroked-button (click)="checkInDialog(booking)">
                             Ingresar
                         </button>
                     </td>
                     <td>
-                        <button type="button" mat-stroked-button data-bs-toggle="modal" data-bs-target="#checkout">
+                        <button type="button" mat-stroked-button (click)="checkOutDialog(booking)">
                             Generar
                         </button>
                     </td>
@@ -60,224 +58,3 @@
     </div>
 </div>
 
-<!-- Button trigger modal -->
-
-<!-- Modal -->
-<div class="modal fade" id="formDepartment" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <h3 class="text-center">
-                        Formulario de Registro de Departamentos
-                    </h3>
-                </div>
-                <form action="">
-                    <div class="row">
-                        <div class="col-6">
-                            <mat-form-field class="w-100" appearance="fill">
-                                <mat-label>Nombre Departamento</mat-label>
-                                <input matInput>
-                            </mat-form-field>
-                            <mat-form-field class="w-100" appearance="fill">
-                                <mat-label>Direccion</mat-label>
-                                <input matInput>
-                            </mat-form-field>
-                            <mat-form-field class="w-100" appearance="fill">
-                                <mat-label>Region</mat-label>
-                                <mat-select>
-                                    <mat-option value="one">First option</mat-option>
-                                    <mat-option value="two">Second option</mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                            <mat-form-field class="w-100" appearance="fill">
-                                <mat-label>Ciudad</mat-label>
-                                <mat-select>
-                                    <mat-option value="one">First option</mat-option>
-                                    <mat-option value="two">Second option</mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                            <mat-form-field class="w-100" appearance="fill">
-                                <mat-label>Comuna</mat-label>
-                                <mat-select>
-                                    <mat-option value="one">First option</mat-option>
-                                    <mat-option value="two">Second option</mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                            <mat-form-field class="w-100" appearance="fill">
-                                <mat-label>Descripcion</mat-label>
-                                <textarea matInput></textarea>
-                            </mat-form-field>
-                            <div>
-                                <p>Agregar Fotos:</p>
-                                <span class="material-icons">
-                                    file_upload
-                                </span>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <mat-form-field class="w-100" appearance="fill">
-                                <mat-label>Cantidad de Habitaciones</mat-label>
-                                <mat-select>
-                                    <mat-option value="one">First option</mat-option>
-                                    <mat-option value="two">Second option</mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                            <mat-form-field class="w-100" appearance="fill">
-                                <mat-label>Cantidad de Estacionamientos</mat-label>
-                                <mat-select>
-                                    <mat-option value="one">First option</mat-option>
-                                    <mat-option value="two">Second option</mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                            <mat-form-field class="w-100" appearance="fill">
-                                <mat-label>Cantidad de Baños</mat-label>
-                                <mat-select>
-                                    <mat-option value="one">First option</mat-option>
-                                    <mat-option value="two">Second option</mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                            <mat-form-field class="w-100" appearance="fill">
-                                <mat-label>Disponibilidad</mat-label>
-                                <mat-select>
-                                    <mat-option value="one">First option</mat-option>
-                                    <mat-option value="two">Second option</mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                            <mat-form-field class="w-100" appearance="fill">
-                                <mat-label>Precio</mat-label>
-                                <textarea matInput></textarea>
-                            </mat-form-field>
-                            <div>
-                                <h4>Servicios Extra</h4>
-                                <div>
-                                    <ul>
-                                        <li>
-                                            lorem
-                                        </li>
-                                        <li>
-                                            lorem
-                                        </li>
-                                        <li>
-                                            lorem
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <button mat-raised-button class="w-100">Guardar</button>
-                        </div>
-                    </div>
-
-                </form>
-
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="checkout" tabindex="-4" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="container">
-                    <div class="row">
-                        <h2 class="text-center">Generar CHECK OUT</h2>
-                    </div>
-                    <div class="row">
-                        <div class="col-4">
-                            <h3>Detalle de Multas</h3>
-                            <table class="table">
-                                <thead class="table-dark">
-                                    <tr>
-                                        <th>Detalle</th>
-                                        <th>Total</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <td>Detalle</td>
-                                    <td>1</td>
-                                </tbody>
-                            </table>
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Total Multas: $0</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <h3>Detalle de Servicios Extra</h3>
-                            <table class="table">
-                                <thead class="table-dark">
-                                    <tr>
-                                        <th>Detalle</th>
-                                        <th>Total</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <td>Detalle</td>
-                                    <td>1</td>
-                                </tbody>
-                            </table>
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Total Multas: $0</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div>
-                                <h3>Detalle de Reserva</h3>
-                                <table class="table">
-                                    <thead class="table-dark">
-                                        <tr>
-                                            <th>Detalle</th>
-                                            <th>Total</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <td>Detalle</td>
-                                        <td>1</td>
-                                    </tbody>
-                                </table>
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Total Multas: $0</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row py-4 ">
-                        <div class="col">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Subtotal: $0</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col d-flex justify-content-center align-items-center">
-                            <!-- <p class="mx-2">Fecha CHECK OUT:</p> -->
-                            <mat-form-field appearance="fill">
-                                <mat-label>Fecha CHECK OUT</mat-label>
-                                <input matInput [matDatepicker]="picker">
-                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                <mat-datepicker #picker></mat-datepicker>
-                            </mat-form-field>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="modal-footer">
-                        <button mat-flat-button class="w-50"  color="primary">Generar</button>
-                </div>
-            </div>
-        </div>
-    </div>

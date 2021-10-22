@@ -1,0 +1,108 @@
+<div class="container">
+    <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <div class="container">
+            <div class="row">
+                <h2 class="text-center">Generar CHECK OUT</h2>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <h3>Detalle de Multas</h3>
+                </div>
+                <div class="col-4">
+                    <h3>Detalle de Servicios Extra</h3>
+                </div>
+                <div class="col-4">
+                    <div>
+                        <h3>Detalle de Reserva</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <table class="table">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Detalle</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <td>Detalle</td>
+                            <td>1</td>
+                        </tbody>
+                    </table>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Total Multas: $0</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <table class="table">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Detalle</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <td>Detalle</td>
+                            <td>1</td>
+                        </tbody>
+                    </table>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Total Multas: $0</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div>
+                        <table class="table">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Detalle</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <td>Detalle</td>
+                                <td>1</td>
+                            </tbody>
+                        </table>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Total Multas: $0</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row py-4 ">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Subtotal: $0</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col d-flex justify-content-center align-items-center">
+                    <!-- <p class="mx-2">Fecha CHECK OUT:</p> -->
+                    <mat-form-field appearance="fill">
+                        <mat-label>Fecha CHECK OUT</mat-label>
+                        <input matInput [matDatepicker]="picker">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button mat-flat-button class="w-50" color="primary">Generar</button>
+        </div>
+    </div>
+</div>

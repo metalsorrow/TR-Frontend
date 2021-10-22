@@ -9,9 +9,11 @@ import { UserFormComponent } from './components/user-form/user-form.component';
 import { MaintenanceFormComponent } from './components/maintenance-form/maintenance-form.component';
 import { DepartmentFormComponent } from './components/department-form/department-form.component';
 import { InventoryDisplayComponent } from './components/inventory-display/inventory-display.component';
+import { DisponibilityDetailsComponent } from './components/disponibility-details/disponibility-details.component';
+import { DisponibilityComponent } from './pages/disponibility/disponibility.component';
 
 @NgModule({
-  declarations: [DepartmentsComponent, UsersComponent, AdminLayoutComponent, HomeComponent, UserFormComponent, MaintenanceFormComponent, DepartmentFormComponent, InventoryDisplayComponent],
+  declarations: [DepartmentsComponent, UsersComponent, AdminLayoutComponent, HomeComponent, UserFormComponent, MaintenanceFormComponent, DepartmentFormComponent, InventoryDisplayComponent, DisponibilityDetailsComponent, DisponibilityComponent],
   imports: [SharedModule, AdminRoutingModule],
 })
 export class AdminModule {}
