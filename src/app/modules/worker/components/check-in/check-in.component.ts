@@ -12,4 +12,8 @@ export class CheckInComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  registerCheckIn(){
+    
+  }
+
 }

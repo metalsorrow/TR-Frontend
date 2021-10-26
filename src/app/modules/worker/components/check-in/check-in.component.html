@@ -1,1 +1,19 @@
-<p>check-in works!</p>
+<div class="container">
+    <div class="row">
+        <h3 class="text-center">
+            Registro de Ingreso
+        </h3>
+    </div>
+    <form action="">
+        <div class="row">
+            <label for="">Hora y Dia de Ingreso</label>
+            <mat-form-field>
+                <input matInput type="datetime-local" placeholder="Ingreso">
+            </mat-form-field>
+            </div>
+
+        <div class="row">
+            <button mat-raised-button class="w-100" (click)="registerCheckIn()">Confirmar Ingreso</button>
+        </div>
+    </form>
+</div>

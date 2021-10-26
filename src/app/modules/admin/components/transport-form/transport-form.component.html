@@ -1,0 +1,42 @@
+<div class="container">
+    <div>
+        <h3 class="text-center">
+            Registro de Transportes
+        </h3>
+    </div>
+    <form action="">
+        <div class="row">
+            <mat-form-field class="col-12 " appearance="fill">
+                <mat-label>Reservas Disponibles:</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let booking of bookingList" [value]="booking.id">{{booking.id + " - " + booking.departmentName}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="col-12" appearance="fill">
+                <mat-label>Funcionarios:</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let worker of workerList" [value]="worker.id">{{worker.id + " - " + worker.firstName + " " + worker.lastName}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="col-12" appearance="fill">
+                <mat-label>Vehiculo</mat-label>
+                <textarea matInput></textarea>
+            </mat-form-field>
+
+            <mat-form-field class="col-12" appearance="fill">
+                <mat-label>Ubicacion de Inicio</mat-label>
+                <textarea matInput></textarea>
+            </mat-form-field>
+            <mat-form-field class="col-12" appearance="fill">
+                <mat-label>Fecha y Hora Referencial</mat-label>
+                <input matInput [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <button mat-raised-button class="col-12" (click)="confirmTransport()">Registrar Servicio</button>
+        </div>
+    </form>
+</div>

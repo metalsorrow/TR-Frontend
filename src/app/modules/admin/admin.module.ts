@@ -11,9 +11,24 @@ import { DepartmentFormComponent } from './components/department-form/department
 import { InventoryDisplayComponent } from './components/inventory-display/inventory-display.component';
 import { DisponibilityDetailsComponent } from './components/disponibility-details/disponibility-details.component';
 import { DisponibilityComponent } from './pages/disponibility/disponibility.component';
+import { TransportManagerComponent } from './pages/transport-manager/transport-manager.component';
+import { TransportFormComponent } from './components/transport-form/transport-form.component';
 
 @NgModule({
-  declarations: [DepartmentsComponent, UsersComponent, AdminLayoutComponent, HomeComponent, UserFormComponent, MaintenanceFormComponent, DepartmentFormComponent, InventoryDisplayComponent, DisponibilityDetailsComponent, DisponibilityComponent],
+  declarations: [
+    DepartmentsComponent,
+    UsersComponent,
+    AdminLayoutComponent,
+    HomeComponent,
+    UserFormComponent,
+    MaintenanceFormComponent,
+    DepartmentFormComponent,
+    InventoryDisplayComponent,
+    DisponibilityDetailsComponent,
+    DisponibilityComponent,
+    TransportManagerComponent,
+    TransportFormComponent
+  ],
   imports: [SharedModule, AdminRoutingModule],
 })
-export class AdminModule {}
+export class AdminModule { }
