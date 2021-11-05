@@ -1,7 +1,17 @@
 export interface Department {
-    id: number,
-    name: string,
-    state: string,
-    address: string,
-    price: number
+    id?: number,
+    name: string ,
+    address: string ,
+    totalRooms: number ,
+    totalParking: number ,
+    totalBaths: number ,
+    internet: number ,
+    tv: number ,
+    heating: number,
+    furnished: number,
+    departmentPrice: number,
+    departmentStatus: number,
+    departmentDesc: string,
+    idCommune: string,
+    nameCommune?: string,
 }

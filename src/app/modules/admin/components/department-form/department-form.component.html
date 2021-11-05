@@ -4,43 +4,40 @@
             Formulario de Registro de Departamentos
         </h3>
     </div>
-    <form action="">
+    <form [formGroup]="formDepartment">
         <div class="row">
             <div class="col-6">
                 <mat-form-field class="w-100" appearance="fill">
                     <mat-label>Nombre Departamento</mat-label>
-                    <input matInput>
+                    <input matInput formControlName="name">
                 </mat-form-field>
                 <mat-form-field class="w-100" appearance="fill">
                     <mat-label>Direccion</mat-label>
-                    <input matInput>
+                    <input matInput formControlName="address">
                 </mat-form-field>
                 <mat-form-field class="w-100" appearance="fill">
                     <mat-label>Region</mat-label>
-                    <mat-select>
-                        <mat-option value="one">First option</mat-option>
-                        <mat-option value="two">Second option</mat-option>
+                    <mat-select formControlName="region">
+                        <mat-option *ngFor="let region of regionList" [value]="region.id">{{region.name}}</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field class="w-100" appearance="fill">
                     <mat-label>Ciudad</mat-label>
-                    <mat-select>
-                        <mat-option value="one">First option</mat-option>
-                        <mat-option value="two">Second option</mat-option>
+                    <mat-select formControlName="city">
+                        <mat-option *ngFor="let city of cityList" [value]="city.id">{{city.name}}</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field class="w-100" appearance="fill">
                     <mat-label>Comuna</mat-label>
-                    <mat-select>
-                        <mat-option value="one">First option</mat-option>
-                        <mat-option value="two">Second option</mat-option>
+                    <mat-select formControlName="commune">
+                        <mat-option *ngFor="let commune of communeList" [value]="commune.id">{{commune.name}}</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field class="w-100" appearance="fill">
                     <mat-label>Descripcion</mat-label>
-                    <textarea matInput></textarea>
+                    <textarea matInput formControlName="description"></textarea>
                 </mat-form-field>
-                <div>
+                <div (click)="handleFile($event)">
                     <p>Agregar Fotos:</p>
                     <span class="material-icons">
                         file_upload
@@ -50,54 +47,86 @@
             <div class="col-6">
                 <mat-form-field class="w-100" appearance="fill">
                     <mat-label>Cantidad de Habitaciones</mat-label>
-                    <mat-select>
-                        <mat-option value="one">First option</mat-option>
-                        <mat-option value="two">Second option</mat-option>
+                    <mat-select formControlName="totalRooms">
+                        <mat-option [value]=1>1</mat-option>
+                        <mat-option [value]=2>2</mat-option>
+                        <mat-option [value]=3>3</mat-option>
+                        <mat-option [value]=4>4</mat-option>
+                        <mat-option [value]=5>5</mat-option>
+                        <mat-option [value]=6>6</mat-option>
+                        <mat-option [value]=7>7</mat-option>
+                        <mat-option [value]=8>8</mat-option>
+                        <mat-option [value]=9>9</mat-option>
+                        <mat-option [value]=10>10</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field class="w-100" appearance="fill">
                     <mat-label>Cantidad de Estacionamientos</mat-label>
-                    <mat-select>
-                        <mat-option value="one">First option</mat-option>
-                        <mat-option value="two">Second option</mat-option>
+                    <mat-select formControlName="totalParking">
+                        <mat-option [value]=1>1</mat-option>
+                        <mat-option [value]=2>2</mat-option>
+                        <mat-option [value]=3>3</mat-option>
+                        <mat-option [value]=4>4</mat-option>
+                        <mat-option [value]=5>5</mat-option>
+                        <mat-option [value]=6>6</mat-option>
+                        <mat-option [value]=7>7</mat-option>
+                        <mat-option [value]=8>8</mat-option>
+                        <mat-option [value]=9>9</mat-option>
+                        <mat-option [value]=10>10</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field class="w-100" appearance="fill">
                     <mat-label>Cantidad de Baños</mat-label>
-                    <mat-select>
-                        <mat-option value="one">First option</mat-option>
-                        <mat-option value="two">Second option</mat-option>
+                    <mat-select formControlName="totalBaths">
+                        <mat-option [value]=1>1</mat-option>
+                        <mat-option [value]=2>2</mat-option>
+                        <mat-option [value]=3>3</mat-option>
+                        <mat-option [value]=4>4</mat-option>
+                        <mat-option [value]=5>5</mat-option>
+                        <mat-option [value]=6>6</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field class="w-100" appearance="fill">
                     <mat-label>Disponibilidad</mat-label>
-                    <mat-select>
-                        <mat-option value="one">First option</mat-option>
-                        <mat-option value="two">Second option</mat-option>
+                    <mat-select  formControlName="departmentStatus">
+                        <mat-option [value]=1>Disponible</mat-option>
+                        <mat-option [value]=0>Indisponible</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="w-100" appearance="fill">
+                    <mat-label>Amueblado</mat-label>
+                    <mat-select  formControlName="furnished">
+                        <mat-option [value]=1>Si</mat-option>
+                        <mat-option [value]=0>No</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="w-100" appearance="fill">
+                    <mat-label>Calefaccion</mat-label>
+                    <mat-select  formControlName="heating">
+                        <mat-option [value]=1>Si</mat-option>
+                        <mat-option [value]=0>No</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="w-100" appearance="fill">
+                    <mat-label>Internet</mat-label>
+                    <mat-select  formControlName="internet">
+                        <mat-option [value]=1>Si</mat-option>
+                        <mat-option [value]=0>No</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="w-100" appearance="fill">
+                    <mat-label>TV</mat-label>
+                    <mat-select  formControlName="tv">
+                        <mat-option [value]=1>Si</mat-option>
+                        <mat-option [value]=0>No</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field class="w-100" appearance="fill">
                     <mat-label>Precio</mat-label>
-                    <textarea matInput></textarea>
+                    <input matInput formControlName="departmentPrice">
                 </mat-form-field>
-                <div>
-                    <h4>Servicios Extra</h4>
-                    <div>
-                        <ul>
-                            <li>
-                                lorem
-                            </li>
-                            <li>
-                                lorem
-                            </li>
-                            <li>
-                                lorem
-                            </li>
-                        </ul>
-                    </div>
-                </div>
 
-                <button mat-raised-button class="w-100">Guardar</button>
+                <button mat-raised-button class="w-100" (click)="handleForm($event)">Guardar</button>
             </div>
         </div>
     </form>

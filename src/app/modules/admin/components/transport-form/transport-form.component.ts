@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Booking } from 'src/app/modules/shared/interface/booking';
-import { Worker } from 'src/app/modules/shared/interface/worker';
+import { User } from 'src/app/modules/shared/interface/user';
 
 @Component({
   selector: 'app-transport-form',
@@ -10,7 +10,7 @@ import { Worker } from 'src/app/modules/shared/interface/worker';
 export class TransportFormComponent implements OnInit {
 
   bookingList: Booking[];
-  workerList: Worker[];
+  workerList: User[];
   constructor() { 
     this.bookingList = [];
     this.workerList = [];

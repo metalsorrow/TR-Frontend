@@ -15,6 +15,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { AvatarComponent } from './components/avatar/avatar.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [CardRegionComponent, NavbarComponent, AvatarComponent, ConfirmDialogComponent],
@@ -30,7 +31,8 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
-    MatDialogModule
+    MatDialogModule,
+    HttpClientModule
   ],
   exports: [
     CommonModule,
@@ -47,7 +49,8 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     MatNativeDateModule,
     MatSelectModule,
     MatDialogModule,
-    AvatarComponent
+    AvatarComponent,
+    HttpClientModule
   ],
 })
 export class SharedModule {}

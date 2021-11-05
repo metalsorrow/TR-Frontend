@@ -16,7 +16,7 @@ export class UsersComponent implements OnInit {
 
     constructor(private dialog: MatDialog) {
         this.deleteText = "¿Estas Seguro de eliminar este registro?";
-        this.userList = [{type: "Usuario", firstName: "jose", lastName:"perez", rut: "99.999.999"}];
+        this.userList = [{nameType: "Usuario", firstName: "jose", lastNameP:"perez"} as User];
     }
 
     ngOnInit(): void {

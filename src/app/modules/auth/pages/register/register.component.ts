@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { City, Commune, Region } from 'src/app/modules/shared/interface/ubication';
+import { CityService } from 'src/app/modules/shared/services/city/city.service';
+import { CommuneService } from 'src/app/modules/shared/services/commune/commune.service';
+import { RegionService } from 'src/app/modules/shared/services/region/region.service';
 
 @Component({
   selector: 'app-register',
@@ -7,13 +11,36 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-  constructor() {}
+  
+  regionList: Region[];
+  communeList: Commune[];
+  cityList: City[];
 
-  ngOnInit(): void {}
+  constructor(
+     private _region: RegionService,
+     private _commune: CommuneService,
+     private _city: CityService
+     ) {
+    this.regionList = [];
+    this.communeList = [];
+    this.cityList = [];
+  }
 
-  regionList = ['Region 1', 'Region 2', 'Region 3'];
-  cityList = ['Ciudad 1', 'Ciudad 2', 'Ciudad 3'];
-  communeList = ['Comuna 1', 'Comuna 2', 'Comuna 3'];
+  ngOnInit(): void {
+    this._region.getRegions().subscribe( (regions: Region[]) => {
+      this.regionList = regions;
+    });
+    
+    this._commune.getCommune().subscribe( (communes: Commune[]) => {
+      this.communeList = communes;
+    });
+    this._city.getCities().subscribe( (cities: City[]) => {
+      this.cityList = cities;
+    });
+    
+  }
+
+
 
   email = new FormControl('', [Validators.required, Validators.email]);
 

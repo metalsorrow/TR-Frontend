@@ -4,16 +4,16 @@
             Administrador de Inventario
         </h3>
     </div>
-    <form action="">
+    <form  [formGroup]="formInventoryRelation">
         <div class="row">
             <mat-form-field class="col-sm-12 col-md-6" appearance="fill">
                 <mat-label>Cantidad del Elemento</mat-label>
-                <input matInput>
+                <input matInput formControlName="quantity">
             </mat-form-field>
             <mat-form-field class="col-sm-12 col-md-6" appearance="fill">
                 <mat-label>Seleccional Elemento</mat-label>
-                <mat-select>
-                    <mat-option *ngFor="let inventoryObj of inventoryObjList" [value]="inventoryObj.id">{{inventoryObj.description}}</mat-option>
+                <mat-select formControlName="inventory">
+                    <mat-option *ngFor="let inventory of inventoryList" [value]="inventory.id">{{inventory.name}}</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
@@ -28,11 +28,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let inventory of inventoryList">
-                        <td>{{inventory.id}}</td>
-                        <td>{{inventory.description}}</td>
-                        <td>{{inventory.quantity}}</td>
-                        <td (click)="deleteElement(inventory)">
+                    <tr *ngFor="let inventoryRelation of inventoryByDepartment">
+                        <td>{{inventoryRelation.id}}</td>
+                        <td>{{inventoryRelation.inventoryName}}</td>
+                        <td>{{inventoryRelation.quantity}}</td>
+                        <td (click)="deleteElement(inventoryRelation)">
                             <button  mat-fab color="warn" >
                                 <mat-icon>delete</mat-icon>
                             </button>

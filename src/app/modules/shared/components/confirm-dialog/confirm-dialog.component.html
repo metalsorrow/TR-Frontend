@@ -1,8 +1,16 @@
-<h5 class="modal-title" id="exampleModalLabel">Confirmacion</h5>
-<div class="modal-body">
-    {{data.message}}
-</div>
-<div class="modal-footer">
-    <button type="button" class="btn btn-primary" (click)="continue()">Continuar</button>
-    <button mat-button (click)="cancel()">Cancelar</button>
+
+
+<div class="container">
+    <div class="row">
+        <h3 text-center>Confirmacion</h3>
+    </div>
+    <div class="row">
+        <div class="col my-3">
+            {{data.message}}
+        </div>
+    </div>
+    <div class="row">
+        <button mat-flat-button color="primary" (click)="continue()">Continuar</button>
+        <button mat-button (click)="cancel()">Cancelar</button>
+    </div>
 </div>

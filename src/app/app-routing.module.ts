@@ -5,6 +5,7 @@ import { ClientLayoutComponent } from '@client/components/client-layout/client-l
 import { LandingLayoutComponent } from '@landing/components/landing-layout/landing-layout.component';
 import { WorkerLayoutComponent } from '@worker/components/worker-layout/worker-layout.component';
 import { AdminLayoutComponent } from './modules/admin/components/admin-layout/admin-layout.component';
+import { AuthGuard } from './modules/shared/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -31,6 +32,8 @@ const routes: Routes = [
   },
   {
     path: 'client',
+    canActivate: [AuthGuard],
+    data: { roles: ['client'] },
     component: ClientLayoutComponent,
     children: [
       {
@@ -43,6 +46,8 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminLayoutComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['admin'] },
     children: [
       {
         path: '',
@@ -54,6 +59,8 @@ const routes: Routes = [
   {
     path: 'worker',
     component: WorkerLayoutComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['worker'] },
     children: [
       {
         path: '',

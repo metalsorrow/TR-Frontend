@@ -80,6 +80,10 @@
               "browserTarget": "TR-Frontend:build:development"
             }
           },
+          "options": {
+            "browserTarget": "TR-Frontend:build",
+            "proxyConfig": "proxy.config.json"
+          },
           "defaultConfiguration": "development"
         },
         "extract-i18n": {

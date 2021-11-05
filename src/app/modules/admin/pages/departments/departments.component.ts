@@ -5,64 +5,104 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'src/app/modules/shared/components/confirm-dialog/confirm-dialog.component';
 import { Department } from 'src/app/modules/shared/interface/department';
+import { DepartmentService } from 'src/app/modules/shared/services/department/department.service';
 
 @Component({
-  selector: 'app-departments',
-  templateUrl: './departments.component.html',
-  styleUrls: ['./departments.component.scss']
+    selector: 'app-departments',
+    templateUrl: './departments.component.html',
+    styleUrls: ['./departments.component.scss']
 })
 export class DepartmentsComponent implements OnInit {
 
-  deleteText: string;
-  departmentList: Department[];
-  constructor(private dialog: MatDialog) {
-    this.deleteText = "¿Estas Seguro de eliminar este registro?";
-    this.departmentList = [
-      {id: 1, name: "Las palmas 2323", address: "calle 123", price: 12000, state: "Puente Altoooo" },
-      {id: 2, name: "Las palmas 2323", address: "calle 123", price: 12000, state: "Puente Altoooo" }
-    ];
-  }
+    deleteText: string;
+    departmentList: Department[];
+    departmentRef: Department;
 
-  ngOnInit(): void {
-  }
+    constructor(private dialog: MatDialog, private _department: DepartmentService) {
+        this.departmentRef = {} as Department;
+        this.deleteText = "¿Estas Seguro de eliminar este registro?";
+        this.departmentList = [];
+    }
 
-  formDepartmentDialog(department?: Department){
-    const dialogConfig = new MatDialogConfig();
+    ngOnInit(): void {
+        this.loadDepartment();
+    }
 
-    dialogConfig.disableClose = false;
+    formDepartmentDialog(department?: Department) {
+        const dialogConfig = new MatDialogConfig();
 
-    let resultDialog = this.dialog.open(DepartmentFormComponent, dialogConfig);
-  }
+        dialogConfig.disableClose = false;
+        dialogConfig.data = {department: department};
 
-  maintenceDialog(deparment: Department){
-    const dialogConfig = new MatDialogConfig();
+        let resultDialog = this.dialog.open(DepartmentFormComponent, dialogConfig);
 
-    dialogConfig.disableClose = false;
+        resultDialog.afterClosed().subscribe(data => {
+            this.loadDepartment();
+        });
+    }
 
-    let resultDialog = this.dialog.open(MaintenanceFormComponent, dialogConfig);
-  }
+    maintenceDialog(department: Department) {
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.data = {department: department};
 
-  inventoryDialog(deparment: Department){
-    const dialogConfig = new MatDialogConfig();
+        dialogConfig.disableClose = false;
 
-    dialogConfig.disableClose = false;
+        let resultDialog = this.dialog.open(MaintenanceFormComponent, dialogConfig);
+    }
 
-    let resultDialog = this.dialog.open(InventoryDisplayComponent, dialogConfig);
-  }
+    inventoryDialog(department: Department) {
+        const dialogConfig = new MatDialogConfig();
 
-  deleteDialog(department: Department) {
-    const dialogConfig = new MatDialogConfig();
+        dialogConfig.disableClose = false;
+        dialogConfig.data = {department: department}
 
-    dialogConfig.disableClose = true;
-    dialogConfig.data = {message: this.deleteText}
+        let resultDialog = this.dialog.open(InventoryDisplayComponent, dialogConfig);
+    }
 
-    let resultDialog = this.dialog.open(ConfirmDialogComponent, dialogConfig);
+    deleteDialog(department: Department) {
+        const dialogConfig = new MatDialogConfig();
 
-    resultDialog.afterClosed().subscribe(data =>{
-        console.log("Dialog output:", data)
-        if(data){
-            //delete user
-        }
-    }); 
-  }
+        dialogConfig.disableClose = false;
+        dialogConfig.data = { message: this.deleteText }
+
+        let resultDialog = this.dialog.open(ConfirmDialogComponent, dialogConfig);
+
+        resultDialog.afterClosed().subscribe(data => {
+            if (data && department.id) {
+                this._department.deleteDepartments(department.id).subscribe( (result: any) => {
+                    this.loadDepartment();
+                })
+            }
+        });
+    }
+
+    loadDepartment(){
+        this._department.getDepartments().subscribe( (departments: Department[]) =>{
+            this.departmentList = departments;
+        } )
+    }
+
+
+
+    // changeFile(file: any) {
+    //     return new Promise((resolve, reject) => {
+    //         const reader = new FileReader();
+    //         reader.readAsDataURL(file);
+    //         reader.onload = () => resolve(reader.result);
+    //         reader.onerror = error => reject(error);
+    //     });
+    // }
+
+    // uploadFile(event: any) {
+    //     if (event.target.value) {
+    //         const file = event.target.files[0];
+    //         const type = file.type;
+    //         this.changeFile(file).then((base64: string): any => {
+    //             let b64Blob: any;
+    //             console.log(base64);
+    //             this.departmentRef. = b64Blob([base64], type);
+    //             console.log(this.fileBlob)
+    //         });
+    //     } else alert('Nothing')
+    // }
 }

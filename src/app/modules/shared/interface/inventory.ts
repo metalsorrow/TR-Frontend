@@ -1,9 +1,13 @@
 export interface Inventory {
-    id: Number,
-    description: string
+    id: number,
+    description: string,
+    name: string
 }
 export interface InventoryRelation{
-    id: Number,
+    id: number,
     description: string,
-    quantity: number
+    quantity: number,
+    departmentId: number,
+    inventoryId: number,
+    inventoryName: string,
 }
