@@ -26,6 +26,24 @@
                 </mat-form-field>
             </div>
             <div class="row">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Fecha de Inicio</th>
+                            <th scope="col">Fecha de Termino</th>
+                            <th scope="col">Funcionario Relacionado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let maintenance of maintenanceRelation">
+                            <td>{{maintenance.initDate}}</td>
+                            <td>{{maintenance.finishDate}}</td>
+                            <td>{{maintenance.userId + ' - ' + maintenance.userName}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row">
                 <button mat-raised-button class="w-100" (click)="createMantaince()">Agendar Mantenimiento</button>
             </div>
     </form>

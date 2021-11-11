@@ -60,6 +60,7 @@ export class InventoryDepartmentService {
     }
 
     createInventoryDepartement(InventoryRelation: InventoryRelation){
+        console.log(InventoryRelation);
         return this.http.post<{ ok: string }>(InventoryDepartmentRoutes.CREATE_INVENTORY_DEPARTMENTS, InventoryRelation).pipe(
             map((response: any) => {
               if (response) {
