@@ -4,7 +4,7 @@ import { CheckInComponent } from '@worker/components/check-in/check-in.component
 import { CheckOutComponent } from '@worker/components/check-out/check-out.component';
 import { ExtraServicesManagerComponent } from '@worker/components/extra-services-manager/extra-services-manager.component';
 import { FinesComponent } from '@worker/components/fines/fines.component';
-import { Booking, BookingWithUser } from 'src/app/modules/shared/interface/booking';
+import { Booking, BookingDisplay, } from 'src/app/modules/shared/interface/booking';
 
 @Component({
   selector: 'app-booking-manager',
@@ -13,14 +13,14 @@ import { Booking, BookingWithUser } from 'src/app/modules/shared/interface/booki
 })
 export class BookingManagerComponent implements OnInit {
 
-  bookingList: BookingWithUser[];
+  bookingList: BookingDisplay[];
   constructor(private dialog: MatDialog) {
-    this.bookingList = [{id: 1, communne: "Ñuñoa" , departmentName: "Suit, paquete de verano", address: "Torre 1234, Las Golondrinas",userName:"User", userRut:"12.200.099-3"} as BookingWithUser];
+    this.bookingList = [{id: 1, commune: "Ñuñoa" , departmentName: "Suit, paquete de verano", departmentAddress: "Torre 1234, Las Golondrinas", clientId:1, clientRut:"12.200.099-3"}] as BookingDisplay[];
    }
 
   ngOnInit(): void {}
 
-    finesDialog(booking: BookingWithUser){
+    finesDialog(booking: BookingDisplay){
       const dialogConfig = new MatDialogConfig();
 
       dialogConfig.disableClose = false;
@@ -29,7 +29,7 @@ export class BookingManagerComponent implements OnInit {
       let resultDialog = this.dialog.open(FinesComponent, dialogConfig);
     }
 
-    extraServicesDialog(booking: BookingWithUser){
+    extraServicesDialog(booking: BookingDisplay){
       const dialogConfig = new MatDialogConfig();
 
       dialogConfig.disableClose = false;
@@ -37,7 +37,7 @@ export class BookingManagerComponent implements OnInit {
 
       let resultDialog = this.dialog.open(ExtraServicesManagerComponent, dialogConfig);
     }
-    checkInDialog(booking: BookingWithUser){
+    checkInDialog(booking: BookingDisplay){
       const dialogConfig = new MatDialogConfig();
 
       dialogConfig.disableClose = false;
@@ -45,7 +45,7 @@ export class BookingManagerComponent implements OnInit {
 
       let resultDialog = this.dialog.open(CheckInComponent, dialogConfig);
     }
-    checkOutDialog(booking: Booking){
+    checkOutDialog(booking: BookingDisplay){
       const dialogConfig = new MatDialogConfig();
 
       dialogConfig.disableClose = false;

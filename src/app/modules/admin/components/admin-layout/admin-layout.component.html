@@ -27,7 +27,7 @@
                 </a>
             </li>
             <li class="nav-item w-100">
-                <a [routerLink]="['/']" data-bs-toggle="collapse" class="nav-link text-truncate w-100">
+                <a (click)="logout($event)" data-bs-toggle="collapse" class="nav-link text-truncate w-100">
                     <span class="ms-1 d-none d-sm-inline">Cerrar Sesion</span>
                 </a>
             </li>

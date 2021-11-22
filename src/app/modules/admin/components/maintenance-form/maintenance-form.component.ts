@@ -43,7 +43,7 @@ export class MaintenanceFormComponent implements OnInit {
 
   ngOnInit(): void {
     this._user.getUsers().subscribe( users => {
-      this.workerList = users.filter( (user: User) => user.nameType === "worker");
+      this.workerList = users.filter( (user: User) => user.userType === "worker");
     })
     this.loadMaintenanceDepartment();
   }

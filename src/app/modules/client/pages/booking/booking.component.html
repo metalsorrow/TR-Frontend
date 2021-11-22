@@ -1,13 +1,7 @@
 <div class="container">
     <div class="row">
-        <div class="col d-flex btn-pointer" 
-         (click)="extraServiceDialog()">
-        <span class="material-icons">
-            add_circle_outline
-        </span>
-        <p>Solicitar Servicio Extra</p>
         <div class="col">
-            <h2 class="text-center">Listado de Departamentos</h2>
+            <h2 class="text-center">Listado de Reservas</h2>
         </div>
     </div>
     <div class="row">
@@ -19,6 +13,7 @@
                     <th scope="col">Comuna</th>
                     <th scope="col">Direccion</th>
                     <th scope="col">Ver Detalles</th>
+                    <th scope="col">Servicios Extra</th>
                     <th scope="col">Cancelar</th>
                 </tr>
             </thead>
@@ -31,6 +26,13 @@
                     <td>
                         <button mat-flat-button color="primary" (click)="detailDialog(booking)">
                             Ver detalles
+                        </button>
+                    </td>
+                    <td>
+                        <button mat-flat-button color="primary" (click)="extraServiceDialog(booking)">
+                            <span class="material-icons">
+                                add_circle_outline
+                            </span>
                         </button>
                     </td>
                     <td>

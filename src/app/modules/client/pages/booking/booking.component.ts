@@ -21,10 +21,11 @@ export class BookingComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  extraServiceDialog(){
+  extraServiceDialog(booking: Booking){
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = false;
+    dialogConfig.data = {booking: booking};
 
     let resultDialog = this.dialog.open(ExtraServicesComponent, dialogConfig);
   }

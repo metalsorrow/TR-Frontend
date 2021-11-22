@@ -27,10 +27,10 @@
                 <tr *ngFor="let booking of bookingList">
                     <td>{{booking.id}}</td>
                     <td>{{booking.departmentName}}</td>
-                    <td>{{booking.communne}}</td>
-                    <td>{{booking.address}}</td>
-                    <td>{{booking.userRut}}</td>
-                    <td>{{booking.userName}}</td>
+                    <td>{{booking.commune}}</td>
+                    <td>{{booking.departmentAddress}}</td>
+                    <td>{{booking.clientRut}}</td>
+                    <td>{{booking.clientName}}</td>
                     <td>
                         <button type="button" mat-stroked-button (click)="finesDialog(booking)">
                             Gestionar

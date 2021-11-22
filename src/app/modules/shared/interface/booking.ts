@@ -12,19 +12,33 @@ export interface Booking{
     departmentName: string
 }
 
-export interface BookingWithUser{
+export interface BookingDisplay{
     id: number,
-    checkIn?: Date,
-    checkOut?: Date,
+    planifiedCheckIn: Date,
+    checkIn: Date,
+    checkOut: Date,
     totalDays: number,
-    totalAdutls: number,
-    totalChild: number,
-    totalPrice: number,
-    status: boolean,
-    communne?: string,
-    address?: string,
+    totalAdults: number,
+    totalKids: number,
+    totalBooking: number,
+    statusBooking: string,
+    departmentId:number,
+    clientId: number,
+    clientRut: string,
+    clientName: string,
+    workerId: number,
     departmentName: string,
-    userName: string,
-    userRut: string,
-    userId: number
+    departmentAddress: string,
+    totalRooms: number,
+    totalParking: number,
+    totalBaths: number,
+    internet: boolean,
+    tv: boolean,
+    heating: boolean,
+    furnished: boolean,
+    departmentPrice: number,
+    departmentStatus: boolean
+    departmentDesc: string,
+    idCommune: number
+    commune: string
 }

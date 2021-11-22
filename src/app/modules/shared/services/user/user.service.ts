@@ -7,7 +7,8 @@ export enum UserRoutes {
     GET_USERS = "/api/users",
     POST_USERS = "/api/users",
     DELETE_USERS = "/api/users",
-    UPDATE_USERS = "/api/users"
+    UPDATE_USERS = "/api/users",
+    LOGIN_USER = "/api/validateLogin"
 }
 
 @Injectable({
@@ -23,11 +24,13 @@ export class UserService {
         return this.http.get<User[]>(UserRoutes.GET_USERS).pipe(
             map((response: any) => {
                 if (response) {
+                    console.log(response, 'getUser');
                     let responseFormated = response.users.map((data: any) => {
                         let json = {
                             id: Number(data.id),
                             firstName: data.firstName,
                             lastNameP: data.lastNameP,
+                            lastNameM: data.lastNameM,
                             dateOfBirth: data.dateOfBirth,
                             mail: data.mail,
                             phone: data.phone,
@@ -35,7 +38,7 @@ export class UserService {
                             idCommune: Number(data.idCommune),
                             nameCommune: data.nameCommune,
                             idType: Number(data.idType),
-                            nameType: data.nameType,
+                            userType: data.nameType,
                         }
                         return json
                     });
@@ -58,7 +61,7 @@ export class UserService {
     }
 
     updateUser(user: User) {
-        return this.http.put<{ ok: string }>(UserRoutes.POST_USERS, user).pipe(
+        return this.http.put<{ ok: string }>(UserRoutes.UPDATE_USERS, user).pipe(
             map((response: any) => {
                 return response
             }),
@@ -67,7 +70,7 @@ export class UserService {
     }
 
     deleteUser(id: Number) {
-        return this.http.delete<{ ok: string }>(UserRoutes.POST_USERS, {
+        return this.http.delete<{ ok: string }>(UserRoutes.DELETE_USERS, {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
             }),
@@ -82,7 +85,12 @@ export class UserService {
         );
     }
 
-    loginUser() {
-
+    loginUser(mail: string, pass:string ) {
+        return this.http.post<User[]>(UserRoutes.LOGIN_USER, {mail: mail, password: pass}).pipe(
+            map((response: any) => {
+                return response.user
+            }),
+            catchError(error => error),
+        );
     }
 }

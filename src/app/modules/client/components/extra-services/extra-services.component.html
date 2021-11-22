@@ -12,12 +12,6 @@
                     <mat-option *ngFor="let service of serviceList" [value]="service.id">{{service.description}}</mat-option>
                 </mat-select>
             </mat-form-field>
-            <mat-form-field class="col-12" appearance="fill">
-                <mat-label>Reserva para vincular</mat-label>
-                <mat-select>
-                    <mat-option *ngFor="let booking of userBookingList" [value]="booking.id">{{booking.id + " - " + booking.departmentName}}</mat-option>
-                </mat-select>
-            </mat-form-field>
         </div>
         <div class="row">
             <table class="table">

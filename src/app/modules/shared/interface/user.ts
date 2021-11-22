@@ -2,12 +2,17 @@ export interface User {
     id?: number,
     firstName: string,
     lastNameP: string,
+    lastNameM: string,
     dateOfBirth: string,
     mail: string,
     phone: string,
     pass: string,
     idCommune: number,
-    nameCommune: string,
+    nameCommune?: string,
     idType: number,
-    nameType: string
+    userType?: string
+}
+export interface TypeUser {
+    id: number,
+    name: string,
 }

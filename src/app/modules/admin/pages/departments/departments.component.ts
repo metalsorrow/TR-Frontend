@@ -15,12 +15,14 @@ import { DepartmentService } from 'src/app/modules/shared/services/department/de
 export class DepartmentsComponent implements OnInit {
 
     deleteText: string;
+    disponibilityText: string;
     departmentList: Department[];
     departmentRef: Department;
 
     constructor(private dialog: MatDialog, private _department: DepartmentService) {
         this.departmentRef = {} as Department;
         this.deleteText = "¿Estas Seguro de eliminar este registro?";
+        this.disponibilityText = "¿Confirma el cambio de disponibilidad para este departamento?";
         this.departmentList = [];
     }
 
@@ -83,6 +85,22 @@ export class DepartmentsComponent implements OnInit {
     }
 
 
+    changeDisponibility(department: Department){
+        const dialogConfig = new MatDialogConfig();
+
+        dialogConfig.disableClose = false;
+        dialogConfig.data = { message: this.disponibilityText }
+
+        let resultDialog = this.dialog.open(ConfirmDialogComponent, dialogConfig);
+
+        resultDialog.afterClosed().subscribe(data => {
+            if (data && department.id) {
+                this._department.changeDisponibility(department.id).subscribe( (result: any) => {
+                    this.loadDepartment();
+                })
+            }
+        });
+    }
 
     // changeFile(file: any) {
     //     return new Promise((resolve, reject) => {

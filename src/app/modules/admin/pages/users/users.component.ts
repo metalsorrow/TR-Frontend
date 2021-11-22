@@ -15,6 +15,8 @@ export class UsersComponent implements OnInit {
     deleteText: string;
     userList : User[];
 
+
+    
     constructor(private dialog: MatDialog,
         private _user: UserService) {
         this.deleteText = "¿Estas Seguro de eliminar este registro?";
@@ -29,11 +31,16 @@ export class UsersComponent implements OnInit {
         const dialogConfig = new MatDialogConfig();
 
         dialogConfig.disableClose = false;
-        user ? dialogConfig.data = user : null;
+        user ? dialogConfig.data = {user: user} : null;
 
         let resultDialog = this.dialog.open(UserFormComponent, dialogConfig);
 
-        // console.log(resultDialog);
+        resultDialog.afterClosed().subscribe(data =>{
+            if(data){
+                this.loadUser();
+            }
+        }); 
+
     }
 
     deleteDialog(user: User) {

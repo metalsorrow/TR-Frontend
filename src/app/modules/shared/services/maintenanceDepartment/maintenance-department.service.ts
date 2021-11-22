@@ -4,7 +4,7 @@ import { catchError, map } from 'rxjs/operators';
 import { MaintenanceRelation } from '../../interface/maintenance';
 
 export enum MaintenanceDepartmentRoutes {
-  GET_MAINTENANCE_DEPARTMENTS = "/api/maintainsDepartments"
+  GET_MAINTENANCE_DEPARTMENTS = "/api/maintainsDepartmentsById"
 }
 
 @Injectable({

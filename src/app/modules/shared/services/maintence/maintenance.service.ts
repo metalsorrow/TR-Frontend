@@ -5,7 +5,7 @@ import { Maintenance } from '../../interface/maintenance';
 
 export enum MaintenanceRoutes {
   GET_MAINTENANCE = "/api/acta",
-  POST_MAINTENANCE = "/api/maintainsDepartments",
+  POST_MAINTENANCE = "/api/maintainsDepartmentsById",
 }
 
 @Injectable({

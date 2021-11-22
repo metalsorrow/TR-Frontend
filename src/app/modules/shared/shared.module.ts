@@ -16,9 +16,10 @@ import { AvatarComponent } from './components/avatar/avatar.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ErrorPopUpComponent } from './components/error-pop-up/error-pop-up.component';
 
 @NgModule({
-  declarations: [CardRegionComponent, NavbarComponent, AvatarComponent, ConfirmDialogComponent],
+  declarations: [CardRegionComponent, NavbarComponent, AvatarComponent, ConfirmDialogComponent, ErrorPopUpComponent],
   imports: [
     CommonModule,
     MatCardModule,

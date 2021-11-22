@@ -1,86 +1,88 @@
-<form class="container">
-    <div class="row text-center">
-      <h2>Formulario de Registro</h2>
-    </div>
-    <h3> Informacion Personal: </h3>
-    <div class="row">
-      <mat-form-field class="col-sm-12 col-md-4" appearance="fill">
-        <mat-label>Nombre:</mat-label>
-        <input matInput>
+<form class="container" [formGroup]="formUser">
+  <div class="row text-center">
+    <h2>Formulario de Registro</h2>
+  </div>
+  <h3> Informacion Personal: </h3>
+  <div class="row">
+    <mat-form-field class="col-sm-12 col-md-4" appearance="fill">
+      <mat-label>Nombre:</mat-label>
+      <input matInput formControlName="firstName">
+    </mat-form-field>
+    <mat-form-field class="col-sm-12 col-md-4" appearance="fill">
+      <mat-label>Apellido Paterno:</mat-label>
+      <input matInput formControlName="lastNameP">
+    </mat-form-field>
+    <mat-form-field class="col-sm-12 col-md-4" appearance="fill">
+      <mat-label>Apellido Materno:</mat-label>
+      <input matInput formControlName="lastNameM">
+    </mat-form-field>
+  </div>
+  <div class="row mb-3">
+    <mat-form-field class="col-sm-12 col-md-4" appearance="fill">
+      <mat-label>Correo Electronico:</mat-label>
+      <input matInput placeholder="turismo@real.com" formControlName="email" required>
+      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field class="col-sm-12 col-md-4" appearance="fill">
+      <mat-label>Telefono o Celular:</mat-label>
+      <input matInput formControlName="phone">
+    </mat-form-field>
+    <mat-form-field class="col-sm-12 col-md-4" appearance="fill">
+      <mat-label>Fecha de Nacimiento</mat-label>
+      <input matInput formControlName="dateOfBirth" [matDatepicker]="picker">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <h3> Datos de Ubicacion </h3>
+    <div class="col-12 col-md-4">
+      <mat-form-field class="w-100" appearance="fill">
+        <mat-label>Region</mat-label>
+        <mat-select formControlName="region">
+          <mat-option *ngFor="let region of regionList" [value]="region.id">{{region.name}}</mat-option>
+        </mat-select>
       </mat-form-field>
-      <mat-form-field class="col-sm-12 col-md-4" appearance="fill">
-        <mat-label>Apellido Paterno:</mat-label>
-        <input matInput>
-      </mat-form-field>
-      <mat-form-field class="col-sm-12 col-md-4" appearance="fill">
-        <mat-label>Apellido Materno:</mat-label>
-        <input matInput>
-      </mat-form-field>
     </div>
-    <div class="row mb-3">
-      <mat-form-field class="col-sm-12 col-md-4" appearance="fill">
-        <mat-label>Correo Electronico:</mat-label>
-        <input matInput placeholder="turismo@real.com" [formControl]="email" required>
-        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-      </mat-form-field>
-      <mat-form-field class="col-sm-12 col-md-4" appearance="fill">
-        <mat-label>Telefono o Celular:</mat-label>
-        <input matInput>
-      </mat-form-field>
-      <mat-form-field class="col-sm-12 col-md-4" appearance="fill">
-        <mat-label>Fecha de Nacimiento</mat-label>
-        <input matInput [matDatepicker]="picker">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
+    <div class="col-12 col-md-4">
+      <mat-form-field class="w-100" appearance="fill">
+        <mat-label>Ciudad</mat-label>
+        <mat-select formControlName="city">
+          <mat-option *ngFor="let dity of cityList" [value]="dity.id">{{dity.name}}</mat-option>
+        </mat-select>
       </mat-form-field>
     </div>
-    <div class="row">
-      <h3> Datos de Ubicacion </h3>
-      <div class="col-12 col-md-4">
-        <mat-form-field class="w-100" appearance="fill">
-          <mat-label>Region</mat-label>
-          <mat-select>
-            <mat-option *ngFor="let region of regionList" [value]="region.id">{{region.name}}</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-      <div class="col-12 col-md-4">
-        <mat-form-field class="w-100" appearance="fill">
-          <mat-label>Ciudad</mat-label>
-          <mat-select>
-            <mat-option *ngFor="let ciudad of cityList" [value]="ciudad.id">{{ciudad.name}}</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-      <div class="col-12 col-md-4">
-        <mat-form-field class="w-100" appearance="fill">
-          <mat-label>Comuna</mat-label>
-          <mat-select>
-            <mat-option *ngFor="let comuna of communeList" [value]="comuna.id">{{comuna.name}}</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
+    <div class="col-12 col-md-4">
+      <mat-form-field class="w-100" appearance="fill">
+        <mat-label>Comuna</mat-label>
+        <mat-select formControlName="commune">
+          <mat-option *ngFor="let commune of communeList" [value]="commune.id">{{commune.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
-    <div class="row mb-5">
-      <h3> Seguridad: </h3>
-      <div class="col-sm-12 col-md-6">
-        <mat-form-field class="w-100" appearance="fill">
-          <mat-label>Contraseña</mat-label>
-          <input matInput>
-        </mat-form-field>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <mat-form-field class="w-100" appearance="fill">
-          <mat-label>Confirmar Contraseña</mat-label>
-          <input matInput>
-        </mat-form-field>
-      </div>
+  </div>
+  <div class="row mb-5">
+    <h3> Seguridad: </h3>
+    <div class="col-sm-12 col-md-6">
+      <mat-form-field class="w-100" appearance="fill">
+        <mat-label>Contraseña</mat-label>
+        <input type="password" matInput formControlName="pass">
+      </mat-form-field>
     </div>
-  
-    <div class="row justify-content-center">
-      <div class="col-12 col-md-6">
-        <button (click)="$event.preventDefault()" [routerLink]="['/client']" class="w-100" mat-raised-button color="primary">Registrarse Ahora!</button>
-      </div>
+    <div class="col-sm-12 col-md-6">
+      <mat-form-field class="w-100" appearance="fill">
+        <mat-label>Confirmar Contraseña</mat-label>
+        <input type="password" matInput formControlName="passConfirm"> 
+      </mat-form-field>
     </div>
-  
-  </form>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-6">
+      <button (click)="handleSubmit($event)" class="w-100" mat-raised-button
+        color="primary">Registrarse Ahora!</button>
+    </div>
+  </div>
+
+
+</form>
