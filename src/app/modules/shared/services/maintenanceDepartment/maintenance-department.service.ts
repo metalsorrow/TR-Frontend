@@ -4,7 +4,8 @@ import { catchError, map } from 'rxjs/operators';
 import { MaintenanceRelation } from '../../interface/maintenance';
 
 export enum MaintenanceDepartmentRoutes {
-  GET_MAINTENANCE_DEPARTMENTS = "/api/maintainsDepartmentsById"
+  GET_MAINTENANCE_DEPARTMENTS = "/api/maintainsDepartmentsById",
+  POST_MAINTENANCE_DEPARTMENTS = "/api/maintainsDepartments"
 }
 
 @Injectable({
@@ -38,6 +39,18 @@ export class MaintenanceDepartmentService {
         }),
         catchError(error => error),
     );
-}
+  }
+
+  createMainenance(newMainenance: {initDate: string, finishDate: string, userId: number, departmentId: number}){
+    return this.http.post<{ ok: string }>(MaintenanceDepartmentRoutes.POST_MAINTENANCE_DEPARTMENTS, newMainenance).pipe(
+      map((response: any) => {
+        if (response) {
+          return response
+        }
+        throw new Error('Error from api');
+      }),
+      catchError(error => error),
+    );
+  }
 
 }

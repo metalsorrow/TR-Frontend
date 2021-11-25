@@ -28,6 +28,7 @@ export class UserService {
                     let responseFormated = response.users.map((data: any) => {
                         let json = {
                             id: Number(data.id),
+                            rut: data.rut,
                             firstName: data.firstName,
                             lastNameP: data.lastNameP,
                             lastNameM: data.lastNameM,

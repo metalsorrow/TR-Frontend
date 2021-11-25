@@ -14,4 +14,5 @@ export interface Department {
     departmentDesc: string,
     idCommune: string,
     nameCommune?: string,
+    departmentImage?: string,
 }

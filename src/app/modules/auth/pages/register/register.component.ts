@@ -26,6 +26,7 @@ export class RegisterComponent implements OnInit {
         firstName: new FormControl(''),
         lastNameP: new FormControl(''),
         lastNameM: new FormControl(''),
+        rut: new FormControl(''),
         email: new FormControl(''),
         phone: new FormControl(''),
         dateOfBirth: new FormControl(''),
@@ -67,6 +68,7 @@ export class RegisterComponent implements OnInit {
         $event.preventDefault();
         let newUser: User = {
             firstName: this.formUser.controls['firstName'].value,
+            rut: this.formUser.controls['rut'].value,
             lastNameP: this.formUser.controls['lastNameP'].value,
             lastNameM: this.formUser.controls['lastNameM'].value,
             mail: this.formUser.controls['email'].value,

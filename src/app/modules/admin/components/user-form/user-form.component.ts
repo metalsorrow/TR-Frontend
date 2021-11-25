@@ -25,6 +25,7 @@ export class UserFormComponent implements OnInit {
 
 
     formUser = new FormGroup({
+        rut: new FormControl(''),
         firstName: new FormControl(''),
         lastNameP: new FormControl(''),
         lastNameM: new FormControl(''),
@@ -91,6 +92,7 @@ export class UserFormComponent implements OnInit {
         let formatDate = new Date(arrayDate[1] + '/' + arrayDate[0] + '/' + arrayDate[2]);
         this.formUser.setValue({
             firstName: user.firstName,
+            rut: user.rut,
             lastNameP: user.lastNameP,
             lastNameM: user.lastNameM,
             email: user.mail,
@@ -108,6 +110,7 @@ export class UserFormComponent implements OnInit {
     createUser() {
         
         let newUser: User = {
+            rut: this.formUser.controls['rut'].value,
             firstName: this.formUser.controls['firstName'].value,
             lastNameP: this.formUser.controls['lastNameP'].value,
             lastNameM: this.formUser.controls['lastNameM'].value,
@@ -134,6 +137,7 @@ export class UserFormComponent implements OnInit {
     updateUser(){
         let newUser: User = {
             id: this.data.user.id,
+            rut: this.formUser.controls['rut'].value,
             firstName: this.formUser.controls['firstName'].value,
             lastNameP: this.formUser.controls['lastNameP'].value,
             lastNameM: this.formUser.controls['lastNameM'].value,

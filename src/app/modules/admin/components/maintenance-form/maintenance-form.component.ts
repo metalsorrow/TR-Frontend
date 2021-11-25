@@ -58,7 +58,7 @@ export class MaintenanceFormComponent implements OnInit {
       userId: Number(this.formMaintenance.controls['worker'].value),
       departmentId: this.data.department.id 
     }
-    this._maintenance.createMainenance(newMantaince).subscribe( result => {
+    this._maintenanceDepartment.createMainenance(newMantaince).subscribe( result => {
       this.loadMaintenanceDepartment();
     })
   }

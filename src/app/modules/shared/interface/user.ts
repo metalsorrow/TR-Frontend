@@ -1,5 +1,6 @@
 export interface User {
     id?: number,
+    rut: string,
     firstName: string,
     lastNameP: string,
     lastNameM: string,

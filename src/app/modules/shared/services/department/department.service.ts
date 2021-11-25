@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Department } from '../../interface/department';
+import base64 from '../../../../../assets/base64.json';
 
 export enum DepartmentRoutes {
   GET_DEPARTMENT = '/api/departments',
@@ -59,6 +60,7 @@ export class DepartmentService {
               internet: Number(data.internet),
               tv: Number(data.tv),
               heating: Number(data.heating),
+              departmentImage: base64.file,
               furnished: Number(data.furnished),
               departmentPrice: Number(data.departmentPrice),
               departmentStatus: Number(data.departmentStatus),
