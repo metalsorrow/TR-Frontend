@@ -9,6 +9,7 @@ export enum BookingRoutes {
     DELETE_BOOKING = "/api/reserve",
     PUT_BOOKING = "/api/reserve",
     POST_BOOKING = "/api/reserve",
+    CHECK_IN = "/api/checkInReserve",
 }
 
 @Injectable({
@@ -99,6 +100,19 @@ export class BookingService {
 
     updateBooking(booking: BookingDTO) {
         return this.http.put<{ ok: string }>(BookingRoutes.PUT_BOOKING, booking).pipe(
+            map((response: any) => {
+                if (response) {
+                    return response
+                }
+                throw new Error('Error from api');
+            }),
+            catchError(error => error),
+        );
+    }
+
+
+    checkin(checkDate: string, id: number){
+        return this.http.put<{ ok: string }>(BookingRoutes.CHECK_IN, { checkIn: checkDate, reserveId: id}).pipe(
             map((response: any) => {
                 if (response) {
                     return response

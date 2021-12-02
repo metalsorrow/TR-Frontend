@@ -13,7 +13,6 @@ import { ServexService } from 'src/app/modules/shared/services/servex/servex.ser
 })
 export class ExtraServicesComponent implements OnInit {
 
-
   formReservex = new FormGroup({
     servex: new FormControl(''),
     quantity: new FormControl('')
@@ -22,13 +21,14 @@ export class ExtraServicesComponent implements OnInit {
 
   total: number;
   serviceList: ServiceExtra[];
-  currentServiceList: ServiceExtra[];
-  constructor(public dialogRef: MatDialogRef<ExtraServicesComponent>,
+  currentServiceList: Reservex[];
+  
+  constructor(public dialogRef : MatDialogRef<ExtraServicesComponent>,
       @Inject(MAT_DIALOG_DATA) public data: { booking: BookingDTO },
       private _servex: ServexService
       ) {
-    this.serviceList = [{id: 1, description: 'Arriendo Automovil', price: 1234}];
-    this.currentServiceList = [{id: 1, description: 'Arriendo Automovil',price: 1234}];
+    this.serviceList = [];
+    this.currentServiceList = [];
     this.total = 0;
    }
 
@@ -40,8 +40,9 @@ export class ExtraServicesComponent implements OnInit {
   addService($event: Event){
     $event.preventDefault();
     if(this.data.booking.id){
-      let quantity: number = Number(this.formReservex.controls['quentity'].value);
-      let servexId: number = Number(this.formReservex.controls['description'].value);
+      let quantity: number = Number(this.formReservex.controls['quantity'].value);
+      let servexId: number = Number(this.formReservex.controls['servex'].value);
+      console.log(servexId);
   
       let price = this.serviceList.find(element => element.id == servexId)?.price || 0;
   
@@ -53,6 +54,15 @@ export class ExtraServicesComponent implements OnInit {
       }
   
       this._servex.createReservex(reservex).subscribe( () => {
+        this.loadReservex();
+      })
+    }
+  }
+
+  deleteService($event: Event, service: Reservex){
+    $event.preventDefault();
+    if(service.id){
+      this._servex.deleteReservex(service.id).subscribe( () => {
         this.loadReservex();
       })
     }
@@ -75,4 +85,5 @@ export class ExtraServicesComponent implements OnInit {
   continue() {
     this.dialogRef.close(true);
   }
+
 }

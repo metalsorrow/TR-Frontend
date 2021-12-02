@@ -4,16 +4,18 @@
             Registro de Ingreso
         </h3>
     </div>
-    <form action="">
+    <form action="" [formGroup]="formCheckin">
         <div class="row">
-            <label for="">Hora y Dia de Ingreso</label>
-            <mat-form-field>
-                <input matInput type="datetime-local" placeholder="Ingreso">
+            <label for="">Dia de Ingreso Confirmado</label>
+            <mat-form-field appearance="legacy">
+                <input matInput formControlName="checkin" [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
             </div>
 
         <div class="row">
-            <button mat-raised-button class="w-100" (click)="registerCheckIn()">Confirmar Ingreso</button>
+            <button mat-raised-button class="w-100" (click)="checkinHandle($event)">Confirmar Ingreso</button>
         </div>
     </form>
 </div>

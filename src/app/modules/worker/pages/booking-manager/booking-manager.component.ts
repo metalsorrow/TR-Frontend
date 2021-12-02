@@ -27,7 +27,7 @@ export class BookingManagerComponent implements OnInit {
       const dialogConfig = new MatDialogConfig();
 
       dialogConfig.disableClose = false;
-      dialogConfig.data = { selected: booking };
+      dialogConfig.data = { booking: booking };
 
       let resultDialog = this.dialog.open(FinesComponent, dialogConfig);
     }
@@ -36,7 +36,7 @@ export class BookingManagerComponent implements OnInit {
       const dialogConfig = new MatDialogConfig();
 
       dialogConfig.disableClose = false;
-      dialogConfig.data = { selected: booking };
+      dialogConfig.data = { booking: booking };
 
       let resultDialog = this.dialog.open(ExtraServicesManagerComponent, dialogConfig);
     }
@@ -44,15 +44,16 @@ export class BookingManagerComponent implements OnInit {
       const dialogConfig = new MatDialogConfig();
 
       dialogConfig.disableClose = false;
-      dialogConfig.data = { selected: booking };
+      dialogConfig.data = { booking: booking };
 
       let resultDialog = this.dialog.open(CheckInComponent, dialogConfig);
+
     }
     checkOutDialog(booking: BookingDisplay){
       const dialogConfig = new MatDialogConfig();
 
       dialogConfig.disableClose = false;
-      dialogConfig.data = { selected: booking };
+      dialogConfig.data = { booking: booking };
 
       let resultDialog = this.dialog.open(CheckOutComponent, dialogConfig);
     }

@@ -4,10 +4,10 @@ import { catchError, map } from 'rxjs/operators';
 import { Reservex, Servex } from '../../interface/reservex';
 
 export enum ServexRoutes {
-  CREATE_RESERVEX = "/api/reservex",
-  DELETE_RESERVEX = "/api/reservex",
+  CREATE_RESERVEX = "/api/reserveServex",
+  DELETE_RESERVEX = "/api/reserveServex",
   GET_RESERVEX = "/api/reserveServex",
-  GET_SERVEX = "/api/serviciosExtra",
+  GET_SERVEX = "/api/extraServices",
 }
 
 @Injectable({
@@ -44,12 +44,14 @@ export class ServexService {
     return this.http.get<Reservex[]>(ServexRoutes.GET_RESERVEX, {headers: headers, params: params}
       ).pipe(
       map((response: any) => {
+        console.log(response);
         if (response) {
-          let responseFormated = response.departments.map((data: any) => {
+          let responseFormated = response.services.map((data: any) => {
             let json = {
               id: Number(data.id),
               quantity: data.quantity,
-              subtotal: Number(data.subtotal)
+              subtotal: Number(data.subTotal),
+              servex: data.desc_serv
             } as Reservex
             return json
           });
