@@ -20,8 +20,8 @@
             <tbody>
                 <tr *ngFor="let booking of bookingList">
                     <td>{{booking.id}}</td>
-                    <td>{{booking.departmentName}}</td>
-                    <td>{{booking.communne}}</td>
+                    <td>{{booking.name}}</td>
+                    <td>{{booking.nameCommune}}</td>
                     <td>{{booking.address}}</td>
                     <td>
                         <button mat-flat-button color="primary" (click)="detailDialog(booking)">

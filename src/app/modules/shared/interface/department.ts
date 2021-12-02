@@ -15,4 +15,5 @@ export interface Department {
     idCommune: string,
     nameCommune?: string,
     departmentImage?: string,
+    ubicacion?: string,
 }

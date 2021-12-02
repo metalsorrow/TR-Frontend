@@ -4,13 +4,18 @@
             Administrador de Servicios
         </h3>
     </div>
-    <form action="">
-        <div class="row">
-            <mat-form-field class="col-12 " appearance="fill">
+    <form [formGroup]="formReservex">
+        <div class="row mb-5">
+            <mat-form-field class="col-12" appearance="fill">
                 <mat-label>Servicio para Agregar</mat-label>
-                <mat-select>
-                    <mat-option *ngFor="let service of serviceList" [value]="service.id">{{service.description}}</mat-option>
+                <mat-select formControlName="servex">
+                    <mat-option *ngFor="let service of serviceList" [value]="service.id">{{service.description + ": $" + service.price }}</mat-option>
                 </mat-select>
+            </mat-form-field>
+            <mat-form-field class="col-12" appearance="fill">
+                <mat-label>Cantidad de servicio extra  </mat-label>
+                <input matInput formControlName="quantity">
+                <mat-hint>*En caso de no ser necesario señalar 1</mat-hint>
             </mat-form-field>
         </div>
         <div class="row">
@@ -20,16 +25,16 @@
                         <th scope="col">ID</th>
                         <th scope="col">Servicio</th>
                         <th scope="col">Precio</th>
-                        <th scope="col">Eliminar</th>
+                        <th scope="col">Borrar registro</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let currentService of currentServiceList">
                         <td>{{currentService.id}}</td>
-                        <td>{{currentService.description}}</td>
-                        <td>{{currentService.price}}</td>
-                        <td (click)="deleteElement(currentService)">
-                            <button  mat-fab color="warn" >
+                        <td>{{currentService.servex}}</td>
+                        <td>{{currentService.subtotal}}</td>
+                        <td>
+                            <button (click)="deleteService($event, currentService)" mat-fab color="warn" >
                                 <mat-icon>delete</mat-icon>
                             </button>
                         </td>
@@ -40,7 +45,7 @@
         <div class="row">
             <h6>Total de Servicios</h6>
             <div><p><span>$</span>{{total}}</p></div>
-            <button mat-raised-button class="w-100" (click)="addService()">Registrar Servicio</button>
+            <button mat-raised-button class="w-100" (click)="addService($event)">Registrar Servicio</button>
         </div>
     </form>
 </div>

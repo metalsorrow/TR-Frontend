@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Department } from 'src/app/modules/shared/interface/department';
+import { DepartmentService } from 'src/app/modules/shared/services/department/department.service';
 
 @Component({
   selector: 'app-department-detail',
@@ -6,10 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./department-detail.component.scss']
 })
 export class DepartmentDetailComponent implements OnInit {
+  department: Department|null;
 
-  constructor() { }
+  constructor(private _department: DepartmentService) {
+    this.department = null;
+  }
 
   ngOnInit(): void {
+    this.loadDepartment();
+  }
+
+  loadDepartment(){
+    
   }
 
 }

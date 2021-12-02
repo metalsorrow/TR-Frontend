@@ -4,7 +4,7 @@ import { catchError, map } from 'rxjs/operators';
 import { InventoryRelation } from '../../interface/inventory';
 
 export enum InventoryDepartmentRoutes {
-    GET_INVENTORY_DEPARTMENTS = "/api/inventoriesDepartment",
+    GET_INVENTORY_DEPARTMENTS = "/api/inventoriesDepartmentById",
     DELETE_INVENTORY_DEPARTMENTS = "/api/inventoriesDepartment",
     CREATE_INVENTORY_DEPARTMENTS = "/api/inventoriesDepartment",
 }
@@ -23,6 +23,7 @@ export class InventoryDepartmentService {
         return this.http.get<InventoryRelation[]>(InventoryDepartmentRoutes.GET_INVENTORY_DEPARTMENTS, {headers: headers, params: params}).pipe(
             map((response: any) => {
                 if (response) {
+                    console.log(response);
                     let responseFormated = response.inventoriesDepartments.map((data: any) => {
                         let json = {
                             id: data.id,

@@ -1,16 +1,16 @@
-export interface Booking{
-    id: number,
-    checkIn?: Date,
-    checkOut?: Date,
-    totalDays: number,
-    totalAdutls: number,
-    totalChild: number,
-    totalPrice: number,
-    status: boolean,
-    communne?: string,
-    address?: string,
-    departmentName: string
-}
+// export interface Booking{
+//     id: number,
+//     checkIn?: Date,
+//     checkOut?: Date,
+//     totalDays: number,
+//     totalAdutls: number,
+//     totalChild: number,
+//     totalPrice: number,
+//     status: boolean,
+//     communne?: string,
+//     address?: string,
+//     departmentName: string
+// }
 
 export interface BookingDisplay{
     id: number,
@@ -41,4 +41,26 @@ export interface BookingDisplay{
     departmentDesc: string,
     idCommune: number
     commune: string
+}
+
+export interface BookingDTO{
+    id?: number,
+    checkIn?: Date,
+    checkOut?: Date,
+    totalDays: number,
+    totalAdutls: number,
+    totalChild: number,
+    totalPrice: number,
+    status: boolean,
+    communne?: string,
+    address?: string,
+    departmentName: string
+}
+
+
+export interface Booking{
+    id: number,
+    name: string,
+    address: string,
+    nameCommune: string
 }

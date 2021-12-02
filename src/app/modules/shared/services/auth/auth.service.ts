@@ -14,13 +14,15 @@ export class AuthService {
 	}
 
 	setSessionUser(user: User | null) {
+		localStorage.setItem('user', JSON.stringify(user));
 		this.$userData.next(user);
 	}
 
 	$getSerssionUser(): Observable<any>{
-		// if(!this.$userData.getValue()){
-		// 	 =sessionStorage.getItem(this.USER_KEY)
-		// }
+		if(!this.$userData.getValue()){
+			let user=JSON.parse(localStorage.getItem("user")||'');
+			this.$userData.next(user);
+		}
 		return of(this.$userData.getValue());
 	}
 

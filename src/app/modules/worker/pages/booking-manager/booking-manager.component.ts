@@ -5,6 +5,7 @@ import { CheckOutComponent } from '@worker/components/check-out/check-out.compon
 import { ExtraServicesManagerComponent } from '@worker/components/extra-services-manager/extra-services-manager.component';
 import { FinesComponent } from '@worker/components/fines/fines.component';
 import { Booking, BookingDisplay, } from 'src/app/modules/shared/interface/booking';
+import { BookingService } from 'src/app/modules/shared/services/booking/booking.service';
 
 @Component({
   selector: 'app-booking-manager',
@@ -14,11 +15,13 @@ import { Booking, BookingDisplay, } from 'src/app/modules/shared/interface/booki
 export class BookingManagerComponent implements OnInit {
 
   bookingList: BookingDisplay[];
-  constructor(private dialog: MatDialog) {
+  constructor(private dialog: MatDialog, private _booking: BookingService) {
     this.bookingList = [{id: 1, commune: "Ñuñoa" , departmentName: "Suit, paquete de verano", departmentAddress: "Torre 1234, Las Golondrinas", clientId:1, clientRut:"12.200.099-3"}] as BookingDisplay[];
    }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loadBooking();
+  }
 
     finesDialog(booking: BookingDisplay){
       const dialogConfig = new MatDialogConfig();
@@ -52,5 +55,11 @@ export class BookingManagerComponent implements OnInit {
       dialogConfig.data = { selected: booking };
 
       let resultDialog = this.dialog.open(CheckOutComponent, dialogConfig);
+    }
+
+    loadBooking(){
+      this._booking.getBooking().subscribe( result => {
+        this.bookingList = result;
+      })
     }
 }
