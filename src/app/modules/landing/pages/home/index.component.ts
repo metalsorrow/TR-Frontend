@@ -9,9 +9,11 @@ import { DepartmentService } from 'src/app/modules/shared/services/department/de
 })
 export class IndexComponent implements OnInit {
   departmentList: Department[]; 
+  loading: boolean;
   
   constructor(private _department: DepartmentService) {
     this.departmentList = [];
+    this.loading= true;
   }
 
 
@@ -20,8 +22,10 @@ export class IndexComponent implements OnInit {
   }
 
   loadDepartment(){
+    this.loading = true;
     this._department.getDepartmentsDisponibility().subscribe( response => {
       this.departmentList = response;
+      this.loading = false;
     })
   }
 

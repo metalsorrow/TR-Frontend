@@ -17,6 +17,9 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ErrorPopUpComponent } from './components/error-pop-up/error-pop-up.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [CardRegionComponent, NavbarComponent, AvatarComponent, ConfirmDialogComponent, ErrorPopUpComponent],
@@ -33,7 +36,10 @@ import { ErrorPopUpComponent } from './components/error-pop-up/error-pop-up.comp
     MatNativeDateModule,
     MatSelectModule,
     MatDialogModule,
-    HttpClientModule
+    HttpClientModule,
+    MatProgressSpinnerModule,
+    MatTableModule,
+    MatPaginatorModule,
   ],
   exports: [
     CommonModule,
@@ -51,7 +57,10 @@ import { ErrorPopUpComponent } from './components/error-pop-up/error-pop-up.comp
     MatSelectModule,
     MatDialogModule,
     AvatarComponent,
-    HttpClientModule
+    HttpClientModule,
+    MatProgressSpinnerModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
 })
 export class SharedModule {}

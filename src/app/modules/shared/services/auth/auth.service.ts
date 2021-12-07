@@ -18,7 +18,7 @@ export class AuthService {
 		this.$userData.next(user);
 	}
 
-	$getSerssionUser(): Observable<any>{
+	$getSerssionUser(): Observable<User|null>{
 		if(!this.$userData.getValue()){
 			let user=JSON.parse(localStorage.getItem("user")||'');
 			this.$userData.next(user);

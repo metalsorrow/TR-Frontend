@@ -1,57 +1,78 @@
 import { TransportFormComponent } from '@admin/components/transport-form/transport-form.component';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { ConfirmDialogComponent } from 'src/app/modules/shared/components/confirm-dialog/confirm-dialog.component';
-import { TransportDTO } from 'src/app/modules/shared/interface/transport';
+import { TransportDisplay, TransportDTO } from 'src/app/modules/shared/interface/transport';
+import { TransportService } from 'src/app/modules/shared/services/transport/transport.service';
 
 @Component({
-  selector: 'app-transport-manager',
-  templateUrl: './transport-manager.component.html',
-  styleUrls: ['./transport-manager.component.scss']
+    selector: 'app-transport-manager',
+    templateUrl: './transport-manager.component.html',
+    styleUrls: ['./transport-manager.component.scss']
 })
-export class TransportManagerComponent implements OnInit {
+export class TransportManagerComponent implements AfterViewInit {
 
-  transportList: TransportDTO[];
-  deleteText: string;
+    transportList: TransportDisplay[];
+    deleteText: string;
+    displayedColumns: string[] = ['id', 'idBooking', 'client', 'worker', 'vehicle', 'init', 'end', 'schedule', 'delete'];
+    dataSource: MatTableDataSource<TransportDisplay>;
 
-  d = new Date();
-  datestring = this.d.getDate()  + "-" + (this.d.getMonth()+1) + "-" + this.d.getFullYear() + " " +
-  this.d.getHours() + ":" + this.d.getMinutes();
+    @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  
-  constructor(private dialog: MatDialog) { 
-    this.transportList = [{id: 1, idBooking: 2, client: "User", transport: "worker", vehicle: "vehiculo 123", init:"desde", end: "hasta" , schedule: this.datestring} as TransportDTO]
-    this.deleteText = "¿Deseas confirmar la eliminacion para este registro de transporte?"
-  }
+    constructor(
+        private dialog: MatDialog,
+        private _transport: TransportService
+    ) {
+        this.transportList = []
+        this.deleteText = "¿Deseas confirmar la eliminacion para este registro de transporte?"
+    }
 
-  ngOnInit(): void {
-  }
 
-  newTransportDialog(){
-    const dialogConfig = new MatDialogConfig();
+    ngAfterViewInit(): void {
+        this.loadTranspoort();
+    }
 
-    dialogConfig.disableClose = false;
+    loadTranspoort() {
+        this._transport.getTransport().subscribe(transportList => {
+            this.transportList = transportList
+            this.dataSource = new MatTableDataSource<TransportDisplay>(this.transportList);
+            this.dataSource.paginator = this.paginator;
 
-    let resultDialog = this.dialog.open(TransportFormComponent, dialogConfig);
-  }
+        })
+    }
 
-  modifyDialog(transport: TransportDTO){
-    const dialogConfig = new MatDialogConfig();
+    newTransportDialog() {
+        const dialogConfig = new MatDialogConfig();
 
-    dialogConfig.disableClose = false;
-    dialogConfig.data = { data: transport };
+        dialogConfig.disableClose = false;
 
-    let resultDialog = this.dialog.open(TransportFormComponent, dialogConfig);
-  }
+        let resultDialog = this.dialog.open(TransportFormComponent, dialogConfig);
 
-  deleteDialog(transport: TransportDTO){
-    const dialogConfig = new MatDialogConfig();
+        resultDialog.afterClosed().subscribe(data => {
+            if (data) {
+                this.loadTranspoort();
+            }
+        })
+    }
 
-    dialogConfig.disableClose = false;
-    dialogConfig.data = { message: this.deleteText };
+    deleteDialog(transport: TransportDisplay) {
+        const dialogConfig = new MatDialogConfig();
 
-    let resultDialog = this.dialog.open(ConfirmDialogComponent, dialogConfig);
-  }
+        dialogConfig.disableClose = false;
+        dialogConfig.data = { message: this.deleteText };
+
+        let resultDialog = this.dialog.open(ConfirmDialogComponent, dialogConfig);
+
+        resultDialog.afterClosed().subscribe(data => {
+            if (data) {
+                this._transport.deleteDepartments(transport.id).subscribe(response => {
+                    this.loadTranspoort();
+                })
+            }
+        });
+    }
 
 }
 

@@ -27,7 +27,7 @@
             <div class="row p-3">
                 <h2 class="col-12 text-center">Departamentos Disponibles</h2>
             </div>
-            <div class="row">
+            <div class="row" *ngIf="!loading">
                 <mat-card *ngFor="let department of departmentList" class="m-auto col-12 col-md-3">
                     <mat-card-header>
                       <div mat-card-avatar class="example-header-image"></div>
@@ -55,9 +55,12 @@
                       </p>
                     </mat-card-content>
                     <mat-card-actions>
-                        <button (click)="$event.preventDefault()" [routerLink]="['/department',department.id]" mat-raised-button>Mas Informacion</button>
+                        <button (click)="$event.preventDefault()" [routerLink]="['/client/department',department.id]" mat-raised-button>Mas Informacion</button>
                     </mat-card-actions>
                   </mat-card>
+            </div>
+            <div class="row">
+                <mat-spinner class="m-auto" *ngIf="loading"></mat-spinner>
             </div>
         </div>
     </main>

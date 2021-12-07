@@ -45,16 +45,19 @@ export interface BookingDisplay{
 
 export interface BookingDTO{
     id?: number,
-    checkIn?: Date,
-    checkOut?: Date,
+    checkInPlanning?: string,
+    checkOut?: string,
     totalDays: number,
-    totalAdutls: number,
-    totalChild: number,
-    totalPrice: number,
-    status: boolean,
+    totalAdults: number,
+    totalKids: number,
+    totalBabies: number,
+    totalReserve: number,
+    statusReserve: number,
+    departmentId?: number,
+    clientId?: number,
     communne?: string,
     address?: string,
-    departmentName: string
+    departmentName?: string
 }
 
 

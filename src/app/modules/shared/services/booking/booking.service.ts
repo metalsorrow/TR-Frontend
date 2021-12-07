@@ -24,13 +24,15 @@ export class BookingService {
         return this.http.get<BookingDisplay[]>(BookingRoutes.GET_BOOKING_BY_CLIENT).pipe(
             map((response: any) => {
                 if (response) {
-                    let responseFormated = response.departments.map((data: any) => {
+                    console.log(response);
+                    let responseFormated = response.reserves.map((data: any) => {
                         let json = {
                             id: Number(data.id),
                             planifiedCheckIn: data.planifiedCheckIn,
                             checkIn: data.checkIn,
                             checkOut: data.checkOut,
-                            totalDays: data.totalDays
+                            totalDays: data.totalDays,
+                            departmentAddress: data.departmentAdress,
                         } as BookingDisplay
                         return json
                     });

@@ -86,7 +86,6 @@ export class DepartmentService {
   return this.http.get<Department[]>(DepartmentRoutes.GET_DEPARTMENT_DISPONIBILITY,{headers: headers, params: params} ).pipe(
     map((response: any) => {
       if (response) {
-        console.log('departmentByDisponibility', response);
         let responseFormated = response.departments.map((data: any) => {
           let json = {
             id: Number(data.id),
@@ -102,7 +101,7 @@ export class DepartmentService {
             furnished: Number(data.furnished),
             departmentPrice: Number(data.departmentPrice),
             departmentStatus: Number(data.departmentStatus),
-            departmentDesc: data.departmentDesc,
+            departmentDesc: data.description,
             ubicacion: data.ubicacion
           } as Department
           return json
@@ -124,7 +123,8 @@ export class DepartmentService {
       ).pipe(
       map((response: any) => {
         if (response) {
-          let responseFormated = response.departments.map((data: any) => {
+          console.log(response);
+          let responseFormated = response.department.map((data: any) => {
             let json = {
               id: Number(data.id),
               name: data.name,
@@ -138,14 +138,14 @@ export class DepartmentService {
               furnished: Number(data.furnished),
               departmentPrice: Number(data.departmentPrice),
               departmentStatus: Number(data.departmentStatus),
-              departmentDesc: data.departmentDesc,
+              departmentDesc: data.description,
               idCommune: data.idCommune,
               nameCommune: data.nameCommune
             } as Department
             return json
           });
 
-          return responseFormated;
+          return responseFormated[0];
         }
         throw new Error('Error from api');
       }),

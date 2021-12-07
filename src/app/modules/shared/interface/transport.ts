@@ -1,13 +1,19 @@
 export interface TransportDTO{
-    id?: number,
-    idBooking?: number,
-    client?: string,
-    transport?: string,
+    place: string,
+    time: string,
+    vehicle: string,
+    idReserve: number,
+    idWorker: number
+}
+
+export interface TransportDisplay{
+    id: number,
+    idBooking: number,
+    client: string,
+    worker: string,
+    vehicle: string,
     init: string,
     end: string,
-    schedule: string,
-    vehicle: string,
-    state: string,
-    bookingId: number,
-    transporterId: number
+    schedule: string
 }
+

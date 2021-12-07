@@ -28,5 +28,4 @@ export class DepartmentDetailLoginComponent implements OnInit {
     })
   }
 
-
 }

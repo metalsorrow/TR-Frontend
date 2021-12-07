@@ -4,7 +4,7 @@
             <h2 class="text-center">Listado de Reservas</h2>
         </div>
     </div>
-    <div class="row">
+    <!-- <div class="row">
         <table class="table">
             <thead>
                 <tr>
@@ -43,6 +43,59 @@
                 </tr>
             </tbody>
         </table>
+    </div> -->
+    <div class="row">
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource">
+          
+              <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> Id </th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+              </ng-container>
+          
+              <ng-container matColumnDef="nameDepto">
+                <th mat-header-cell *matHeaderCellDef> Nombre Departamento </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+              </ng-container>
+          
+              <ng-container matColumnDef="commune">
+                <th mat-header-cell *matHeaderCellDef> Comuna </th>
+                <td mat-cell *matCellDef="let element"> {{element.nameCommune}} </td>
+              </ng-container>
+          
+              <ng-container matColumnDef="address">
+                <th mat-header-cell *matHeaderCellDef> Direccion </th>
+                <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+              </ng-container>
+          
+              <ng-container matColumnDef="details">
+                <th mat-header-cell *matHeaderCellDef> Detalles </th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-flat-button color="primary" (click)="detailDialog(element)">
+                        Ver detalles
+                    </button>    
+                </td>
+              </ng-container>
+          
+              <ng-container matColumnDef="extraService">
+                <th mat-header-cell *matHeaderCellDef> Servicios Extra </th>
+                <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+              </ng-container>
+          
+              <ng-container matColumnDef="cancel">
+                <th mat-header-cell *matHeaderCellDef> Cancelar </th>
+                <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+              </ng-container>
+          
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+          
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                           showFirstLastButtons 
+                           aria-label="Select page of periodic elements">
+            </mat-paginator>
+          </div>
     </div>
 </div>
 

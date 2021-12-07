@@ -3,3 +3,24 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-button.mat-primary,
+.mat-stroked-button.mat-primary {
+    color: #d5bb7b;
+}
+.mat-button.mat-primary:hover,
+.mat-stroked-button.mat-primary:hover {
+  background-color: #ffffff;
+}
+
+.mat-raised-button.mat-primary,
+.mat-flat-button.mat-primary,
+.mat-fab.mat-primary,
+.mat-mini-fab.mat-primary {
+  color: #ffffff;
+  background-color: #d5bb7b;
+}
+
+.mat-icon-button.mat-primary {
+  color:#d5bb7b;
+}
