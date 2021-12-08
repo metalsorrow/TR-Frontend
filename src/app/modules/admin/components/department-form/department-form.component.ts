@@ -32,11 +32,13 @@ export class DepartmentFormComponent implements OnInit {
         heating: new FormControl(''),
         internet: new FormControl(''),
         tv: new FormControl(''),
+        file: new FormControl(''),
     });
 
     regionList: Region[];
     communeList: Commune[];
     cityList: City[];
+    image: any;
 
     constructor(
         public dialogRef: MatDialogRef<DepartmentFormComponent>,
@@ -101,6 +103,8 @@ export class DepartmentFormComponent implements OnInit {
         let newDepartment: Department;
 
         if (!this.data?.department) {
+            // const formData = new FormData();
+            // formData.append('file', this.formDepartment.get('file')?.value)
             newDepartment = {
                 address: this.formDepartment.controls['address'].value,
                 departmentDesc: this.formDepartment.controls['description'].value,
@@ -114,13 +118,15 @@ export class DepartmentFormComponent implements OnInit {
                 totalBaths: this.formDepartment.controls['totalBaths'].value,
                 totalParking: this.formDepartment.controls['totalParking'].value,
                 totalRooms: this.formDepartment.controls['totalRooms'].value,
-                tv: this.formDepartment.controls['tv'].value
+                tv: this.formDepartment.controls['tv'].value,
+                imgB64: this.image.split('base64,')[1]
             }
             this._department.createDepartment(newDepartment).subscribe(response => {
                 this.continue();
             })
             return true;
         } else {
+
             newDepartment = {
                 id: this.data.department.id,
                 address: this.formDepartment.controls['address'].value,
@@ -146,9 +152,30 @@ export class DepartmentFormComponent implements OnInit {
         }
     }
 
-    handleFile(event: Event) {
-        console.log('handle foto');
+    changeListener($event: any) : void {
+        this.readThis($event.target);
     }
+    readThis(inputValue: any): void {
+        var file:File = inputValue.files[0];
+        var myReader:FileReader = new FileReader();
+      
+        myReader.onloadend = (e) => {
+          this.image = myReader.result;
+        }
+        myReader.readAsDataURL(file);
+      }
+
+
+    // onFileChange($event: any) {
+  
+    //     if ($event.target.files.length > 0) {
+    //       const file = $event.target.files[0];
+    //       this.formDepartment.patchValue({
+    //         file: file
+    //       });
+    //     }
+    //   }
+         
 
     continue() {
         this.dialogRef.close(true);

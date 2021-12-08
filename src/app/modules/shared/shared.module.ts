@@ -20,6 +20,7 @@ import { ErrorPopUpComponent } from './components/error-pop-up/error-pop-up.comp
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [CardRegionComponent, NavbarComponent, AvatarComponent, ConfirmDialogComponent, ErrorPopUpComponent],
@@ -40,6 +41,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatProgressSpinnerModule,
     MatTableModule,
     MatPaginatorModule,
+    MatSidenavModule
   ],
   exports: [
     CommonModule,
@@ -60,7 +62,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     HttpClientModule,
     MatProgressSpinnerModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSidenavModule
   ],
 })
 export class SharedModule {}

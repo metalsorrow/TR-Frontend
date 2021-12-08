@@ -37,11 +37,15 @@
                     <mat-label>Descripcion</mat-label>
                     <textarea matInput formControlName="description"></textarea>
                 </mat-form-field>
-                <div (click)="handleFile($event)">
+                <div>
                     <p>Agregar Fotos:</p>
-                    <span class="material-icons">
-                        file_upload
-                    </span>
+                    <button (click)="fileInput.click()">
+                        <span class="material-icons">
+                            file_upload
+                        </span>
+                        <input #fileInput formControlName="file" type="file" (change)="changeListener($event)" style="display:none;" />
+                    </button>
+
                 </div>
             </div>
             <div class="col-6">

@@ -6,6 +6,7 @@ import { Department } from 'src/app/modules/shared/interface/department';
 import { AuthService } from 'src/app/modules/shared/services/auth/auth.service';
 import { BookingService } from 'src/app/modules/shared/services/booking/booking.service';
 import { DepartmentService } from 'src/app/modules/shared/services/department/department.service';
+import { DomSanitizer } from '@angular/platform-browser';
 import Swal from 'sweetalert2';
 
 
@@ -39,6 +40,7 @@ export class DepartmentDetailComponent implements OnInit {
     private _auth: AuthService,
     private route: ActivatedRoute,
     private router: Router,
+    private _sanitizer: DomSanitizer
     ) {
     this.department = null;
     this.total = 0;
@@ -60,6 +62,10 @@ export class DepartmentDetailComponent implements OnInit {
     this.loading = true;
     this._department.getDepartmentsbyId(id).subscribe( result => {
       this.department = result;
+      if(this.department){
+        // this.department.path = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + result.imgB64) || '' ;
+        this.department.path = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + result.imgB64) || '' ;
+      }
       this.loading = false;
     })
   }

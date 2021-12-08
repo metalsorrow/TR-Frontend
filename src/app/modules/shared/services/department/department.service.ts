@@ -102,7 +102,8 @@ export class DepartmentService {
             departmentPrice: Number(data.departmentPrice),
             departmentStatus: Number(data.departmentStatus),
             departmentDesc: data.description,
-            ubicacion: data.ubicacion
+            ubicacion: data.ubicacion,
+            imgB64: data.imgB64
           } as Department
           return json
         });
@@ -140,7 +141,8 @@ export class DepartmentService {
               departmentStatus: Number(data.departmentStatus),
               departmentDesc: data.description,
               idCommune: data.idCommune,
-              nameCommune: data.nameCommune
+              nameCommune: data.nameCommune,
+              imgB64: data.imgB64
             } as Department
             return json
           });
