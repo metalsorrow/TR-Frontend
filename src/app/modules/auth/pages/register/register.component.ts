@@ -9,6 +9,7 @@ import { CityService } from 'src/app/modules/shared/services/city/city.service';
 import { CommuneService } from 'src/app/modules/shared/services/commune/commune.service';
 import { RegionService } from 'src/app/modules/shared/services/region/region.service';
 import { UserService } from 'src/app/modules/shared/services/user/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-register',
@@ -83,6 +84,11 @@ export class RegisterComponent implements OnInit {
 
         if (newUser.pass === confirmPass) {
             this._user.createUser(newUser).subscribe(result => {
+                Swal.fire(
+                    'Cuenta creada satisfactoriamente!',
+                    `Estimado ${newUser.firstName} ${newUser.lastNameP}, Bienvenido!. Ya puede ingresar al portal utilizando su correo "${newUser.mail}".` ,
+                    'success'
+                )
                 this.router.navigate(['/','auth']);
             })
         } else {

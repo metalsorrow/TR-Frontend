@@ -4,23 +4,47 @@
             Ingreso de Multas
         </h3>
     </div>
-    <form action="">
+    <form  [formGroup]="formFines">
         <div class="row">
             <mat-form-field class="w-100" appearance="fill">
                 <mat-label>Cantidad de veces inflingida</mat-label>
-                <mat-select>
+                <mat-select formControlName="quantity">
                   <mat-option *ngFor="let index of [1,2,3,4,5,6,7]" [value]="index">{{index}}</mat-option>
                 </mat-select>
               </mat-form-field>
                 <mat-form-field class="w-100" appearance="fill">
                     <mat-label>Multas Disponibles</mat-label>
-                    <mat-select>
+                    <mat-select formControlName="fineType">
                         <mat-option *ngFor="let finesType of finesTypeList" [value]="finesType.id">{{finesType.name + ' - $' + finesType.price}}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
             <div class="row">
-                <button mat-raised-button class="w-100" (click)="registerFine()">Agregar Multa</button>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Tipo Multa</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Borrar registro</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let currentFines of finesList">
+                            <td>{{currentFines.id}}</td>
+                            <td>{{currentFines.name}}</td>
+                            <td>{{currentFines.totalPrice}}</td>
+                            <td>
+                                <button (click)="deleteFines($event, currentFines)" mat-fab color="warn" >
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row">
+                <button mat-raised-button class="w-100" (click)="registerFine($event)">Agregar Multa</button>
             </div>
     </form>
 </div>

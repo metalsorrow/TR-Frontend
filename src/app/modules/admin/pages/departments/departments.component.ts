@@ -6,6 +6,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'src/app/modules/shared/components/confirm-dialog/confirm-dialog.component';
 import { Department } from 'src/app/modules/shared/interface/department';
 import { DepartmentService } from 'src/app/modules/shared/services/department/department.service';
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-departments',
@@ -72,6 +73,11 @@ export class DepartmentsComponent implements OnInit {
         resultDialog.afterClosed().subscribe(data => {
             if (data && department.id) {
                 this._department.deleteDepartments(department.id).subscribe( (result: any) => {
+                    Swal.fire(
+                        'Departamento eliminado!',
+                        `Departamento "${department.id}" modificado satisfactoriamente.` ,
+                        'success'
+                    )
                     this.loadDepartment();
                 })
             }

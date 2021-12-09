@@ -8,6 +8,7 @@ import { CityService } from 'src/app/modules/shared/services/city/city.service';
 import { CommuneService } from 'src/app/modules/shared/services/commune/commune.service';
 import { DepartmentService } from 'src/app/modules/shared/services/department/department.service';
 import { RegionService } from 'src/app/modules/shared/services/region/region.service';
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-department-form',
@@ -122,6 +123,11 @@ export class DepartmentFormComponent implements OnInit {
                 imgB64: this.image.split('base64,')[1]
             }
             this._department.createDepartment(newDepartment).subscribe(response => {
+                Swal.fire(
+                    'Departamento ingresado!',
+                    `Departamento "${newDepartment.name}" creado satisfactoriamente.` ,
+                    'success'
+                )
                 this.continue();
             })
             return true;
@@ -144,7 +150,13 @@ export class DepartmentFormComponent implements OnInit {
                 tv: this.formDepartment.controls['tv'].value
             }
 
+            
             this._department.updateDepartment(newDepartment).subscribe(response => {
+                Swal.fire(
+                    'Departamento modificado!',
+                    `Departamento "${newDepartment.id}" modificado satisfactoriamente.` ,
+                    'success'
+                )
                 this.continue();
             })
 
@@ -155,6 +167,7 @@ export class DepartmentFormComponent implements OnInit {
     changeListener($event: any) : void {
         this.readThis($event.target);
     }
+    
     readThis(inputValue: any): void {
         var file:File = inputValue.files[0];
         var myReader:FileReader = new FileReader();

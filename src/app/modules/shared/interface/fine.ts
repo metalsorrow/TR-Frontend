@@ -1,6 +1,10 @@
 export interface Fine {
-    name: string,
-    totalPrice: number    
+    id?: number,
+    name?: string,
+    totalPrice: number,
+    bookingId?: number,  
+    fineTypeId?: number,  
+    quantity?: number,  
 }
 export interface FinesType {
     id: number,
