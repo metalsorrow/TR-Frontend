@@ -30,24 +30,11 @@ export class BookingComponent implements AfterViewInit {
     this.deleteText = "¿Confirma la eliminacion de esta reserva?"
     this.bookingList = [
       {id: 1, nameCommune: "Ñuñoa" , name: "Suit, paquete de verano", address: "Torre 1234, Las Golondrinas"} as Booking,
-      {id: 2, nameCommune: "Ñuñoa" , name: "Suit, paquete de verano", address: "Torre 1234, Las Golondrinas"} as Booking,
-      {id: 1, nameCommune: "Ñuñoa" , name: "Suit, paquete de verano", address: "Torre 1234, Las Golondrinas"} as Booking,
-      {id: 2, nameCommune: "Ñuñoa" , name: "Suit, paquete de verano", address: "Torre 1234, Las Golondrinas"} as Booking,
-      {id: 1, nameCommune: "Ñuñoa" , name: "Suit, paquete de verano", address: "Torre 1234, Las Golondrinas"} as Booking,
-      {id: 2, nameCommune: "Ñuñoa" , name: "Suit, paquete de verano", address: "Torre 1234, Las Golondrinas"} as Booking,
-      {id: 1, nameCommune: "Ñuñoa" , name: "Suit, paquete de verano", address: "Torre 1234, Las Golondrinas"} as Booking,
-      {id: 2, nameCommune: "Ñuñoa" , name: "Suit, paquete de verano", address: "Torre 1234, Las Golondrinas"} as Booking,
-      {id: 1, nameCommune: "Ñuñoa" , name: "Suit, paquete de verano", address: "Torre 1234, Las Golondrinas"} as Booking,
-      {id: 2, nameCommune: "Ñuñoa" , name: "Suit, paquete de verano", address: "Torre 1234, Las Golondrinas"} as Booking,
-      {id: 1, nameCommune: "Ñuñoa" , name: "Suit, paquete de verano", address: "Torre 1234, Las Golondrinas"} as Booking,
-      {id: 2, nameCommune: "Ñuñoa" , name: "Suit, paquete de verano", address: "Torre 1234, Las Golondrinas"} as Booking,
-      {id: 1, nameCommune: "Ñuñoa" , name: "Suit, paquete de verano", address: "Torre 1234, Las Golondrinas"} as Booking,
     ];
     this.dataSource = new MatTableDataSource<Booking>(this.bookingList);
   }
 
   ngAfterViewInit(): void {  
-    this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
   }
 

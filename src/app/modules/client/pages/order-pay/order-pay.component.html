@@ -1,0 +1,77 @@
+<div class="todo">
+    <div class="LogoSlogan">
+      <img src="../../../../../assets/images/fondos/LogoSombreado.png" alt="">
+    </div>
+    <div class="container p-5">
+      <div class="row">
+        <div class="col">
+          <h2 class="text-center">Registro de Ordenes de Pago</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="mat-elevation-z8">
+          <table mat-table [dataSource]="dataSource">
+  
+            <ng-container matColumnDef="ID">
+              <th mat-header-cell *matHeaderCellDef> ID </th>
+              <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="Precio Total">
+              <th mat-header-cell *matHeaderCellDef> Precio Total </th>
+              <td mat-cell *matCellDef="let element"> {{element.totalPrice}} </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="Estado">
+              <th mat-header-cell *matHeaderCellDef> Estado </th>
+              <td mat-cell *matCellDef="let element"> {{element.estado}} </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="Registro">
+              <th mat-header-cell *matHeaderCellDef> Registro </th>
+              <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="ID Reserva">
+              <th mat-header-cell *matHeaderCellDef> ID Reserva </th>
+              <td mat-cell *matCellDef="let element"> {{element.idBooking}} </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="Realizar Pago">
+                <th mat-header-cell *matHeaderCellDef> Realizar Pago </th>
+                <td mat-cell *matCellDef="let element">
+                  <button mat-flat-button color="primary" [disabled]="element.estado != 'inpago'" (click)="generatePay($event ,element)">
+                    <span class="material-icons">
+                        credit_card
+                    </span>
+                  </button>
+                </td>
+            </ng-container>
+  
+  
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+  
+          <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+            aria-label="Select page of periodic elements">
+          </mat-paginator>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  
+<form method="post" [action]="pay.url">
+    <input type="hidden" name="token_ws" [value]="pay.token" />
+    <input type="submit" value="Ir a pagar" />
+</form>
+
+<form ngNoForm
+  [formGroup]="testGroup"
+  [action]='pay.url'
+  method='POST'
+  #testForm>
+    <input name='token_ws' type='hidden' [value]='pay.token'>
+</form>

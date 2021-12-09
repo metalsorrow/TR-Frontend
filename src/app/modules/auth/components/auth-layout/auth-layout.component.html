@@ -4,7 +4,7 @@
             <img class="logodentromenu" src="../../../../../assets/images/fondos/LogoDentroMenu.png" alt="">
 
             <li class="nav-el">
-                <a [routerLink]="['/auth']" class="nav-link text-truncate">
+                <a [routerLink]="['/auth']" data-bs-toggle="collapse" class="nav-link text-truncate">
                     <span class="textomenu">Iniciar Sesion</span>
                 </a>
             </li>
@@ -29,30 +29,5 @@
     </div>
 
 </mat-drawer-container>
-
-
-
-
-
-<div class="offcanvas offcanvas-start w-25" tabindex="-1" id="offcanvas" data-bs-keyboard="false" data-bs-backdrop="false">
-    <div class="offcanvas-header">
-        <h3 class="offcanvas-title d-none d-sm-block" id="offcanvas">navegacion</h3>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body px-0">
-        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-start">
-
-        </ul>
-    </div>
-</div>
-    <!-- toggler -->
-    <button class="btn float-start" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button">
-        <button class="btn float-end" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button">
-            <mat-icon>menu</mat-icon>
-        </button>
-    </button>
-<main class="container mw-100">
-    <router-outlet></router-outlet>
-</main>
 
 

@@ -36,7 +36,7 @@
                     <td>{{booking.clientRut}}</td>
                     <td>{{booking.clientName}}</td>
                     <td>
-                        <button type="button" mat-stroked-button (click)="finesDialog(booking)">
+                        <button type="button" mat-flat-button color="primary" (click)="finesDialog(booking)">
                             Gestionar
                         </button>
                     </td>
@@ -97,8 +97,10 @@
               <ng-container matColumnDef="Multas">
                 <th mat-header-cell *matHeaderCellDef> Multas </th>
                 <td mat-cell *matCellDef="let element">
-                    <button type="button" mat-stroked-button (click)="finesDialog(element)">
-                        Gestionar
+                    <button type="button" mat-flat-button color="primary" (click)="finesDialog(element)">
+                        <span class="material-icons">
+                            receipt_long
+                        </span>
                     </button>
                 </td>
               </ng-container>
@@ -106,8 +108,10 @@
               <ng-container matColumnDef="Servicios_Extras">
                 <th mat-header-cell *matHeaderCellDef> Servicios Extras </th>
                 <td mat-cell *matCellDef="let element">
-                    <button type="button" mat-stroked-button (click)="extraServicesDialog(element)">
-                        Gestionar
+                    <button type="button" mat-flat-button color="primary" (click)="extraServicesDialog(element)">
+                        <span class="material-icons">
+                            bookmark_add
+                        </span>
                     </button>
                 </td>
               </ng-container>
@@ -115,8 +119,10 @@
               <ng-container matColumnDef="Check-IN">
                 <th mat-header-cell *matHeaderCellDef> Check-IN </th>
                 <td mat-cell *matCellDef="let element">
-                    <button type="button" mat-stroked-button (click)="checkInDialog(element)">
-                        Gestionar
+                    <button type="button" mat-flat-button color="primary" (click)="checkInDialog(element)">
+                        <span class="material-icons">
+                            login
+                        </span>
                     </button>
                 </td>
               </ng-container>
@@ -125,7 +131,7 @@
                 <td mat-cell *matCellDef="let element">
                     <button mat-flat-button color="primary" (click)="checkOutDialog(element)">
                         <span class="material-icons">
-                            delete
+                            logout
                         </span>
                     </button>  
                 </td>

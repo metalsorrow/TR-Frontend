@@ -1,89 +1,86 @@
-
 <div class="todo">
   <div class="LogoSlogan">
     <img src="../../../../../assets/images/fondos/LogoSombreado.png" alt="">
   </div>
-<div class="container p-5">
+  <div class="container p-5">
     <div class="row">
 
     </div>
     <div class="row">
-        <div class="col d-flex btn-pointer" 
-            (click)="newTransportDialog()" >
-            <div class="BotonAgregar">
-              <img class="wimage" src="../../../../../assets/images/botones/AgregarButton.png" alt="">
-            </div>
+      <div class="col d-flex btn-pointer" (click)="newTransportDialog()">
+        <div class="BotonAgregar">
+          <img class="wimage" src="../../../../../assets/images/botones/AgregarButton.png" alt="">
         </div>
-        <div class="col">
-            <h2>Mantenedor de Tranportes</h2>
-        </div>
-        <div class="col"></div>
+      </div>
+      <div class="col">
+        <h2>Mantenedor de Tranportes</h2>
+      </div>
+      <div class="col"></div>
     </div>
     <div class="row">
-        <div class="mat-elevation-z8">
-            <table mat-table [dataSource]="dataSource">
-          
-              <ng-container matColumnDef="id">
-                <th mat-header-cell *matHeaderCellDef> ID Transporte </th>
-                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-              </ng-container>
-          
-              <ng-container matColumnDef="idBooking">
-                <th mat-header-cell *matHeaderCellDef> ID Reserva </th>
-                <td mat-cell *matCellDef="let element"> {{element.idBooking}} </td>
-              </ng-container>
-          
-              <ng-container matColumnDef="client">
-                <th mat-header-cell *matHeaderCellDef> Cliente </th>
-                <td mat-cell *matCellDef="let element"> {{element.client}} </td>
-              </ng-container>
-          
-              <ng-container matColumnDef="worker">
-                <th mat-header-cell *matHeaderCellDef> Transportista </th>
-                <td mat-cell *matCellDef="let element"> {{element.worker}} </td>
-              </ng-container>
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource">
 
-              <ng-container matColumnDef="vehicle">
-                <th mat-header-cell *matHeaderCellDef> Vehiculo de Transportista </th>
-                <td mat-cell *matCellDef="let element"> {{element.vehicle}} </td>
-              </ng-container>
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> ID Transporte </th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+          </ng-container>
 
-              <ng-container matColumnDef="init">
-                <th mat-header-cell *matHeaderCellDef> Inicio de Transporte </th>
-                <td mat-cell *matCellDef="let element"> {{element.init}} </td>
-              </ng-container>
+          <ng-container matColumnDef="idBooking">
+            <th mat-header-cell *matHeaderCellDef> ID Reserva </th>
+            <td mat-cell *matCellDef="let element"> {{element.idBooking}} </td>
+          </ng-container>
 
-              <ng-container matColumnDef="end">
-                <th mat-header-cell *matHeaderCellDef> Destino de Transporte </th>
-                <td mat-cell *matCellDef="let element"> {{element.end}} </td>
-              </ng-container>
+          <ng-container matColumnDef="client">
+            <th mat-header-cell *matHeaderCellDef> Cliente </th>
+            <td mat-cell *matCellDef="let element"> {{element.client}} </td>
+          </ng-container>
 
-              <ng-container matColumnDef="schedule">
-                <th mat-header-cell *matHeaderCellDef> Hora de Encuentro </th>
-                <td mat-cell *matCellDef="let element"> {{element.schedule}} </td>
-              </ng-container>
+          <ng-container matColumnDef="worker">
+            <th mat-header-cell *matHeaderCellDef> Transportista </th>
+            <td mat-cell *matCellDef="let element"> {{element.worker}} </td>
+          </ng-container>
 
-              <ng-container matColumnDef="delete">
-                <th mat-header-cell *matHeaderCellDef> Eliminar </th>
-                <td mat-cell *matCellDef="let element">
-                    <button mat-flat-button color="primary" (click)="deleteDialog(element)">
-                        <span class="material-icons">
-                            delete
-                        </span>
-                    </button>  
-                </td>
-              </ng-container>
-          
-          
-              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table>
-          
-            <mat-paginator [pageSizeOptions]="[5, 10, 20]"
-                           showFirstLastButtons 
-                           aria-label="Select page of periodic elements">
-            </mat-paginator>
-          </div>
+          <ng-container matColumnDef="vehicle">
+            <th mat-header-cell *matHeaderCellDef> Vehiculo de Transportista </th>
+            <td mat-cell *matCellDef="let element"> {{element.vehicle}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="init">
+            <th mat-header-cell *matHeaderCellDef> Inicio de Transporte </th>
+            <td mat-cell *matCellDef="let element"> {{element.init}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="end">
+            <th mat-header-cell *matHeaderCellDef> Destino de Transporte </th>
+            <td mat-cell *matCellDef="let element"> {{element.end}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="schedule">
+            <th mat-header-cell *matHeaderCellDef> Hora de Encuentro </th>
+            <td mat-cell *matCellDef="let element"> {{element.schedule}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef> Eliminar </th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-flat-button color="primary" (click)="deleteDialog(element)">
+                <span class="material-icons">
+                  delete
+                </span>
+              </button>
+            </td>
+          </ng-container>
+
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+          aria-label="Select page of periodic elements">
+        </mat-paginator>
+      </div>
     </div>
-</div>
+  </div>
 </div>

@@ -1,43 +1,49 @@
-<nav class="offcanvas offcanvas-start w-25" tabindex="-1" id="offcanvas" data-bs-keyboard="false" data-bs-backdrop="false">
-    <div class="offcanvas-header">
-        <h3 class="offcanvas-title d-none d-sm-block" id="offcanvas">Menu</h3>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body px-0">
-        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-start" id="menu">
-            <li class="nav-item w-100">
-                <a [routerLink]="['/client']" class="nav-link text-truncate w-100">
-                    <span class="ms-1 d-none d-sm-inline">Inicio</span> <i class="fs-5 bi-house"></i>
+
+
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer  #drawer class="example-sidenav navbar menucompleto" mode="over">
+        <ul class="menu" id="menu">
+            <img class="logodentromenu" src="../../../../../assets/images/fondos/LogoDentroMenu.png" alt="">
+            <li class="nav-el">
+                <a [routerLink]="['/client']"   data-bs-toggle="collapse" class="nav-link text-truncate">
+                    <span class="textomenu">Inicio</span>
                 </a>
             </li>
-            <li class="nav-item w-100">
-                <a [routerLink]="['/client','booking']" data-bs-toggle="collapse" class="nav-link text-truncate w-100">
-                    <span class="ms-1 d-none d-sm-inline">Modificar o Cancelar Reservas</span>
+            <li class="nav-el">
+                <a [routerLink]="['/client','booking'] " data-bs-toggle="collapse" class="nav-link text-truncate">
+                    <span class="textomenu">Modificar o Cancelar Reservas</span>
                 </a>
             </li>
-            <li class="nav-item w-100">
-                <a [routerLink]="[]" data-bs-toggle="collapse" class="nav-link text-truncate w-100">
-                    <span class="ms-1 d-none d-sm-inline">Quienes Somos</span>
+            <li class="nav-el">
+                <a [routerLink]="['/client','order'] " data-bs-toggle="collapse" class="nav-link text-truncate">
+                    <span class="textomenu">Ordenes de Pago</span>
                 </a>
             </li>
-            <li class="nav-item w-100">
-                <a [routerLink]="[]" data-bs-toggle="collapse" class="nav-link text-truncate w-100">
-                    <span class="ms-1 d-none d-sm-inline">Contactenos</span>
+            <li class="nav-el">
+                <a [routerLink]="[] " data-bs-toggle="collapse" class="nav-link text-truncate">
+                    <span class="textomenu">Quienes Somos</span>
                 </a>
             </li>
-            <li class="nav-item w-100">
-                <a  (click)="logout($event)" data-bs-toggle="collapse" class="nav-link text-truncate w-100">
-                    <span class="ms-1 d-none d-sm-inline">Cerrar Sesion</span>
+            <li class="nav-el">
+                <a [routerLink]="[] " data-bs-toggle="collapse" class="nav-link text-truncate">
+                    <span class="textomenu">Contactenos</span>
+                </a>
+            </li>
+            <li class="nav-el">
+                <a  (click)="logout($event) " data-bs-toggle="collapse" class="nav-link text-truncate">
+                    <span class="textomenu">Cerrar Sesion</span>
                 </a>
             </li>
         </ul>
+    </mat-drawer>
+
+    <div class="example-sidenav-content">
+        <button class="botonmenulineas" type="button" mat-button (click)="drawer.toggle()">
+            <img class="logodentromenu" src="../../../../../assets/images/botones/MenuButtonLineas.png" alt="">
+        </button>
+        <router-outlet></router-outlet>
     </div>
-</nav>
-<header>
-    <button class="btn float-start" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button">
-        <mat-icon>Menu</mat-icon>
-    </button>
-</header>
-<main >
-    <router-outlet></router-outlet>
-</main>
+
+</mat-drawer-container>
+
+

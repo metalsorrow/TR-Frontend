@@ -4,7 +4,7 @@ import { catchError, map } from 'rxjs/operators';
 import { Booking, BookingDisplay, BookingDTO } from '../../interface/booking';
 
 export enum BookingRoutes {
-    GET_BOOKING_BY_CLIENT = "/api/reserve",
+    GET_BOOKING_BY_CLIENT = "/api/reserveByUser",
     GET_BOOKING = "/api/reserve",
     DELETE_BOOKING = "/api/reserve",
     PUT_BOOKING = "/api/reserve",
