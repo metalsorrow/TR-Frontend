@@ -1,11 +1,12 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { CheckOut } from '../../interface/checkout';
 
 export enum checkoutRoutes {
-  GET_CHECKOUT = "/api/getCheckout"
+  GET_CHECKOUT = "/api/getCheckout",
+  PUT_CHECKOUT = "/api/getCheckout"
 }
 
 @Injectable({
@@ -17,32 +18,23 @@ export class CheckOutService {
 
 
   getCheckout(id: number): Observable<any> {
-    return this.http.get<CheckOut>(checkoutRoutes.GET_CHECKOUT).pipe(
+    const headers = new HttpHeaders().append('Content-Type', 'application/json');
+    const params = new HttpParams().append('id', id);
+    return this.http.get<CheckOut>(checkoutRoutes.GET_CHECKOUT,{ headers, params}).pipe(
       map((response: any) => {
+        console.log(response);
         if (response) {
-          let responseFormated = response.departments.map((data: any) => {
-            let json = {
-              id: Number(data.id),
-              name: data.name,
-              address: data.address,
-              totalRooms: Number(data.totalRooms),
-              totalParking: Number(data.totalParking),
-              totalBaths: Number(data.totalBaths),
-              internet: Number(data.internet),
-              tv: Number(data.tv),
-              heating: Number(data.heating),
-              departmentImage: base64.file,
-              furnished: Number(data.furnished),
-              departmentPrice: Number(data.departmentPrice),
-              departmentStatus: Number(data.departmentStatus),
-              departmentDesc: data.departmentDesc,
-              idCommune: data.idCommune,
-              nameCommune: data.nameCommune
-            } as Department
-            return json
-          });
-
-          return responseFormated;
+            let json: CheckOut = {
+              multaList: response.fines,
+              extraServicesList: response.servex,
+              totalMulta: response.fines.reduce( (count: number, current: any) => { return current.subTotal + count},0),
+              totalExtraServices: response.servex.reduce( (count: number, current: any) => {return current.subTotal + count},0),
+              idBooking: response.reserve[0].id, 
+              checkin: response.reserve[0].checkIn, 
+              checkout: response.reserve[0].checkOut, 
+              totalBooking: response.reserve[0].totalReserve,
+            };
+          return json;
         }
         throw new Error('Error from api');
       }),
@@ -50,8 +42,8 @@ export class CheckOutService {
     );
   }
 
-  updateDepartment(department: Department): Observable<any> {
-    return this.http.put<{ ok: string }>(DepartmentRoutes.POST_DEPARTMENT, department).pipe(
+  generateCheckout(id: number): Observable<any> {
+    return this.http.put<{ ok: string }>(checkoutRoutes.PUT_CHECKOUT, {id: id}).pipe(
       map((response: any) => {
         if (response) {
           return response

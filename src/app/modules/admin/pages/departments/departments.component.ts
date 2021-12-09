@@ -1,8 +1,11 @@
 import { DepartmentFormComponent } from '@admin/components/department-form/department-form.component';
 import { InventoryDisplayComponent } from '@admin/components/inventory-display/inventory-display.component';
 import { MaintenanceFormComponent } from '@admin/components/maintenance-form/maintenance-form.component';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { ConfirmDialogComponent } from 'src/app/modules/shared/components/confirm-dialog/confirm-dialog.component';
 import { Department } from 'src/app/modules/shared/interface/department';
 import { DepartmentService } from 'src/app/modules/shared/services/department/department.service';
@@ -13,12 +16,18 @@ import Swal from 'sweetalert2';
     templateUrl: './departments.component.html',
     styleUrls: ['./departments.component.scss']
 })
-export class DepartmentsComponent implements OnInit {
+export class DepartmentsComponent implements OnInit, AfterViewInit {
 
     deleteText: string;
     disponibilityText: string;
     departmentList: Department[];
     departmentRef: Department;
+
+    displayedColumns: string[] = ['ID', 'Disponibilidad', 'Nombre_Departamento', 'Comuna', 'Direccion', 'Precio', 'Mantenimiento', 'Estado_de_Disponibilidad', 'Inventario','Modificar','Eliminar'];
+    dataSource: MatTableDataSource<Department>;
+
+    @ViewChild(MatPaginator) paginator: MatPaginator;
+    @ViewChild(MatSort) sort: MatSort;
 
     constructor(private dialog: MatDialog, private _department: DepartmentService) {
         this.departmentRef = {} as Department;
@@ -28,6 +37,10 @@ export class DepartmentsComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.loadDepartment();
+    }
+
+    ngAfterViewInit(): void {
         this.loadDepartment();
     }
 
@@ -87,6 +100,8 @@ export class DepartmentsComponent implements OnInit {
     loadDepartment(){
         this._department.getDepartments().subscribe( (departments: Department[]) =>{
             this.departmentList = departments;
+            this.dataSource = new MatTableDataSource<Department>(this.departmentList);
+            this.dataSource.paginator = this.paginator;
         } )
     }
 

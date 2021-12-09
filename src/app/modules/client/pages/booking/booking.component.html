@@ -8,46 +8,6 @@
             <h2 class="text-center">Listado de Reservas</h2>
         </div>
     </div>
-    <!-- <div class="row">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Nombre Departamento</th>
-                    <th scope="col">Comuna</th>
-                    <th scope="col">Direccion</th>
-                    <th scope="col">Ver Detalles</th>
-                    <th scope="col">Servicios Extra</th>
-                    <th scope="col">Cancelar</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let booking of bookingList">
-                    <td>{{booking.id}}</td>
-                    <td>{{booking.name}}</td>
-                    <td>{{booking.nameCommune}}</td>
-                    <td>{{booking.address}}</td>
-                    <td>
-                        <button mat-flat-button color="primary" (click)="detailDialog(booking)">
-                            Ver detalles
-                        </button>
-                    </td>
-                    <td>
-                        <button mat-flat-button color="primary" (click)="extraServiceDialog(booking)">
-                            <span class="material-icons">
-                                add_circle_outline
-                            </span>
-                        </button>
-                    </td>
-                    <td>
-                        <button mat-flat-button color="primary" (click)="cancelDialog(booking)">
-                            Cancelar Reserva
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div> -->
     <div class="row">
         <div class="mat-elevation-z8">
             <table mat-table [dataSource]="dataSource">
@@ -99,7 +59,7 @@
                            showFirstLastButtons 
                            aria-label="Select page of periodic elements">
             </mat-paginator>
-          </div>
+        </div>
     </div>
 </div>
 </div>

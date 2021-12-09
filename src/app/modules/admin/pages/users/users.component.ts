@@ -1,6 +1,8 @@
 import { UserFormComponent } from '@admin/components/user-form/user-form.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { ConfirmDialogComponent } from 'src/app/modules/shared/components/confirm-dialog/confirm-dialog.component';
 import { User } from 'src/app/modules/shared/interface/user';
 import { UserService } from 'src/app/modules/shared/services/user/user.service';
@@ -15,6 +17,10 @@ export class UsersComponent implements OnInit {
     deleteText: string;
     userList : User[];
 
+    displayedColumns: string[] = ['Tipo', 'RUT', 'Nombre', 'Apellido Paterno', 'Modificar', 'Eliminar'];
+    dataSource: MatTableDataSource<User>;
+
+    @ViewChild(MatPaginator) paginator: MatPaginator;
 
     
     constructor(private dialog: MatDialog,
@@ -63,6 +69,8 @@ export class UsersComponent implements OnInit {
     loadUser(){
         this._user.getUsers().subscribe( userList => {
             this.userList = userList;
+            this.dataSource = new MatTableDataSource<User>(this.userList);
+            this.dataSource.paginator = this.paginator;
         })
     }
 }

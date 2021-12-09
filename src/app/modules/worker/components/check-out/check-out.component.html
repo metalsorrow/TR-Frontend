@@ -27,13 +27,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <td>Detalle</td>
-                            <td>1</td>
+                            <tr *ngFor="let multa of checkout?.multaList">
+                                <td>{{multa.fineName}}</td>
+                                <td>{{multa.subTotal | number}}</td>
+                            </tr>
                         </tbody>
                     </table>
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Total Multas: $0</h5>
+                            <h5 class="card-title">Total Multas: ${{checkout?.totalMulta | number}}</h5>
                         </div>
                     </div>
                 </div>
@@ -46,13 +48,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <td>Detalle</td>
-                            <td>1</td>
+                            <tr *ngFor="let extraservice of checkout?.extraServicesList">
+                                <td>{{extraservice.servName}} FALTAAA</td>
+                                <td>{{extraservice.subTotal | number}}</td>
+                            </tr>
                         </tbody>
                     </table>
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Total Multas: $0</h5>
+                            <h5 class="card-title">Total Servicios Extra: ${{checkout?.totalExtraServices | number}}</h5>
                         </div>
                     </div>
                 </div>
@@ -66,40 +70,37 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <td>Detalle</td>
-                                <td>1</td>
+                                <tr>
+                                    <td>Reserva base</td>
+                                    <td>{{checkout?.totalBooking}}</td>
+                                </tr>
                             </tbody>
                         </table>
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Total Multas: $0</h5>
+                                <h5 class="card-title">Total Reserva: ${{checkout?.totalBooking | number}}</h5>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row py-4 ">
-                <div class="col">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Subtotal: $0</h5>
+            <div class="card row py-4 ">
+
+                    <div class="d-flex justify-content-around">
+                        <div >
+                            <p>Subtotal: <br> ${{total | number}}</p>
+                        </div>
+                        <div>
+                            <p> Fecha de Ingreso: <br> {{checkout?.checkin}}</p>
+                        </div>
+                        <div>
+                            <p> Fecha de Salida: <br> {{checkout?.checkout}}</p>
                         </div>
                     </div>
                 </div>
-                <div class="col d-flex justify-content-center align-items-center">
-                    <!-- <p class="mx-2">Fecha CHECK OUT:</p> -->
-                    <mat-form-field appearance="fill">
-                        <mat-label>Fecha CHECK OUT</mat-label>
-                        <input matInput [matDatepicker]="picker">
-                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-datepicker #picker></mat-datepicker>
-                    </mat-form-field>
-                </div>
-
             </div>
         </div>
         <div class="modal-footer">
-            <button mat-flat-button class="w-50" color="primary">Generar</button>
+            <button (click)="createCheckout($event)" mat-flat-button class="w-50" color="primary">Generar</button>
         </div>
     </div>
-</div>

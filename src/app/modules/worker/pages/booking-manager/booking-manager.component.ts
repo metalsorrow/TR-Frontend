@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { CheckInComponent } from '@worker/components/check-in/check-in.component';
 import { CheckOutComponent } from '@worker/components/check-out/check-out.component';
 import { ExtraServicesManagerComponent } from '@worker/components/extra-services-manager/extra-services-manager.component';
@@ -15,6 +17,11 @@ import { BookingService } from 'src/app/modules/shared/services/booking/booking.
 export class BookingManagerComponent implements OnInit {
 
   bookingList: BookingDisplay[];
+  displayedColumns: string[] = ['ID', 'Nombre_Departamento', 'Comuna', 'Rut_Cliente', 'Nombre_Cliente', 'Multas', 'Servicios_Extras', 'Check-IN', 'Check-OUT'];
+  dataSource: MatTableDataSource<BookingDisplay>;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
   constructor(private dialog: MatDialog, private _booking: BookingService) {
     this.bookingList = [{id: 1, commune: "Ñuñoa" , departmentName: "Suit, paquete de verano", departmentAddress: "Torre 1234, Las Golondrinas", clientId:1, clientRut:"12.200.099-3"}] as BookingDisplay[];
    }
@@ -60,7 +67,10 @@ export class BookingManagerComponent implements OnInit {
 
     loadBooking(){
       this._booking.getBooking().subscribe( result => {
+        console.log('result', result);
         this.bookingList = result;
+        this.dataSource = new MatTableDataSource<BookingDisplay>(this.bookingList);
+        this.dataSource.paginator = this.paginator;
       })
     }
 }

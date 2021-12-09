@@ -32,7 +32,11 @@ export class BookingService {
                             checkIn: data.checkIn,
                             checkOut: data.checkOut,
                             totalDays: data.totalDays,
-                            departmentAddress: data.departmentAdress,
+                            departmentName: data.departmentName,
+                            commune: data.idCommune,
+                            clientId: data.clientId,
+                            clientName: data.clientId,
+                            clientRut: data.clientId,
                         } as BookingDisplay
                         return json
                     });

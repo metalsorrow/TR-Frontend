@@ -1,3 +1,36 @@
+
+
+
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer  #drawer class="example-sidenav navbar menucompleto" mode="over">
+        <ul class="menu" id="menu">
+            <img class="logodentromenu" src="../../../../../assets/images/fondos/LogoDentroMenu.png" alt="">
+            <li class="nav-el">
+                <a [routerLink]="['/','worker','bookingManager']" data-bs-toggle="collapse" class="nav-link text-truncate">
+                    <span class="textomenu">Lista de Reservas</span>
+                </a>
+            </li>
+            <li class="nav-el">
+                <a (click)="logout($event)" [routerLink]="['/auth']" class="nav-link text-truncate">
+                    <span class="textomenu">Cerrar Sesion</span>
+                </a>
+            </li>
+        </ul>
+    </mat-drawer>
+
+    <div class="example-sidenav-content">
+        <button class="botonmenulineas" type="button" mat-button (click)="drawer.toggle()">
+            <img class="logodentromenu" src="../../../../../assets/images/botones/MenuButtonLineas.png" alt="">
+        </button>
+        <router-outlet></router-outlet>
+    </div>
+
+</mat-drawer-container>
+
+
+
+
+
 <div class="offcanvas offcanvas-start w-25" tabindex="-1" id="offcanvas" data-bs-keyboard="false" data-bs-backdrop="false">
     <div class="offcanvas-header">
         <h3 class="offcanvas-title d-none d-sm-block" id="offcanvas">navegacion</h3>
@@ -5,11 +38,7 @@
     </div>
     <div class="offcanvas-body px-0">
         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-start">
-            <li>
-                <a [routerLink]="['/','worker','bookingManager']" data-bs-toggle="collapse" class="nav-link text-truncate">
-                    <i class="fs-5 bi-speedometer2"></i><span class="ms-1 d-none d-sm-inline">Lista de Reservas</span>
-                </a>
-            </li>
+
         </ul>
     </div>
 </div>
@@ -22,3 +51,5 @@
 <main class="container mw-100">
     <router-outlet></router-outlet>
 </main>
+
+
