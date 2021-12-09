@@ -1,14 +1,18 @@
-<div class="container">
+
+<div class="todo">
+  <div class="LogoSlogan">
+    <img src="../../../../../assets/images/fondos/LogoSombreado.png" alt="">
+  </div>
+<div class="container p-5">
     <div class="row">
 
     </div>
     <div class="row">
         <div class="col d-flex btn-pointer" 
             (click)="newTransportDialog()" >
-            <span class="material-icons">
-                add_circle_outline
-            </span>
-            <p>Agendar Nuevo Transporte</p>
+            <div class="BotonAgregar">
+              <img class="wimage" src="../../../../../assets/images/botones/AgregarButton.png" alt="">
+            </div>
         </div>
         <div class="col">
             <h2>Mantenedor de Tranportes</h2>
@@ -81,4 +85,5 @@
             </mat-paginator>
           </div>
     </div>
+</div>
 </div>

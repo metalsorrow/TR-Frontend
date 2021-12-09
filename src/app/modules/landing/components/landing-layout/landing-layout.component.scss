@@ -1,16 +1,72 @@
-.nav-el{
-    font-size: 1rem;
-    text-decoration: none;
-    border: 1px solid black;
-    *{
-        text-decoration: none;
-    }
+/*.BotonMenu{
+    width: 100px;
+    height: 30px;
 }
 
+.wimage{
+    width: 100%;
+    color:cadetblue;
+}
+
+.nav-el{
+    list-style: none;
+    position: relative;
+    text-align: left;
+}
+
+.agregar{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+  }*/
+.botonmenulineas{
+    position:absolute;
+    z-index: 5;
+    float: left;
+    width: 5%;
+    height: 5%;
+    margin-top: 1%;
+}
+
+.logodentromenu{
+    width: 100%;
+}
+
+.textomenu{
+    color: black;
+}
+
+.nav-el{
+    font-size: 1.2rem;
+    text-decoration: none;
+    border: 0.2px outset #edc152;
+    text-align: center;
+}
 
 .navbar{
     overflow: hidden;
     position: fixed; /* Set the navbar to fixed position */
     top: 0; /* Position the navbar at the top of the page */
-    width: 50%; /* Full width */
+    width: 25%; /* Full width */
 }
+
+.menu {
+    list-style: none;
+    background: #d5bb7b;
+}
+
+.menucompleto{
+    background: #ebe4c4;
+}
+
+@media only screen and (max-width: 768px) {
+    .navbar{
+        overflow: hidden;
+        position: fixed; /* Set the navbar to fixed position */
+        top: 0; /* Position the navbar at the top of the page */
+        width: 75%; /* Full width */
+    }
+}
+

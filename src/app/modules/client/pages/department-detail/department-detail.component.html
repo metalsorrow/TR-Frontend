@@ -1,4 +1,8 @@
-<div class="container">
+<div class="todo">
+    <div class="LogoSlogan">
+        <img src="../../../../../assets/images/fondos/LogoSombreado.png" alt="">
+    </div>
+<div class="container p-5">
     <div *ngIf="!loading">
         <div class="row">
             <h1>{{department?.name}}</h1>
@@ -95,4 +99,5 @@
     <div *ngIf="loading" class="row" >
         <mat-spinner class="m-auto" ></mat-spinner>
     </div>
+</div>
 </div>

@@ -1,3 +1,35 @@
 table {
     width: 100%;
   }
+
+.todo{
+    height: 100vh;
+}
+.todo{
+    background-image: url("../../../../../assets/images/fondos/FondoPanelAdmin.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #464646;
+   }
+
+.container{
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.LogoSlogan {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 26%;
+}
+
+.BotonAgregar{
+  width: 100px;
+  height: 50px;
+}
+
+.wimage{
+  width: 100%;
+}

@@ -48,40 +48,41 @@
 
 
 <mat-drawer-container class="example-container" autosize>
-    <mat-drawer  #drawer class="example-sidenav navbar" mode="over">
-        <ul id="menu">
+    <mat-drawer  #drawer class="example-sidenav navbar menucompleto" mode="over">
+        <ul class="menu" id="menu">
+            <img class="logodentromenu" src="../../../../../assets/images/fondos/LogoDentroMenu.png" alt="">
             <li class="nav-el">
                 <a [routerLink]="['/']" class="nav-link text-truncate">
-                    <span>Inicio</span>
+                    <span class="textomenu">Inicio</span>
                 </a>
             </li>
             <li class="nav-el">
                 <a [routerLink]="['/']" class="nav-link text-truncate">
-                    <span>Crear Reserva</span>
+                    <span class="textomenu">Crear Reserva</span>
                 </a>
             </li>
             <li class="nav-el">
                 <a [routerLink]="['/']" class="nav-link text-truncate">
-                    <span>Quienes Somos</span></a>
+                    <span class="textomenu">Quienes Somos</span></a>
             </li>
             <li class="nav-el">
                 <a [routerLink]="['/']" class="nav-link text-truncate">
-                    <span>Contactanos</span> </a>
+                    <span class="textomenu">Contactanos</span> </a>
             </li>
             <li class="nav-el">
                 <a [routerLink]="['auth']" data-bs-toggle="collapse" class="nav-link text-truncate">
-                    <span>Iniciar Sesion</span> </a>
+                    <span class="textomenu">Iniciar Sesion</span> </a>
             </li>
             <li class="nav-el">
                 <a [routerLink]="['auth','register']" class="nav-link text-truncate">
-                    <span>Registrate</span> </a>
+                    <span class="textomenu">Registrate</span> </a>
             </li>
         </ul>
     </mat-drawer>
 
     <div class="example-sidenav-content">
-        <button type="button" mat-button (click)="drawer.toggle()">
-            Toggle sidenav
+        <button class="botonmenulineas" type="button" mat-button (click)="drawer.toggle()">
+            <img class="logodentromenu" src="../../../../../assets/images/botones/MenuButtonLineas.png" alt="">
         </button>
         <router-outlet></router-outlet>
     </div>

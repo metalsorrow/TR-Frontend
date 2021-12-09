@@ -21,6 +21,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [CardRegionComponent, NavbarComponent, AvatarComponent, ConfirmDialogComponent, ErrorPopUpComponent],
@@ -41,7 +43,9 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatProgressSpinnerModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatToolbarModule,
+    MatDividerModule
   ],
   exports: [
     CommonModule,
@@ -63,7 +67,9 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatProgressSpinnerModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatToolbarModule,
+    MatDividerModule
   ],
 })
 export class SharedModule {}
