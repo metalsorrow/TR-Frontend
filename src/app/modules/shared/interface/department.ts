@@ -16,6 +16,6 @@ export interface Department {
     nameCommune?: string,
     departmentImage?: string,
     ubicacion?: string,
-    imgB64?: string,
+    imgB64?: any,
     path?: any
 }

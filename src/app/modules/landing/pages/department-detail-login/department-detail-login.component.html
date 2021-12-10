@@ -1,51 +1,51 @@
-<div class="todo">
-    <div class="LogoSlogan">
-        <img src="../../../../../assets/images/fondos/LogoSombreado.png" alt="">
-    </div>
-<div class="container p-5">
-    <div class="row">
-        <h1></h1>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <img src="https://ladefinicion.com/wp-content/uploads/2019/08/paisaje-natural-992x661.jpg" class="img-fluid p-2 m-0" alt="Responsive image">
-        </div>
-    </div>
+<div class="todo p-5">
 
-    <div class="row mb-5">
-        <div class="col-md-6 col-12">
-            <h2>{{department?.name}}</h2>
-            <p>{{department?.departmentDesc + "desc"}}</p>
-            <h2>Servicios</h2>
-            <div class="d-flex flex-row">
-                <div class="d-flex">
-                    <span class="material-icons px-2">bed</span>
-                    <p>{{department?.totalRooms}} </p>
+    <div class="container ">
+        <div  *ngIf="!loading">
+            <div class="row">
+                <h1>{{department?.name}}</h1>
+            </div>
+            <div class="row p-5">
+                <div class="col-6">
+                    <p>{{department?.departmentDesc}}</p>
+                    <h2>Servicios</h2>
+                    <div class="d-flex flex-row">
+                        <div class="d-flex">
+                            <span class="material-icons px-2">bed</span>
+                            <p>{{department?.totalRooms}} </p>
+                        </div>
+                        <div class="d-flex">
+                            <span class="material-icons px-2">drive_eta</span>
+                            <p>{{department?.totalParking}}</p>
+                        </div>
+                        <div class="d-flex">
+                            <span class="material-icons px-2">shower</span>
+                            <p>{{department?.totalBaths}}</p>
+                        </div>
+                    </div>
+                    <h2> ${{department?.departmentPrice  |  number:'':'es'}} / NOCHE </h2>
+        
+        
                 </div>
-                <div class="d-flex">
-                    <span class="material-icons px-2">drive_eta</span>
-                    <p>{{department?.totalParking}}</p>
-                </div>
-                <div class="d-flex">
-                    <span class="material-icons px-2">shower</span>
-                    <p>{{department?.totalBaths}}</p>
+                <div class="col-6 img-display">
+                    <img [src]="department?.path" class="img-size p-2 m-0" alt="Responsive image">
                 </div>
             </div>
-
-
+                <mat-card class=" col-12">
+                    <mat-card class="mx-5 my-2">
+                        <h2> ${{department?.departmentPrice}} / NOCHE </h2>
+                    </mat-card>
+                    <mat-card class="mx-5 my-2 d-flex flex-column align-items-center justify-content-center">
+                        <p class="pb-2">Para poder reservar necesitas iniciar sesion.</p>
+                        <p class="pb-2">Haga click en el siguiente botón para ir a iniciar sesión!</p>
+                        <button (click)="$event.preventDefault()" [routerLink]="['/auth']" class="mb-2 px-5" mat-raised-button color="primary">Iniciar sesión</button>
+                        <p class="pb-2">o registrate!</p>
+                        <button (click)="$event.preventDefault()" [routerLink]="['/auth','register']" class="px-5" mat-raised-button >Registrarse</button>
+                    </mat-card>
+                </mat-card>
         </div>
-        <mat-card class="col-md-6 col-12">
-            <mat-card class="mx-5 my-2">
-                <h2> ${{department?.departmentPrice}} / NOCHE </h2>
-            </mat-card>
-            <mat-card class="mx-5 my-2 d-flex flex-column align-items-center justify-content-center">
-                <p class="pb-2">Para poder reservar necesitas iniciar sesion.</p>
-                <p class="pb-2">Haga click en el siguiente botón para ir a iniciar sesión!</p>
-                <button (click)="$event.preventDefault()" [routerLink]="['/auth']" class="mb-2 px-5" mat-raised-button color="primary">Iniciar sesión</button>
-                <p class="pb-2">o registrate!</p>
-                <button (click)="$event.preventDefault()" [routerLink]="['/auth','register']" class="px-5" mat-raised-button >Registrarse</button>
-            </mat-card>
-        </mat-card>
+        <div *ngIf="loading" class="row" >
+            <mat-spinner class="m-auto" ></mat-spinner>
+        </div>
     </div>
-</div>
-</div>
+    </div>

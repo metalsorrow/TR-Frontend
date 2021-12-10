@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Department } from '../../interface/department';
-import base64 from '../../../../../assets/base64.json';
 
 export enum DepartmentRoutes {
   GET_DEPARTMENT = '/api/departments',
@@ -49,8 +48,10 @@ export class DepartmentService {
   getDepartments(): Observable<any> {
     return this.http.get<Department[]>(DepartmentRoutes.GET_DEPARTMENT).pipe(
       map((response: any) => {
+
         if (response) {
           let responseFormated = response.departments.map((data: any) => {
+
             let json = {
               id: Number(data.id),
               name: data.name,
@@ -61,7 +62,6 @@ export class DepartmentService {
               internet: Number(data.internet),
               tv: Number(data.tv),
               heating: Number(data.heating),
-              departmentImage: base64.file,
               furnished: Number(data.furnished),
               departmentPrice: Number(data.departmentPrice),
               departmentStatus: Number(data.departmentStatus),
@@ -83,10 +83,14 @@ export class DepartmentService {
   getDepartmentsDisponibility(){
   const headers = new HttpHeaders().append('Content-Type', 'application/json');
   const params = new HttpParams().append('disponibility', 1);
+  
   return this.http.get<Department[]>(DepartmentRoutes.GET_DEPARTMENT_DISPONIBILITY,{headers: headers, params: params} ).pipe(
     map((response: any) => {
       if (response) {
         let responseFormated = response.departments.map((data: any) => {
+          let imgFormat: string = data.imgB64.slice(2);
+          imgFormat = imgFormat.slice(0, imgFormat.length - 1);
+
           let json = {
             id: Number(data.id),
             name: data.name,
@@ -97,13 +101,13 @@ export class DepartmentService {
             internet: Number(data.internet),
             tv: Number(data.tv),
             heating: Number(data.heating),
-            departmentImage: base64.file,
+            departmentImage: imgFormat,
             furnished: Number(data.furnished),
             departmentPrice: Number(data.departmentPrice),
             departmentStatus: Number(data.departmentStatus),
             departmentDesc: data.description,
             ubicacion: data.ubicacion,
-            imgB64: data.imgB64
+            imgB64: imgFormat
           } as Department
           return json
         });
@@ -120,12 +124,16 @@ export class DepartmentService {
     const headers = new HttpHeaders().append('Content-Type', 'application/json');
     const params = new HttpParams().append('id', id);
 
+
     return this.http.get<Department[]>(DepartmentRoutes.GET_DEPARTMENT_BY_ID, {headers: headers, params: params}
       ).pipe(
       map((response: any) => {
         if (response) {
           console.log(response);
           let responseFormated = response.department.map((data: any) => {
+            let imgFormat: string = data.imgB64.slice(2);
+            imgFormat = imgFormat.slice(0, imgFormat.length - 1);
+
             let json = {
               id: Number(data.id),
               name: data.name,
@@ -142,7 +150,7 @@ export class DepartmentService {
               departmentDesc: data.description,
               idCommune: data.idCommune,
               nameCommune: data.nameCommune,
-              imgB64: data.imgB64
+              imgB64: imgFormat
             } as Department
             return json
           });

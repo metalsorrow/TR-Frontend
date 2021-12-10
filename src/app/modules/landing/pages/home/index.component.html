@@ -35,7 +35,7 @@
                       
                       <mat-card-title>{{department.name}}</mat-card-title>
                     </mat-card-header>
-                    <img mat-card-image src="https://i.pinimg.com/originals/b2/b7/ba/b2b7bac28db534e9c2ac70c451960068.jpg" alt="Photo of a Shiba Inu">
+                    <img mat-card-image [src]="department.imgB64" alt="Photo of a Shiba Inu">
                     <mat-card-content>
                         <div class="card-icons d-flex justify-content-between">
                             <div class="d-flex">

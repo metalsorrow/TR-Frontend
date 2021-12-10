@@ -8,10 +8,11 @@ import { ExtraServicesComponent } from './components/extra-services/extra-servic
 import { DetailsDialogComponent } from './components/details-dialog/details-dialog.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { OrderPayComponent } from './pages/order-pay/order-pay.component';
+import { OrderOkComponent } from './pages/order-ok/order-ok.component';
 
 
 @NgModule({
-  declarations: [BookingComponent, HomeComponent, DepartmentDetailComponent, ExtraServicesComponent, DetailsDialogComponent, OrderPayComponent],
+  declarations: [BookingComponent, HomeComponent, DepartmentDetailComponent, ExtraServicesComponent, DetailsDialogComponent, OrderPayComponent, OrderOkComponent],
     
   imports: [SharedModule, ClientRoutingModule,SweetAlert2Module],
 })

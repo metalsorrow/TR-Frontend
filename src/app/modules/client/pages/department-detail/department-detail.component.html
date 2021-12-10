@@ -1,13 +1,11 @@
-<div class="todo">
-    <div class="LogoSlogan">
-        <img src="../../../../../assets/images/fondos/LogoSombreado.png" alt="">
-    </div>
-<div class="container p-5">
-    <div *ngIf="!loading">
+<div class="todo p-5">
+
+<div class="container ">
+    <div  *ngIf="!loading">
         <div class="row">
             <h1>{{department?.name}}</h1>
         </div>
-        <div class="row">
+        <div class="row p-5">
             <div class="col-6">
                 <p>{{department?.departmentDesc}}</p>
                 <h2>Servicios</h2>
@@ -29,8 +27,8 @@
     
     
             </div>
-            <div class="col-6">
-                <img [src]="department?.path" class="img-fluid p-2 m-0" alt="Responsive image">
+            <div class="col-6 img-display">
+                <img [src]="department?.path" class="img-size p-2 m-0" alt="Responsive image">
             </div>
         </div>
         <form  [formGroup]="formBooking">
