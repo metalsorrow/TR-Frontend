@@ -54,6 +54,11 @@ export class BookingManagerComponent implements OnInit {
       dialogConfig.data = { booking: booking };
 
       let resultDialog = this.dialog.open(CheckInComponent, dialogConfig);
+      resultDialog.afterClosed().subscribe(data => {
+        if (data) {
+          this.loadBooking();
+        }
+      });
 
     }
     checkOutDialog(booking: BookingDisplay){
@@ -63,11 +68,15 @@ export class BookingManagerComponent implements OnInit {
       dialogConfig.data = { booking: booking };
 
       let resultDialog = this.dialog.open(CheckOutComponent, dialogConfig);
+      resultDialog.afterClosed().subscribe(data => {
+        if (data) {
+          this.loadBooking();
+        }
+      });
     }
 
     loadBooking(){
       this._booking.getBooking().subscribe( result => {
-        console.log('result', result);
         this.bookingList = result;
         this.dataSource = new MatTableDataSource<BookingDisplay>(this.bookingList);
         this.dataSource.paginator = this.paginator;

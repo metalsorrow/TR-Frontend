@@ -40,7 +40,8 @@ export interface BookingDisplay{
     departmentStatus: boolean
     departmentDesc: string,
     idCommune: number
-    commune: string
+    commune: string,
+    
 }
 
 export interface BookingDTO{

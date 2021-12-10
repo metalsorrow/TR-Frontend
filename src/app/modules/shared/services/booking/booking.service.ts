@@ -26,16 +26,16 @@ export class BookingService {
                 if (response) {
                     console.log(response);
                     let responseFormated = response.reserves.map((data: any) => {
-                        let json = {
+                        let json:BookingDisplay = {
                             id: Number(data.id),
                             planifiedCheckIn: data.planifiedCheckIn,
                             checkIn: data.checkIn,
                             checkOut: data.checkOut,
                             totalDays: data.totalDays,
                             departmentName: data.departmentName,
-                            commune: data.idCommune,
+                            commune: data.nameCommune,
                             clientId: data.clientId,
-                            clientName: data.clientId,
+                            clientName: data.clientName,
                             clientRut: data.clientId,
                             statusBooking: data.statusReserve
                         } as BookingDisplay

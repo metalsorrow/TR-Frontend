@@ -106,7 +106,7 @@ export class DepartmentDetailComponent implements OnInit {
     this._booking.createBooking(newBooking).subscribe( () => {
       Swal.fire(
         'Reserva Completada!',
-        `Departamento ${newBooking.departmentName} registrado para su ingreso para el dia ${initDay}` ,
+        `Departamento registrado para su ingreso para el dia ${initDay}` ,
         'success'
       )
       this.router.navigate(['/','client','booking']);

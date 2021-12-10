@@ -119,7 +119,7 @@
               <ng-container matColumnDef="Check-IN">
                 <th mat-header-cell *matHeaderCellDef> Check-IN </th>
                 <td mat-cell *matCellDef="let element">
-                    <button type="button" mat-flat-button color="primary" [disabled]="!element.checkIn" (click)="checkInDialog(element)">
+                    <button type="button" mat-flat-button color="primary" [disabled]="element.checkIn" (click)="checkInDialog(element)">
                         <span class="material-icons">
                             login
                         </span>

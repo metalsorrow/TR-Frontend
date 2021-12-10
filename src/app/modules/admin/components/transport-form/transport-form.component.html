@@ -9,7 +9,7 @@
             <mat-form-field class="col-12 " appearance="fill">
                 <mat-label>Reservas Disponibles:</mat-label>
                 <mat-select formControlName="booking">
-                    <mat-option *ngFor="let booking of bookingList" [value]="booking.id">{{booking.id + " - " + booking.departmentAddress + " - " + booking.planifiedCheckIn}}</mat-option>
+                    <mat-option *ngFor="let booking of bookingList" [value]="booking.id">{{booking.id + " - " + booking.departmentName + " - " + booking.planifiedCheckIn}}</mat-option>
                 </mat-select>
             </mat-form-field>
             <mat-form-field class="col-12" appearance="fill">
