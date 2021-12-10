@@ -39,7 +39,7 @@ export class CheckOutComponent implements OnInit {
 
   createCheckout($event: Event) {
     $event.preventDefault();
-    this._checkout.generateCheckout(this.data.booking.id).subscribe( res  => {
+    this._checkout.generateCheckout(this.data.booking.id, this.total).subscribe( res  => {
       Swal.fire(
         'Check Out registrado!',
         `Favor de realizar transaccion vinculada a la reserva #"${this.data.booking.id}".` ,

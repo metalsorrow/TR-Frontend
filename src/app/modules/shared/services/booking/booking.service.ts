@@ -4,7 +4,7 @@ import { catchError, map } from 'rxjs/operators';
 import { Booking, BookingDisplay, BookingDTO } from '../../interface/booking';
 
 export enum BookingRoutes {
-    GET_BOOKING_BY_CLIENT = "/api/reserveByUser",
+    GET_BOOKING_BY_CLIENT = "/api/getReservaByUser",
     GET_BOOKING = "/api/reserve",
     DELETE_BOOKING = "/api/reserve",
     PUT_BOOKING = "/api/reserve",
@@ -21,7 +21,7 @@ export class BookingService {
 
 
     getBooking() {
-        return this.http.get<BookingDisplay[]>(BookingRoutes.GET_BOOKING_BY_CLIENT).pipe(
+        return this.http.get<BookingDisplay[]>(BookingRoutes.GET_BOOKING).pipe(
             map((response: any) => {
                 if (response) {
                     console.log(response);
@@ -37,6 +37,7 @@ export class BookingService {
                             clientId: data.clientId,
                             clientName: data.clientId,
                             clientRut: data.clientId,
+                            statusBooking: data.statusReserve
                         } as BookingDisplay
                         return json
                     });
@@ -57,12 +58,12 @@ export class BookingService {
         ).pipe(
             map((response: any) => {
                 if (response) {
-                    let responseFormated = response.departments.map((data: any) => {
+                    let responseFormated = response.reserve.map((data: any) => {
                         let json = {
                             id: Number(data.id),
-                            name: data.name,
-                            address: data.address,
-                            nameCommune: data.nameCommune
+                            name: data.departmentName,
+                            address: data.departmentAddress,
+                            nameCommune: data.communeName
                         } as Booking
                         return json
                     });

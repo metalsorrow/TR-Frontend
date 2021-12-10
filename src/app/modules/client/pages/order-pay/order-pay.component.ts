@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -21,7 +21,18 @@ export class OrderPayComponent implements AfterViewInit {
   dataSource: MatTableDataSource<Order>;
   pay: {url: string, token: string};
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+    // //Method to test
+    // @ViewChild('testForm') testFormElement: any;
+
+    // public testGroup = this.formBuilder.group({
+    //   token: ''
+    // });
+  
+  
+    // public testMethod(): void {
+    //   this.testFormElement.nativeElement.submit();
+    // }
+    @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(
       private _order: OrderService,
@@ -34,10 +45,10 @@ export class OrderPayComponent implements AfterViewInit {
 
 
   ngAfterViewInit(): void {
-      this.loadTranspoort();
+      this.loadOrder();
   }
 
-  loadTranspoort() {
+  loadOrder() {
     this._auth.$getSerssionUser().pipe(
       mergeMap((user) => {
         if(user?.id){
@@ -47,30 +58,31 @@ export class OrderPayComponent implements AfterViewInit {
       })
     ).subscribe((orderList) => {
       this.orderList = orderList;
+      this.dataSource = new MatTableDataSource<Order>(this.orderList);
+      this.dataSource.paginator = this.paginator;
     })
   }
 
   generatePay($event: Event, order:Order){
+    console.log(order);
     $event.preventDefault();
-    this._order.generatePay(order.id).subscribe( () => {
-      this.loadTranspoort();
-      this.testMethod();
+    this._order.generatePay(order.id).subscribe( (pay: {url: string, token: string}) => {
+      this.pay = {url: pay.url, token: pay.token}
+      console.log(pay);
+      
+      // this.testGroup = this.formBuilder.group({
+      //   token_ws: pay.token 
+      // });
+      this.loadOrder();
+      // this.submitButton.nativeElement.click();
+      // this.form.nativeElement.submit();
+      
+      // this.testMethod();
     })
   }
 
 
 
-  //Method to test
-  @ViewChild('testForm') testFormElement: any;
 
-  public currentUserEmail: string = '';
-  public testGroup = this.formBuilder.group({
-    Email: ''
-  });
-
-
-  public testMethod(): void {
-    this.testFormElement.nativeElement.submit();
-}
 
 }

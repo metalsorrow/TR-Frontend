@@ -1,12 +1,13 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Order } from '../../interface/order';
 
 
 export enum OrderRoutes {
-  GET_ORDER = "",
-  GENERATE_PAY = ""
+  GET_ORDER = "/api/getOrderByUser",
+  GENERATE_PAY = "/api/pago"
 }
 @Injectable({
   providedIn: 'root'
@@ -17,17 +18,17 @@ export class OrderService {
 
   getCheckoutByUser(id: number){
     const headers = new HttpHeaders().append('Content-Type', 'application/json');
-    const params = new HttpParams().append('id', 1);
+    const params = new HttpParams().append('id', id);
     return this.http.get<Order[]>(OrderRoutes.GET_ORDER,{headers: headers, params: params} ).pipe(
       map((response: any) => {
         if (response) {
-          let responseFormated = response.departments.map((data: any) => {
+          let responseFormated = response.order.map((data: any) => {
             let json: Order = {
               id: Number(data.id),
-              date: data.date,
-              estado: data.estado,
-              idBooking: data.idReserve,
-              totalPrice: data.totalPrice
+              date: data.FECHA_REGISTRO,
+              estado: data.ESTADO,
+              idBooking: data.ID_RESERVA,
+              totalPrice: data.TOTAL_PAGO
             }
             return json
           });
@@ -40,7 +41,7 @@ export class OrderService {
     );
   }
 
-  generatePay(id: number){
+  generatePay(id: number): Observable<any>{
     const headers = new HttpHeaders().append('Content-Type', 'application/json');
     const params = new HttpParams().append('id', id);
     return this.http.get<{url: string, token: string}>(OrderRoutes.GENERATE_PAY,{headers: headers, params: params} ).pipe(

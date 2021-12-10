@@ -119,7 +119,7 @@
               <ng-container matColumnDef="Check-IN">
                 <th mat-header-cell *matHeaderCellDef> Check-IN </th>
                 <td mat-cell *matCellDef="let element">
-                    <button type="button" mat-flat-button color="primary" (click)="checkInDialog(element)">
+                    <button type="button" mat-flat-button color="primary" [disabled]="!element.checkIn" (click)="checkInDialog(element)">
                         <span class="material-icons">
                             login
                         </span>
@@ -129,7 +129,7 @@
               <ng-container matColumnDef="Check-OUT">
                 <th mat-header-cell *matHeaderCellDef> Check-OUT </th>
                 <td mat-cell *matCellDef="let element">
-                    <button mat-flat-button color="primary" (click)="checkOutDialog(element)">
+                    <button mat-flat-button color="primary" [disabled]="element.statusBooking == '0'" (click)="checkOutDialog(element)">
                         <span class="material-icons">
                             logout
                         </span>

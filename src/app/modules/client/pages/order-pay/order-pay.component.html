@@ -59,19 +59,20 @@
         </div>
       </div>
     </div>
-  </div>
+</div>
 
 
   
 <form method="post" [action]="pay.url">
     <input type="hidden" name="token_ws" [value]="pay.token" />
-    <input type="submit" value="Ir a pagar" />
+    <input #submitButton type="submit" value="Ir a pagar" />
 </form>
 
-<form ngNoForm
+<!-- <form #form
   [formGroup]="testGroup"
-  [action]='pay.url'
+  action='https://webpay3gint.transbank.cl/webpayserver/initTransaction'
   method='POST'
   #testForm>
     <input name='token_ws' type='hidden' [value]='pay.token'>
-</form>
+    <input type="text" [value]="pay.token">
+</form> -->

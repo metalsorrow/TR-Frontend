@@ -114,9 +114,9 @@ export class DepartmentService {
 
         return responseFormated;
       }
-      throw new Error('Error from api');
+      return [];
     }),
-    catchError(error => error),
+    catchError(error => {return []}),
   );
 }
 

@@ -1,1 +1,20 @@
-<p>order-ok works!</p>
+<div class="todo">
+    <div class="LogoSlogan">
+      <img src="../../../../../assets/images/fondos/LogoSombreado.png" alt="">
+    </div>
+    <div class="container p-5">
+      <div class="row">
+        <div class="col">
+          <h2 class="text-center">Resultado de Transaccion</h2>
+        </div>
+        <div class="col">
+            Id de transaccion: {{this.token}}
+        </div>
+      </div>
+      <div class="row my-5">
+          <div class="col-5 m-auto">
+              <button class="w-100"  [routerLink]="['/client']" mat-flat-button color="primary" > Volver al Menu </button>
+          </div>
+      </div>
+    </div>
+  </div>

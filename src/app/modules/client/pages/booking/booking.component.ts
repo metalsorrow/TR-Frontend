@@ -20,22 +20,20 @@ import { BookingService } from 'src/app/modules/shared/services/booking/booking.
 export class BookingComponent implements AfterViewInit {
   bookingList: Booking[];
   deleteText: string;
-  displayedColumns: string[] = ['id', 'nameDepto', 'commune', 'address', 'details', 'extraService', 'cancel'];
+  displayedColumns: string[] = ['id', 'nameDepto', 'commune', 'address', 'extraService', 'cancel'];
   dataSource: MatTableDataSource<Booking>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
 
   constructor(private dialog: MatDialog, private _booking: BookingService, private _auth: AuthService) {
     this.deleteText = "¿Confirma la eliminacion de esta reserva?"
-    this.bookingList = [
-      {id: 1, nameCommune: "Ñuñoa" , name: "Suit, paquete de verano", address: "Torre 1234, Las Golondrinas"} as Booking,
-    ];
-    this.dataSource = new MatTableDataSource<Booking>(this.bookingList);
+    this.bookingList = [];
+    
   }
 
   ngAfterViewInit(): void {  
-    this.dataSource.paginator = this.paginator;
+    console.log('aqui');
+    this.loadBooking();
   }
 
   extraServiceDialog(booking: Booking){
@@ -82,6 +80,8 @@ export class BookingComponent implements AfterViewInit {
       })
     ).subscribe((booking) => {
       this.bookingList = booking;
+      this.dataSource = new MatTableDataSource<Booking>(this.bookingList);
+      this.dataSource.paginator = this.paginator;
     })
       
   }

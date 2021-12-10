@@ -6,7 +6,7 @@ import { CheckOut } from '../../interface/checkout';
 
 export enum checkoutRoutes {
   GET_CHECKOUT = "/api/getCheckout",
-  PUT_CHECKOUT = "/api/getCheckout"
+  PUT_CHECKOUT = "/api/putCheckout"
 }
 
 @Injectable({
@@ -42,8 +42,8 @@ export class CheckOutService {
     );
   }
 
-  generateCheckout(id: number): Observable<any> {
-    return this.http.put<{ ok: string }>(checkoutRoutes.PUT_CHECKOUT, {id: id}).pipe(
+  generateCheckout(id: number, total: number): Observable<any> {
+    return this.http.put<{ ok: string }>(checkoutRoutes.PUT_CHECKOUT, {id: id, total: total}).pipe(
       map((response: any) => {
         if (response) {
           return response

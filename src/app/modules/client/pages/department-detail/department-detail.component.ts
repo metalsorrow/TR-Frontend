@@ -98,7 +98,7 @@ export class DepartmentDetailComponent implements OnInit {
       totalKids: this.formBooking.controls['totalChild'].value,
       totalBabies: this.formBooking.controls['totalBaby'].value,
       totalReserve: this.total,
-      statusReserve: 0,
+      statusReserve: 1,
       departmentId: this.idDepartment,
       clientId: this.idUser
     }
